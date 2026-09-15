@@ -1,0 +1,1 @@
+Drop the venue map here as event-map.jpg, then uncomment the map line in index.html
