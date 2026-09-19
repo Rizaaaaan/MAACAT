@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="robots" content="noindex, nofollow">
+<title>MAACAT — Staff</title>
+<link rel="icon" href="assets/branding/maacat-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="staff-body">
+
+<div class="staff-top" id="staff-top">
+  <div class="who">
+    STALL <b id="stall-name">—</b>
+  </div>
+  <span id="stall-num" style="font-family:var(--display); font-size:2rem; color:var(--c);">--</span>
+</div>
+
+<main class="staff-main" id="staff-main">
+  <!-- filled by JS: no-stall message, PIN pad, or grant screen -->
+</main>
+
+<script>
+/* ============================================================
+   Same STALLS colours as index.html. Keep names in sync if you
+   rename a stall there.
+   ============================================================ */
+const STALLS = {
+  "01":{name:"Marketing Ladder", color:"var(--green)"},
+  "02":{name:"Price Is Right",   color:"var(--turq)"},
+  "03":{name:"Build-a-Brand",    color:"var(--purple)"},
+  "04":{name:"Social Media",     color:"var(--yellow)"},
+  "05":{name:"PR Disaster",      color:"var(--pink)"},
+  "06":{name:"Experiential",     color:"var(--orange)"}
+};
+
+/* ============================================================
+   DEMO-ONLY PINS.
+   These live in the page source, so anyone who opens dev tools
+   can read them. That's fine for stopping a random visitor from
+   fiddling with the tablet — it is NOT real security.
+   Before the event: move the real PIN check into the backend
+   (see BACKEND.md → "Stamp card"), so the server rejects a grant
+   with the wrong PIN even if someone edits this file locally.
+   ============================================================ */
+const DEMO_PINS = { "01":"1101","02":"1102","03":"1103","04":"1104","05":"1105","06":"1106" };
+
+const stallId = new URLSearchParams(location.search).get('stall');
+const stall = STALLS[stallId];
+const main = document.getElementById('staff-main');
+const topBar = document.getElementById('staff-top');
+
+if(!stall){
+  topBar.style.display = 'none';
+  main.innerHTML = `
+    <h2 style="font-family:var(--display); text-transform:uppercase; font-size:1.8rem;">No stall selected</h2>
+    <p style="color:var(--grey); margin-top:10px;">
+      Open this page with a stall number, e.g.<br><code>staff.html?stall=03</code>
+    </p>`;
+} else {
+  document.documentElement.style.setProperty('--c', stall.color);
+  document.getElementById('stall-name').textContent = stall.name;
+  document.getElementById('stall-num').textContent = stallId;
+  document.title = `MAACAT Staff — Stall ${stallId}`;
+
+  const sessionKey = `maacat_staff_unlocked_${stallId}`;
+  window.sessionKey = sessionKey;
+  if(sessionStorage.getItem(sessionKey) === '1') renderGrant();
+  else renderPin();
+}
+
+/* ---------------- PIN screen ---------------- */
+function renderPin(){
+  let entered = '';
+  main.innerHTML = `
+    <div class="pin-screen">
+    <p style="text-align:center; color:var(--grey-dim); font-size:.8rem; font-weight:700; letter-spacing:.1em; margin-bottom:18px;">ENTER STALL PIN</p>
+    <div class="pin-dots" id="pd"></div>
+    <p class="pin-err" id="pin-err"></p>
+    <div class="pin-pad" id="pad"></div>
+    </div>
+  `;
+  const dots = document.getElementById('pd');
+  const err = document.getElementById('pin-err');
+  const pad = document.getElementById('pad');
+
+  function draw(){
+    dots.innerHTML = Array.from({length:4}, (_,i) =>
+      `<b class="${i < entered.length ? 'filled':''}"></b>`).join('');
+  }
+  draw();
+
+  const keys = ['1','2','3','4','5','6','7','8','9','⌫','0','OK'];
+  pad.innerHTML = keys.map(k => `<button type="button" data-k="${k}">${k}</button>`).join('');
+
+  pad.addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    const k = btn.dataset.k;
+    if(k === '⌫'){ entered = entered.slice(0,-1); err.textContent=''; }
+    else if(k === 'OK'){
+      if(entered === DEMO_PINS[stallId]){
+        sessionStorage.setItem(window.sessionKey, '1');
+        renderGrant();
+        return;
+      }
+      err.textContent = 'Wrong PIN. Try again.';
+      entered = '';
+    } else if(entered.length < 4){
+      entered += k;
+      err.textContent = '';
+    }
+    draw();
+  });
+}
+
+/* ---------------- Grant screen ---------------- */
+const STORE_KEY = 'maacat_stamps_prototype';
+
+function readStamps(){
+  try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e){ return {}; }
+}
+function writeStamps(data){
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch(e){}
+}
+function cleanPhone(v){ return v.replace(/\D/g,''); }
+
+function renderGrant(){
+  main.innerHTML = `
+    <label for="phone" style="font-family:var(--display); text-transform:uppercase; font-size:1rem; display:block; margin-bottom:8px;">
+      Participant's mobile number
+    </label>
+    <input class="grant-phone" id="phone" type="tel" inputmode="numeric" placeholder="7XXXXXX" maxlength="15" autocomplete="off">
+    <button class="btn grant-btn" id="grant" type="button">Grant Stamp</button>
+    <div class="grant-msg" id="msg"></div>
+
+    <div class="grant-log">
+      <h4>Recent at this stall</h4>
+      <ul id="log"><li style="color:var(--grey-dim);">No grants yet this session.</li></ul>
+    </div>
+
+    <p class="proto-note" style="margin-top:30px;">
+      Prototype mode: stamps are stored in this browser only, so this device won't see
+      stamps granted at other stalls' devices. Connect the backend (BACKEND.md → Stamp card)
+      so every stall reads and writes the same shared record.
+    </p>
+  `;
+
+  const phoneEl = document.getElementById('phone');
+  const msg = document.getElementById('msg');
+  const log = document.getElementById('log');
+  const grants = [];
+  phoneEl.focus();
+
+  function renderLog(){
+    if(!grants.length) return;
+    log.innerHTML = grants.slice(0,8).map(g =>
+      `<li><span>${g.phone}</span><span>${g.time}</span></li>`).join('');
+  }
+
+  document.getElementById('grant').addEventListener('click', () => {
+    const phone = cleanPhone(phoneEl.value);
+    msg.className = 'grant-msg';
+    if(phone.length < 7){
+      msg.textContent = 'Enter a valid mobile number first.';
+      msg.classList.add('show','dupe');
+      return;
+    }
+
+    const data = readStamps();
+    if(!data[phone]) data[phone] = {};
+
+    if(data[phone][stallId]){
+      msg.textContent = 'Already stamped for this stall.';
+      msg.className = 'grant-msg show dupe';
+    } else {
+      data[phone][stallId] = true;
+      writeStamps(data);
+      const count = Object.keys(data[phone]).length;
+      msg.textContent = count === 6
+        ? '✓ Stamped — full card! Eligible for the grand draw.'
+        : `✓ Stamped — ${count} of 6 stalls collected.`;
+      msg.className = 'grant-msg show ok';
+      grants.unshift({ phone, time: new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) });
+      renderLog();
+    }
+    phoneEl.value = '';
+    phoneEl.focus();
+  });
+
+  phoneEl.addEventListener('keydown', e => {
+    if(e.key === 'Enter') document.getElementById('grant').click();
+  });
+}
+</script>
+</body>
+</html>

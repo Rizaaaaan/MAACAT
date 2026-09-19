@@ -187,3 +187,134 @@ The reason the form asks what it asks:
 | Entries ÷ footfall | Your conversion rate from visitor to respondent |
 
 Last year's dot board got ~150 responses. That is the number to beat.
+
+---
+
+## 8. Stamp card (new this year)
+
+Last year this was a physical card. This version has two things that need a real
+backend: the lucky draw entry above, and the stamp card below. They share a phone number
+as the join key, so build them together.
+
+The idea: winning a stall's game earns a stamp. Collect all six and the grand lucky draw
+unlocks. Right now `index.html` and `staff.html` both read/write
+`localStorage['maacat_stamps_prototype']`, which only works because it's one browser on
+one device. On the day, six stalls means six separate phones or tablets — they need to
+share one record, which means a server.
+
+### Endpoints
+
+```
+POST /api/stamps/grant
+Content-Type: application/json
+
+{ "stallId": "03", "pin": "1103", "phone": "7771234" }
+```
+
+Responses:
+
+```json
+{ "success": true, "stampCount": 3, "fullCard": false }
+{ "success": false, "message": "Already stamped for this stall." }
+{ "success": false, "message": "Wrong PIN for this stall." }
+```
+
+```
+GET /api/stamps/status?phone=7771234
+```
+
+```json
+{ "phone": "7771234", "stamps": ["01","02","03"], "stampCount": 3, "fullCard": false }
+```
+
+The "My Stamp Card" section on the main site calls this to render the six slots. Right
+now it reads localStorage instead — swap `readStampsFor()` in `index.html` for a `fetch`
+to this endpoint.
+
+### The PIN check has to move server-side
+
+`staff.html` currently checks the PIN against a plain object sitting in the page's own
+JavaScript. That stops a random visitor from tapping the tablet, but anyone who opens dev
+tools can read all six PINs in about ten seconds. Fine for a prototype, not fine for the
+actual event.
+
+Move the real check into `/api/stamps/grant`: the frontend still asks for a PIN so staff
+get an immediate "wrong PIN" without a round trip, but the server independently verifies
+`pin` against the stored value for that `stallId` before writing anything. If someone
+edits `staff.html` locally to skip the client-side check, the server still rejects the
+grant. Store the six PINs hashed — same idea as a password table, so a leak doesn't hand
+out all six in plaintext.
+
+### Table shape
+
+```sql
+CREATE TABLE stamp_grants (
+  id         SERIAL PRIMARY KEY,
+  phone      VARCHAR(20) NOT NULL,
+  stall_id   VARCHAR(2)  NOT NULL,
+  granted_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (phone, stall_id)          -- one stamp per phone per stall, ever
+);
+
+CREATE TABLE stall_pins (
+  stall_id  VARCHAR(2) PRIMARY KEY,
+  pin_hash  TEXT NOT NULL
+);
+```
+
+`UNIQUE (phone, stall_id)` is what "already stamped" actually means — same pattern as the
+phone unique constraint on the lucky draw table, just two columns instead of one.
+
+### Reference implementation (Next.js)
+
+```ts
+// app/api/stamps/grant/route.ts
+import { NextResponse } from 'next/server';
+import { sql } from '@/lib/db';
+import bcrypt from 'bcryptjs';
+
+const normalise = (raw: string) => raw.replace(/\D/g, '').replace(/^960/, '');
+
+export async function POST(req: Request) {
+  const { stallId, pin, phone: rawPhone } = await req.json();
+  const phone = normalise(String(rawPhone ?? ''));
+
+  const [row] = await sql`SELECT pin_hash FROM stall_pins WHERE stall_id = ${stallId}`;
+  if (!row || !(await bcrypt.compare(pin, row.pin_hash))) {
+    return NextResponse.json({ success: false, message: 'Wrong PIN for this stall.' }, { status: 401 });
+  }
+
+  try {
+    await sql`INSERT INTO stamp_grants (phone, stall_id) VALUES (${phone}, ${stallId})`;
+  } catch (err: any) {
+    if (err.code === '23505') {
+      return NextResponse.json({ success: false, message: 'Already stamped for this stall.' });
+    }
+    throw err;
+  }
+
+  const rows = await sql`SELECT stall_id FROM stamp_grants WHERE phone = ${phone}`;
+  const stampCount = rows.length;
+  return NextResponse.json({ success: true, stampCount, fullCard: stampCount === 6 });
+}
+```
+
+### Tying it to the lucky draw
+
+`/api/lucky-draw` (section 4) should check `stampCount === 6` for that phone before
+accepting the submission — the same query the `/status` endpoint runs. That way "must
+collect all six" is enforced in one place the frontend can't bypass, rather than only in
+`index.html`'s JavaScript gate.
+
+### Offline risk
+
+Six stalls hitting one server over event wifi is the most likely thing to break on the
+day. Two options, ranked by effort:
+
+- **Cheap:** on a failed request, `staff.html` shows "no signal — write the number down"
+  and staff keep a physical backup list, entered later. Costs nothing to build, costs
+  someone twenty minutes after the event.
+- **Better:** the grant screen queues failed grants in the tablet's own localStorage and
+  retries automatically once the connection returns. More code, no manual backfill.
+
+Given this runs for one day, the cheap option is a reasonable place to stop.

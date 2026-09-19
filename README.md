@@ -70,9 +70,52 @@ before you send anything to print.
 
 ---
 
-## Before the day
+## Running the stamp card on the day
+
+Six stalls, six stamps, one grand lucky draw for anyone who collects all six. Two pages
+handle this:
+
+**Staff side.** Each stall gets its own link:
+
+```
+https://yoursite.com/staff.html?stall=01
+https://yoursite.com/staff.html?stall=02
+...stall=06
+```
+
+Bookmark it (or tape a QR to the tablet) so staff open it once and leave it running. It
+asks for a 4-digit PIN, then shows a number pad to type the participant's mobile number
+and a **Grant Stamp** button. Demo PINs, one per stall:
+
+| Stall | PIN |
+| --- | --- |
+| 01 Marketing Ladder | 1101 |
+| 02 Price Is Right | 1102 |
+| 03 Build-a-Brand | 1103 |
+| 04 Social Media | 1104 |
+| 05 PR Disaster | 1105 |
+| 06 Experiential | 1106 |
+
+**Change these before the event.** They're sitting in plain text in `staff.html`
+(`DEMO_PINS`), which anyone can read from the browser's dev tools. That's an acceptable
+prototype shortcut, not acceptable for the real thing — see `BACKEND.md` §8 for moving
+the check server-side.
+
+**Visitor side.** The "My Stamp Card" section on the main site lets anyone type their
+number and see which of the six they've collected. The lucky draw form later in the page
+won't accept a submission until that number shows all six.
+
+**Important limitation right now:** each stall's tablet only knows about stamps granted
+on *that* device — there's no shared record between them yet. Fine for testing one stall
+at a time. Before the event, this needs the backend in `BACKEND.md` §8 so all six stalls
+(and the visitor-facing check) read and write the same data.
+
+
 
 - [ ] Real URL live, QR codes generated from it and scan-tested on a phone
+- [ ] Backend live for stamps too (BACKEND.md §8), so all six stalls share one record
+- [ ] Six stall PINs changed from the demo values and given only to the right staff
+- [ ] One staff member per stall knows their `staff.html?stall=NN` link
 - [ ] Six posters dropped into `assets/posters/`
 - [ ] Event map added
 - [ ] Backend endpoint live, form switched over, prototype note deleted
