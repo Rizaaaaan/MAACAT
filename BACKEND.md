@@ -1,18 +1,72 @@
-# MAACAT — Lucky draw backend
+# MAACAT — Making the lucky draw and stamp card real
 
-The site works right now as a static page. The one thing it **cannot** do on its own is
-stop the same mobile number entering the lucky draw twice, and it cannot save your
-responses anywhere you can read them later.
+The site works right now as a static page, and the stamp card and lucky draw both
+*appear* to work — but only on one device at a time. Every stall's tablet has its own
+private memory. Stall 03's tablet has no idea what stall 01 stamped ten minutes ago. That
+is the one thing that has to change before this runs for real.
 
-Right now the form uses `localStorage`, which only knows about entries made on **that one
-phone**. Anyone on a different phone can re-enter the same number. That is fine for
-testing, not fine on the day.
+## The fastest path: Supabase (do this)
 
-This file is what you hand to whoever wires up the backend.
+You don't need to hire a developer or run a server. Fifteen minutes, no code written by
+you, and it's done.
+
+**1. Create the database.**
+Go to [supabase.com](https://supabase.com), sign up free, click **New project**. Pick any
+name and password (save the password somewhere — you won't need it again unless you reset
+it) and wait about a minute for it to spin up.
+
+**2. Create the tables.**
+In the left sidebar, click **SQL Editor** → **New query**. Open `supabase-schema.sql`
+(sitting next to this file), copy the whole thing, paste it in, click **Run**. That one
+paste creates every table, locks them down so nobody can read or write them directly from
+a browser, and creates the six starting PINs (`1101`–`1106`).
+
+**3. Get your two keys.**
+Left sidebar → **Settings** → **API**. You need two things off that page:
+- **Project URL** — looks like `https://abcdxyzcompany.supabase.co`
+- **anon public** key — a long string starting with `eyJ...` (NOT the `service_role` key
+  further down the page — that one must never appear in a website)
+
+**4. Paste them in.**
+Open `assets/js/backend.js` in any text editor. Near the top:
+
+```js
+const SUPABASE_URL = '';        // paste your Project URL between the quotes
+const SUPABASE_ANON_KEY = '';   // paste your anon public key between the quotes
+```
+
+Fill both in, save, re-upload `assets/js/backend.js` to wherever the site is hosted
+(same drag-and-drop process as any other file update). That's it — every stall's device
+and the main site now read and write the same shared data. No further code changes.
+
+**5. Change the PINs.**
+The six PINs from the script are the ones in this README's staff table — public in this
+document, so change them. Back in Supabase's SQL Editor, run six lines like:
+
+```sql
+update stall_pins set pin = '4471' where stall_id = '03';
+```
+
+one per stall, with whatever PINs you're actually going to hand out.
+
+**6. Test it before the event, not during it.**
+Open `staff.html?stall=01` on your phone, enter the PIN, grant a stamp to a test number.
+Open the main site on a *different* device, check that number's stamp card — it should
+show the stamp. If it does, every stall sharing one record is working.
+
+Everything below this point is reference material — what the SQL script actually does,
+how to read the data afterwards, and an alternative for later if you outgrow this. You
+don't need to read it to get the thing working.
 
 ---
 
-## 1. What needs to exist
+## Reference: the lucky draw API contract
+
+This is what `submit_lucky_draw` in `supabase-schema.sql` already implements. Useful if
+you ever move off Supabase onto your own server — otherwise you can skip to §8 for the
+stamp card equivalent.
+
+### What needs to exist
 
 One endpoint:
 
@@ -51,7 +105,7 @@ The frontend already handles both shapes — it reads `success` and prints `mess
 
 ---
 
-## 2. Rules the endpoint must enforce
+### Rules the endpoint must enforce
 
 1. **Normalise the phone number before checking.** Strip spaces, dashes, `+960`.
    `+960 777-1234`, `9607771234` and `7771234` must all collide.
@@ -63,7 +117,7 @@ The frontend already handles both shapes — it reads `success` and prints `mess
 
 ---
 
-## 3. Table shape
+### Table shape
 
 ```sql
 CREATE TABLE lucky_draw_entries (
@@ -83,7 +137,7 @@ poster actually brought people in.
 
 ---
 
-## 4. Reference implementation (Next.js route handler)
+### Alternative implementation (Next.js route handler, if you outgrow Supabase)
 
 ```ts
 // app/api/lucky-draw/route.ts
@@ -138,7 +192,7 @@ the part that survives two people submitting at the same time.
 
 ---
 
-## 5. Switching the frontend over
+### Switching the frontend over to a custom server
 
 In `index.html`, find `submitEntry()`. Delete the prototype block and uncomment the fetch
 above it:
@@ -158,7 +212,10 @@ Then delete the `.proto-note` paragraph under the submit button.
 
 ---
 
-## 6. If you don't want to run a server
+### If you don't want to run your own server
+
+(This is what the Supabase path above already gives you — this section is for weighing
+it against the alternatives.)
 
 A no-backend option that still blocks duplicates properly:
 
@@ -173,7 +230,7 @@ honestly good enough. Supabase is the better answer if you want the data afterwa
 
 ---
 
-## 7. What to look at after the event
+## What to look at after the event
 
 The reason the form asks what it asks:
 
@@ -188,9 +245,18 @@ The reason the form asks what it asks:
 
 Last year's dot board got ~150 responses. That is the number to beat.
 
+**Getting the data out:** Supabase → **Table Editor** → `lucky_draw_entries` shows every
+row in a spreadsheet-like view you can sort and filter directly, or click **Export** →
+CSV to open it in Excel or Sheets. `stamp_grants` works the same way if you want to see
+which stalls people actually finished versus dropped off at.
+
 ---
 
-## 8. Stamp card (new this year)
+## Reference: how the stamp card functions work
+
+This is what `supabase-schema.sql` already set up when you ran it in step 2 above. Read
+this if you want to understand what the SQL actually did, change how it works, or move it
+to your own server later.
 
 Last year this was a physical card. This version has two things that need a real
 backend: the lucky draw entry above, and the stamp card below. They share a phone number
