@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="robots" content="noindex, nofollow">
+<title>MAACAT — Internal test</title>
+<link rel="icon" href="assets/branding/maacat-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/backend.js"></script>
+<style>
+  .test-banner{
+    position:sticky; top:0; z-index:70; background:var(--orange); color:#2a0e00;
+    text-align:center; font-family:var(--display); font-size:.82rem; letter-spacing:.04em;
+    padding:10px 16px;
+  }
+  .test-wrap{max-width:560px; margin-inline:auto; padding:28px var(--pad) 60px;}
+  .test-head{margin-bottom:28px;}
+  .test-head h1{font-size:1.8rem; text-transform:uppercase; margin-bottom:8px;}
+  .test-head p{color:var(--grey); font-size:.94rem;}
+  .mode-pill{
+    display:inline-flex; align-items:center; gap:8px; border:2px solid var(--line);
+    border-radius:100px; padding:6px 14px; font-family:var(--display); font-size:.78rem;
+    text-transform:uppercase; margin-bottom:8px; background:var(--off);
+  }
+  .mode-pill b{width:9px; height:9px; border-radius:50%; background:var(--grey-dim);}
+  .mode-pill.live b{background:var(--green);}
+  .mode-pill.local b{background:var(--orange);}
+</style>
+</head>
+<body>
+
+<div class="test-banner">INTERNAL TEST PAGE — NOT LINKED FROM THE PUBLIC SITE — DELETE BEFORE OR AT LAUNCH</div>
+
+<div class="test-wrap">
+  <div class="test-head">
+    <h1>Lucky draw survey test</h1>
+    <p>Same form and popup that will go on the public site on event day. Use this to confirm
+       submissions actually save, and that a repeat number gets blocked.</p>
+    <div class="mode-pill" id="mode-pill"><b></b><span id="mode-text">Checking…</span></div>
+  </div>
+
+  <form class="form-card" id="form" novalidate>
+    <div class="field">
+      <fieldset>
+        <legend>Age group</legend>
+        <div class="opts" id="age-opts"></div>
+      </fieldset>
+      <p class="err" id="err-age">Choose an age group.</p>
+    </div>
+
+    <div class="field" id="f-phone">
+      <label for="phone">Mobile number</label>
+      <span class="hint">Used for the lucky draw — one entry per number.</span>
+      <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel"
+             placeholder="7XXXXXX" maxlength="15">
+      <p class="err" id="err-phone">Enter a valid mobile number.</p>
+    </div>
+
+    <div class="field">
+      <fieldset>
+        <legend>Favourite stall</legend>
+        <div class="opts one" id="stall-opts"></div>
+      </fieldset>
+      <p class="err" id="err-stall">Pick a favourite stall.</p>
+    </div>
+
+    <div class="field" id="f-why">
+      <label for="why">Why did you like it?</label>
+      <textarea id="why" name="why" rows="3" placeholder="Test response..."></textarea>
+      <p class="err" id="err-why">Say a little about why.</p>
+    </div>
+
+    <div class="field">
+      <label for="improve">What could we improve?</label>
+      <textarea id="improve" name="improve" rows="3" placeholder="Optional"></textarea>
+    </div>
+
+    <div class="field">
+      <label class="consent" for="consent">
+        <input type="checkbox" id="consent" name="consent">
+        <span>I understand that my mobile number is collected for the MAACAT lucky draw entry.</span>
+      </label>
+      <p class="err" id="err-consent">Tick this to enter the draw.</p>
+    </div>
+
+    <button type="submit" class="btn submit" id="submit">Submit + Enter Lucky Draw</button>
+    <p class="proto-note" id="form-mode-note"></p>
+  </form>
+
+  <div style="margin-top:40px; border-top:1px solid var(--line); padding-top:20px; font-size:.82rem; color:var(--grey-dim); line-height:1.6;">
+    <b style="color:var(--white); display:block; margin-bottom:6px;">Test checklist</b>
+    1. Fill in the form with a test number and submit — you should get the "you're in" popup.<br>
+    2. Submit again with the exact same number — you should get the "already entered" popup instead.<br>
+    3. Try a different number — should succeed again.<br>
+    4. If in Live mode, check Supabase → Table Editor → <code>lucky_draw_entries</code> to confirm the rows are really there.
+  </div>
+</div>
+
+<!-- ================= POPUP ================= -->
+<div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-card" id="popup-card">
+    <div class="popup-icon" id="popup-icon">✓</div>
+    <h3 id="popup-title">You're in!</h3>
+    <p id="popup-message"></p>
+    <button class="btn btn-1" id="popup-close" type="button">Got it</button>
+  </div>
+</div>
+
+<script>
+const STALLS = [
+  { id:"01", name:"Marketing Ladder" },
+  { id:"02", name:"Cheap or Chic?" },
+  { id:"03", name:"Build-a-Brand" },
+  { id:"04", name:"Maacat Snap Lab" },
+  { id:"05", name:"PR Disaster: The Game" },
+  { id:"06", name:"Brand Relay" }
+];
+const AGES = ["Under 18","18–20","21–24","25–34","35+"];
+
+const modePill = document.getElementById('mode-pill');
+const modeText = document.getElementById('mode-text');
+modePill.classList.add(MaacatBackend.mode);
+modeText.textContent = MaacatBackend.mode === 'live'
+  ? 'Live — writing to Supabase'
+  : 'Local — this browser only (Supabase not configured yet)';
+
+document.getElementById('age-opts').innerHTML = AGES.map(a => `
+  <label class="opt"><input type="radio" name="age" value="${a}"><span>${a}</span></label>
+`).join('');
+document.getElementById('stall-opts').innerHTML = STALLS.map((s,i) => `
+  <label class="opt s${i+1}"><input type="radio" name="stall" value="${s.id} — ${s.name}"><span>${s.id} — ${s.name}</span></label>
+`).join('');
+
+document.getElementById('form-mode-note').innerHTML = MaacatBackend.mode === 'live'
+  ? 'Live mode: this really writes to Supabase. Delete test rows from Table Editor when you\'re done.'
+  : 'Local mode: nothing is saved anywhere shared yet. Set up Supabase and fill in assets/js/backend.js first (see BACKEND.md).';
+
+/* ---------------- Popup ---------------- */
+const popup = document.getElementById('popup');
+const popupCard = document.getElementById('popup-card');
+const popupIcon = document.getElementById('popup-icon');
+const popupTitle = document.getElementById('popup-title');
+const popupMessage = document.getElementById('popup-message');
+let lastFocus = null;
+
+function showPopup(success, message){
+  lastFocus = document.activeElement;
+  popupCard.style.setProperty('--c', success ? 'var(--green)' : 'var(--orange)');
+  popupIcon.textContent = success ? '✓' : '!';
+  popupTitle.textContent = success ? "You're in!" : 'Already entered';
+  popupMessage.textContent = message;
+  popup.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('popup-close').focus();
+}
+function hidePopup(){
+  popup.classList.remove('open');
+  document.body.style.overflow = '';
+  if(lastFocus) lastFocus.focus();
+}
+document.getElementById('popup-close').addEventListener('click', hidePopup);
+popup.addEventListener('click', e => { if(e.target === popup) hidePopup(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && popup.classList.contains('open')) hidePopup(); });
+
+/* ---------------- Form ---------------- */
+const form = document.getElementById('form');
+const submitBtn = document.getElementById('submit');
+const showErr = (id,on) => document.getElementById(id).classList.toggle('show', on);
+const markBad = (id,on) => { const el = document.getElementById(id); if(el) el.classList.toggle('bad', on); };
+function cleanPhone(v){ return v.replace(/[^\d]/g,''); }
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const age = form.querySelector('input[name=age]:checked');
+  const stall = form.querySelector('input[name=stall]:checked');
+  const phone = cleanPhone(document.getElementById('phone').value);
+  const why = document.getElementById('why').value.trim();
+  const improve = document.getElementById('improve').value.trim();
+  const consent = document.getElementById('consent').checked;
+
+  const bad = {
+    age: !age, phone: phone.length < 7 || phone.length > 15,
+    stall: !stall, why: why.length < 2, consent: !consent
+  };
+  showErr('err-age', bad.age);
+  showErr('err-phone', bad.phone); markBad('f-phone', bad.phone);
+  showErr('err-stall', bad.stall);
+  showErr('err-why', bad.why); markBad('f-why', bad.why);
+  showErr('err-consent', bad.consent);
+  const firstBad = Object.keys(bad).find(k => bad[k]);
+  if(firstBad){ document.getElementById('err-'+firstBad).scrollIntoView({block:'center',behavior:'smooth'}); return; }
+
+  submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+  const res = await MaacatBackend.submitLuckyDraw({ age: age.value, phone, favouriteStall: stall.value, why, improve });
+  submitBtn.disabled = false; submitBtn.textContent = 'Submit + Enter Lucky Draw';
+
+  showPopup(res.success, res.message);
+  if(res.success) form.reset();
+});
+</script>
+</body>
+</html>
