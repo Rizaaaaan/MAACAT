@@ -25,6 +25,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/backend.js"></script>
 </head>
 <body>
 
@@ -41,6 +43,7 @@
       <a href="#stalls">Stalls</a>
       <a href="#posters">Posters</a>
       <a href="#about">About</a>
+      <a href="#luckydraw" class="btn btn-3">Lucky Draw</a>
     </nav>
 
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
@@ -55,6 +58,7 @@
       <li><a href="#stalls">Stalls <i>01–06</i></a></li>
       <li><a href="#posters">Posters <i>Scan</i></a></li>
       <li><a href="#about">About <i>MAACAT</i></a></li>
+      <li><a href="#luckydraw">Lucky Draw <i>Survey</i></a></li>
     </ol>
   </nav>
   <p class="menu-foot">L.E.A.D. 2026 · MNU Business School<br>30 September 2026</p>
@@ -197,6 +201,73 @@
 </section>
 
 <!-- ================= CLOSING CTA ================= -->
+<section id="luckydraw">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="rule"></div>
+      <h2>Enter the lucky draw</h2>
+      <p>Quick survey, one entry per number. Tell us what you thought and you're in.</p>
+    </div>
+
+    <form class="form-card" id="form" novalidate>
+      <div class="field">
+        <fieldset>
+          <legend>Age group</legend>
+          <div class="opts" id="age-opts"></div>
+        </fieldset>
+        <p class="err" id="err-age">Choose an age group.</p>
+      </div>
+
+      <div class="field" id="f-phone">
+        <label for="phone">Mobile number</label>
+        <span class="hint">Used for the lucky draw — one entry per number.</span>
+        <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel"
+               placeholder="7XXXXXX" maxlength="15">
+        <p class="err" id="err-phone">Enter a valid mobile number.</p>
+      </div>
+
+      <div class="field">
+        <fieldset>
+          <legend>Favourite stall</legend>
+          <div class="opts one" id="stall-opts"></div>
+        </fieldset>
+        <p class="err" id="err-stall">Pick a favourite stall.</p>
+      </div>
+
+      <div class="field" id="f-why">
+        <label for="why">Why did you like it?</label>
+        <textarea id="why" name="why" rows="3" placeholder="It was..."></textarea>
+        <p class="err" id="err-why">Say a little about why.</p>
+      </div>
+
+      <div class="field">
+        <label for="improve">What could we improve?</label>
+        <textarea id="improve" name="improve" rows="3" placeholder="Optional"></textarea>
+      </div>
+
+      <div class="field">
+        <label class="consent" for="consent">
+          <input type="checkbox" id="consent" name="consent">
+          <span>I understand that my mobile number is collected for the MAACAT lucky draw entry.</span>
+        </label>
+        <p class="err" id="err-consent">Tick this to enter the draw.</p>
+      </div>
+
+      <button type="submit" class="btn submit" id="submit">Submit + Enter Lucky Draw</button>
+    </form>
+  </div>
+</section>
+
+<!-- ================= POPUP ================= -->
+<div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-card" id="popup-card">
+    <div class="popup-icon" id="popup-icon">✓</div>
+    <h3 id="popup-title">You're in!</h3>
+    <p id="popup-message"></p>
+    <button class="btn btn-1" id="popup-close" type="button">Got it</button>
+  </div>
+</div>
+
 <section id="outro">
   <div class="wrap">
     <div class="draw">
@@ -544,6 +615,90 @@ if('IntersectionObserver' in window){
     es.forEach(en => marq.style.animationPlayState = en.isIntersecting ? 'running' : 'paused');
   }).observe(marq);
 }
+
+/* ============================================================
+   LUCKY DRAW SURVEY
+   Uses MaacatBackend (assets/js/backend.js) — writes to Supabase
+   once configured, falls back to this browser only until then.
+   ============================================================ */
+const AGES = ["Under 18","18–20","21–24","25–34","35+"];
+
+document.getElementById('age-opts').innerHTML = AGES.map(a => `
+  <label class="opt"><input type="radio" name="age" value="${a}"><span>${a}</span></label>
+`).join('');
+document.getElementById('stall-opts').innerHTML = STALLS.map((s,i) => `
+  <label class="opt s${i+1}"><input type="radio" name="stall" value="${s.id} — ${s.name}"><span>${s.id} — ${s.name}</span></label>
+`).join('');
+
+/* ---------------- Popup ---------------- */
+const popup = document.getElementById('popup');
+const popupCard = document.getElementById('popup-card');
+const popupIcon = document.getElementById('popup-icon');
+const popupTitle = document.getElementById('popup-title');
+const popupMessage = document.getElementById('popup-message');
+let ldLastFocus = null;
+
+function showLuckyDrawPopup(success, message){
+  ldLastFocus = document.activeElement;
+  const isDuplicate = !success && /already entered/i.test(message || '');
+  popupCard.style.setProperty('--c', success ? 'var(--green)' : 'var(--orange)');
+  popupIcon.textContent = success ? '✓' : '!';
+  popupTitle.textContent = success ? "You're in!" : (isDuplicate ? 'Already entered' : "Couldn't submit");
+  popupMessage.textContent = message;
+  popup.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('popup-close').focus();
+}
+function hideLuckyDrawPopup(){
+  popup.classList.remove('open');
+  document.body.style.overflow = '';
+  if(ldLastFocus) ldLastFocus.focus();
+}
+document.getElementById('popup-close').addEventListener('click', hideLuckyDrawPopup);
+popup.addEventListener('click', e => { if(e.target === popup) hideLuckyDrawPopup(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && popup.classList.contains('open')) hideLuckyDrawPopup(); });
+
+/* ---------------- Form ---------------- */
+const ldForm = document.getElementById('form');
+const ldSubmitBtn = document.getElementById('submit');
+const ldShowErr = (id,on) => document.getElementById(id).classList.toggle('show', on);
+const ldMarkBad = (id,on) => { const el = document.getElementById(id); if(el) el.classList.toggle('bad', on); };
+function ldCleanPhone(v){ return v.replace(/[^\d]/g,''); }
+
+ldForm.addEventListener('submit', async e => {
+  e.preventDefault();
+  const age = ldForm.querySelector('input[name=age]:checked');
+  const stall = ldForm.querySelector('input[name=stall]:checked');
+  const phone = ldCleanPhone(document.getElementById('phone').value);
+  const why = document.getElementById('why').value.trim();
+  const improve = document.getElementById('improve').value.trim();
+  const consent = document.getElementById('consent').checked;
+
+  const bad = {
+    age: !age, phone: phone.length < 7 || phone.length > 15,
+    stall: !stall, why: why.length < 2, consent: !consent
+  };
+  ldShowErr('err-age', bad.age);
+  ldShowErr('err-phone', bad.phone); ldMarkBad('f-phone', bad.phone);
+  ldShowErr('err-stall', bad.stall);
+  ldShowErr('err-why', bad.why); ldMarkBad('f-why', bad.why);
+  ldShowErr('err-consent', bad.consent);
+  const firstBad = Object.keys(bad).find(k => bad[k]);
+  if(firstBad){ document.getElementById('err-'+firstBad).scrollIntoView({block:'center',behavior:'smooth'}); return; }
+
+  ldSubmitBtn.disabled = true; ldSubmitBtn.textContent = 'Sending…';
+  let res;
+  try {
+    res = await MaacatBackend.submitLuckyDraw({ age: age.value, phone, favouriteStall: stall.value, why, improve });
+  } catch (err) {
+    console.error('lucky draw submit failed', err);
+    res = { success:false, message:'Something went wrong — please try again.' };
+  }
+  ldSubmitBtn.disabled = false; ldSubmitBtn.textContent = 'Submit + Enter Lucky Draw';
+
+  showLuckyDrawPopup(res.success, res.message);
+  if(res.success) ldForm.reset();
+});
 </script>
 </body>
 </html>

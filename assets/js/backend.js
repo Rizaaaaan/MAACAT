@@ -13,17 +13,26 @@
    Settings → API into the two lines below.
    ============================================================ */
 
-const SUPABASE_URL = '';        // e.g. 'https://abcdxyzcompany.supabase.co'
-const SUPABASE_ANON_KEY = '';   // the "anon public" key, NOT the service_role key
+const SUPABASE_URL = 'https://gnpswfsreebzevkpyxrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImducHN3ZnNyZWViemV2a3B5eHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2NTYyMzEsImV4cCI6MjEwNjIzMjIzMX0.HqebMgOOpJd9F4sR-nbGVaN7WHHdmPTcAJ7Mg32Z3FA';
 
 const BACKEND_ENABLED = SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length > 20;
 
+// The client is created lazily, on first use, rather than at page-load —
+// if the Supabase library is still loading (or fails to load) at the
+// instant this file runs, grabbing window.supabase too early would leave
+// _sb permanently null even once the library is ready a moment later.
 let _sb = null;
-if (BACKEND_ENABLED && window.supabase) {
-  _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+function _getClient(){
+  if (_sb) return _sb;
+  if (window.supabase && typeof window.supabase.createClient === 'function') {
+    _sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+  return _sb;
 }
 
 const LOCAL_ENTRIES_KEY = 'maacat_entries_prototype';
+const CONNECTION_PROBLEM = { success:false, message:'Connection problem — check your internet and try again.' };
 
 function _cleanPhone(v){ return String(v || '').replace(/\D/g, ''); }
 
@@ -37,15 +46,26 @@ const MaacatBackend = {
     const phone = _cleanPhone(payload.phone);
 
     if (BACKEND_ENABLED) {
-      const { data, error } = await _sb.rpc('submit_lucky_draw', {
-        p_phone: phone,
-        p_age: payload.age,
-        p_favourite_stall: payload.favouriteStall,
-        p_why: payload.why,
-        p_improve: payload.improve || null
-      });
-      if (error) { console.error('submitLuckyDraw', error); return { success:false, message:'Connection problem — try again.' }; }
-      return data;
+      // Wrapped in try/catch: a slow CDN, an ad blocker, or any other
+      // reason the Supabase library or network call fails should show
+      // the person a message, never leave the submit button hanging.
+      try {
+        const client = _getClient();
+        if (!client) return CONNECTION_PROBLEM;
+
+        const { data, error } = await client.rpc('submit_lucky_draw', {
+          p_phone: phone,
+          p_age: payload.age,
+          p_favourite_stall: payload.favouriteStall,
+          p_why: payload.why,
+          p_improve: payload.improve || null
+        });
+        if (error) { console.error('submitLuckyDraw', error); return CONNECTION_PROBLEM; }
+        return data;
+      } catch (err) {
+        console.error('submitLuckyDraw threw', err);
+        return CONNECTION_PROBLEM;
+      }
     }
 
     // Local fallback: same duplicate-phone rule, this browser only.
