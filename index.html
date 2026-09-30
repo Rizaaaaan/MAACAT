@@ -468,13 +468,14 @@ const EVENT_END   = new Date('2026-10-01T00:00:00+05:00').getTime();
 const countBox = document.getElementById('count');
 const pad = n => String(n).padStart(2,'0');
 
+let timer = null;
 function tickCountdown(){
   const now = Date.now();
   if(now >= EVENT_START){
     countBox.innerHTML = now < EVENT_END
       ? '<p class="count-today">Today.</p>'
       : '<p class="count-lbl" style="margin:0">THANKS FOR PLAYING</p><p class="count-today">See you<br>next year.</p>';
-    clearInterval(timer);
+    if(timer) clearInterval(timer);
     return;
   }
   const diff = EVENT_START - now;
@@ -484,7 +485,7 @@ function tickCountdown(){
   document.getElementById('cd-s').textContent = pad(Math.floor(diff/1000)%60);
 }
 tickCountdown();
-const timer = setInterval(tickCountdown, 1000);
+timer = setInterval(tickCountdown, 1000);
 
 /* ============================================================
    MOBILE MENU
