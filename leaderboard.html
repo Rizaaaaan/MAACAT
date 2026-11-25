@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<meta name="robots" content="noindex">
+<title>Brand Relay Leaderboard — MAACAT</title>
+<link rel="icon" href="assets/branding/maacat-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050505; --off:#0e0e0e; --card:#121212; --white:#fff; --grey:#a3a3a3; --grey-dim:#6b6b6b; --line:#262626;
+  --green:#12D900; --turq:#2CD9D4; --purple:#7A00FF; --yellow:#FFC51B; --pink:#EC1680; --orange:#FF5A00;
+  --gold-1:#FFF1A8; --gold-2:#FFC51B; --gold-3:#C98400;
+  --silver-1:#FFFFFF; --silver-2:#D5DBE3; --silver-3:#8A94A3;
+  --display:'Poppins','Arial Black',system-ui,sans-serif;
+  --body:'Inter',system-ui,sans-serif;
+  --u:min(1vw, 1.78vh);          /* one unit that scales with any 16:9 screen */
+  --ease:cubic-bezier(.2,.85,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0; height:100%;}
+body{
+  background:var(--black); color:var(--white); font-family:var(--body); -webkit-font-smoothing:antialiased;
+  display:grid; grid-template-rows:auto 1fr auto; overflow:hidden; position:relative;
+}
+body.idle{cursor:none;}
+body::before{ /* colour glows */
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(40vmax 40vmax at 8% 95%, rgba(255,90,0,.20), transparent 60%),
+    radial-gradient(38vmax 38vmax at 96% 6%, rgba(122,0,255,.22), transparent 60%);
+}
+body::after{ /* grain */
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+header, main, footer{position:relative; z-index:2;}
+img{display:block; max-width:100%;}
+h1,h2,h3{margin:0; font-family:var(--display); font-weight:800; letter-spacing:-.03em; line-height:.92;}
+p{margin:0;}
+
+/* ---------- header ---------- */
+header{display:flex; align-items:center; justify-content:space-between; gap:calc(var(--u)*2); padding:calc(var(--u)*1.8) calc(var(--u)*3) calc(var(--u)*1);}
+.brand{display:flex; align-items:center; gap:calc(var(--u)*1.1);}
+.brand img{width:calc(var(--u)*4.4); height:calc(var(--u)*4.4);}
+.brand-txt{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*2.3); letter-spacing:-.01em; line-height:1;}
+.brand-txt span:nth-child(1){color:var(--green);} .brand-txt span:nth-child(2){color:var(--purple);} .brand-txt span:nth-child(3){color:var(--orange);}
+.brand-txt span:nth-child(4){color:var(--pink);} .brand-txt span:nth-child(5){color:var(--turq);} .brand-txt span:nth-child(6){color:var(--yellow);}
+.brand small{display:block; font-family:var(--body); font-weight:600; font-size:calc(var(--u)*.95); letter-spacing:.12em; color:var(--grey-dim); text-transform:uppercase; margin-top:calc(var(--u)*.4);}
+.head-right{display:flex; align-items:center; gap:calc(var(--u)*1.2);}
+.chip{
+  border:2px solid var(--line); background:var(--off); border-radius:100px; padding:calc(var(--u)*.7) calc(var(--u)*1.4);
+  font-family:var(--display); font-weight:700; font-size:calc(var(--u)*1.05); letter-spacing:.08em; text-transform:uppercase; white-space:nowrap;
+}
+.chip em{font-style:normal; color:var(--yellow);}
+.live{display:inline-flex; align-items:center; gap:calc(var(--u)*.7); background:var(--green); color:#03210a; border-color:var(--green);}
+.live b{width:calc(var(--u)*.8); height:calc(var(--u)*.8); border-radius:50%; background:#03210a; animation:pulse 1.4s infinite;}
+.live.off{background:var(--orange); border-color:var(--orange); color:#2a0e00;}
+.live.off b{background:#2a0e00;}
+.updated{font-size:calc(var(--u)*1); color:var(--grey-dim); font-weight:600; white-space:nowrap; min-width:calc(var(--u)*11); text-align:right;}
+@keyframes pulse{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.35; transform:scale(.7);}}
+
+/* ---------- main ---------- */
+main{display:grid; grid-template-columns:34fr 66fr; gap:calc(var(--u)*3.4); padding:calc(var(--u)*1.2) calc(var(--u)*3) calc(var(--u)*1.6); min-height:0;}
+
+.side{display:flex; flex-direction:column; min-height:0;}
+.title .t1{display:block; font-size:calc(var(--u)*6.3); color:var(--orange); text-transform:uppercase;}
+.title .t2{display:block; font-size:calc(var(--u)*3.75); color:var(--white); text-transform:uppercase; margin-top:calc(var(--u)*.6);}
+.tagline{margin-top:calc(var(--u)*1.6); font-family:var(--display); font-weight:600; font-size:calc(var(--u)*1.6); color:var(--grey); line-height:1.3;}
+.tagline strong{color:var(--white);}
+.mascot{flex:1; min-height:0; display:flex; align-items:center; justify-content:center; padding:calc(var(--u)*1.2) 0;}
+.mascot img{height:100%; max-height:calc(var(--u)*26); width:auto; animation:float 7s ease-in-out infinite; filter:drop-shadow(0 calc(var(--u)*2) calc(var(--u)*3) rgba(255,90,0,.25));}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(calc(var(--u)*-1.2)) rotate(2deg);}}
+.stats{display:grid; grid-template-columns:1fr 1fr; gap:calc(var(--u)*1.2);}
+.stat{border:2px solid var(--line); background:var(--off); border-radius:calc(var(--u)*1.6); padding:calc(var(--u)*1.2) calc(var(--u)*1.4);}
+.stat b{display:block; font-family:var(--display); font-weight:800; font-size:calc(var(--u)*3.6); line-height:1; font-variant-numeric:tabular-nums;}
+.stat:nth-child(1) b{color:var(--turq);} .stat:nth-child(2) b{color:var(--yellow);}
+.stat i{display:block; font-style:normal; font-family:var(--display); font-weight:700; font-size:calc(var(--u)*.95); letter-spacing:.12em; color:var(--grey-dim); text-transform:uppercase; margin-top:calc(var(--u)*.5);}
+
+/* ---------- board ---------- */
+.board{display:flex; flex-direction:column; min-height:0;}
+.board-head{display:grid; grid-template-columns:calc(var(--u)*6.5) 1fr auto; padding:0 calc(var(--u)*2.2) calc(var(--u)*.8); font-family:var(--display); font-weight:700; font-size:calc(var(--u)*.95); letter-spacing:.14em; color:var(--grey-dim); text-transform:uppercase;}
+.rows{flex:1; min-height:0; display:flex; flex-direction:column; gap:calc(var(--u)*.9); position:relative;}
+.row{
+  --c:var(--orange);
+  flex:1 1 0; min-height:0; max-height:calc(var(--u)*7.4);
+  display:grid; grid-template-columns:calc(var(--u)*6.5) 1fr auto; align-items:center;
+  background:var(--card); border:2px solid var(--line); border-radius:calc(var(--u)*1.6);
+  padding:0 calc(var(--u)*2.2) 0 0; position:relative; overflow:hidden;
+}
+.row::before{content:""; position:absolute; left:0; top:0; bottom:0; width:calc(var(--u)*.55); background:var(--c);}
+.rank{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*3); text-align:center; color:var(--grey); font-variant-numeric:tabular-nums; line-height:1;}
+.who{display:flex; align-items:center; gap:calc(var(--u)*1.2); min-width:0;}
+.nm{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*2.5); text-transform:uppercase; letter-spacing:-.015em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; line-height:1.15;}
+.score{display:flex; align-items:baseline; gap:calc(var(--u)*.6); font-variant-numeric:tabular-nums;}
+.score b{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*3.4); line-height:1; color:var(--white);}
+.score i{font-style:normal; font-family:var(--display); font-weight:700; font-size:calc(var(--u)*.95); letter-spacing:.12em; color:var(--grey-dim); text-transform:uppercase;}
+.crown{width:calc(var(--u)*4.2); height:calc(var(--u)*3.4); flex:0 0 auto; animation:bob 2.6s ease-in-out infinite; filter:drop-shadow(0 calc(var(--u)*.3) calc(var(--u)*.6) rgba(0,0,0,.6));}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg);}50%{transform:translateY(calc(var(--u)*-.35)) rotate(4deg);}}
+
+/* gold — 1st */
+.row.gold{
+  flex-grow:1.45; max-height:calc(var(--u)*10.5);
+  background:linear-gradient(100deg, rgba(255,197,27,.20), rgba(255,197,27,.05) 55%, var(--card));
+  border-color:var(--gold-2); box-shadow:0 0 calc(var(--u)*3) calc(var(--u)*-.6) rgba(255,197,27,.55), inset 0 0 0 1px rgba(255,241,168,.25);
+}
+.row.gold::before{background:linear-gradient(var(--gold-1),var(--gold-2),var(--gold-3)); width:calc(var(--u)*.8);}
+.row.gold .rank{color:var(--gold-2); font-size:calc(var(--u)*4.4);}
+.row.gold .nm{font-size:calc(var(--u)*3.4); color:var(--gold-1);}
+.row.gold .score b{font-size:calc(var(--u)*5); color:var(--gold-2);}
+.row.gold .crown{width:calc(var(--u)*5.6); height:calc(var(--u)*4.5);}
+.row.gold::after{ /* shine sweep */
+  content:""; position:absolute; top:0; bottom:0; width:30%; left:-40%;
+  background:linear-gradient(100deg, transparent, rgba(255,241,168,.28), transparent);
+  animation:shine 4.5s ease-in-out infinite;
+}
+@keyframes shine{0%,55%{left:-40%;} 100%{left:120%;}}
+/* silver — 2nd */
+.row.silver{
+  flex-grow:1.2; max-height:calc(var(--u)*8.6);
+  background:linear-gradient(100deg, rgba(213,219,227,.16), rgba(213,219,227,.04) 55%, var(--card));
+  border-color:var(--silver-2); box-shadow:0 0 calc(var(--u)*2) calc(var(--u)*-.6) rgba(213,219,227,.35);
+}
+.row.silver::before{background:linear-gradient(var(--silver-1),var(--silver-2),var(--silver-3)); width:calc(var(--u)*.7);}
+.row.silver .rank{color:var(--silver-2); font-size:calc(var(--u)*3.7);}
+.row.silver .nm{font-size:calc(var(--u)*2.9); color:var(--white);}
+.row.silver .score b{font-size:calc(var(--u)*4.2); color:var(--silver-1);}
+.row.r3{--c:var(--pink);} .row.r4{--c:var(--purple);} .row.r5{--c:var(--turq);} .row.r6{--c:var(--green);}
+
+.row.bump{animation:bump 1.4s var(--ease);}
+@keyframes bump{0%{box-shadow:0 0 0 0 rgba(255,90,0,.0);} 15%{box-shadow:0 0 0 calc(var(--u)*.5) rgba(255,90,0,.85); transform:scale(1.02);} 100%{box-shadow:0 0 0 0 rgba(255,90,0,0);}}
+.row.gold.bump{animation:bumpGold 1.4s var(--ease);}
+@keyframes bumpGold{15%{transform:scale(1.025); box-shadow:0 0 calc(var(--u)*5) 0 rgba(255,197,27,.9);}}
+
+.more{margin-top:calc(var(--u)*.9); text-align:center; font-family:var(--display); font-weight:700; font-size:calc(var(--u)*1.05); letter-spacing:.1em; color:var(--grey-dim); text-transform:uppercase; min-height:calc(var(--u)*1.4);}
+
+.empty{
+  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:calc(var(--u)*1.4); text-align:center;
+  border:2px dashed #333; border-radius:calc(var(--u)*2); padding:calc(var(--u)*3);
+}
+.empty img{width:calc(var(--u)*12); height:calc(var(--u)*12); border-radius:50%; box-shadow:0 0 0 calc(var(--u)*.5) var(--black), 0 0 0 calc(var(--u)*.8) var(--orange); animation:float 6s ease-in-out infinite;}
+.empty h2{font-size:calc(var(--u)*4.4); text-transform:uppercase;}
+.empty h2 em{font-style:normal; color:var(--orange);}
+.empty p{font-family:var(--display); font-weight:600; font-size:calc(var(--u)*1.6); color:var(--grey); max-width:36ch;}
+.empty.err h2 em{color:var(--pink);}
+.empty.err code{font-family:var(--body); font-size:calc(var(--u)*1.2); color:var(--white); background:var(--off); border:1px solid var(--line); border-radius:8px; padding:2px 8px;}
+
+/* ---------- footer marquee ---------- */
+footer{overflow:hidden; padding:calc(var(--u)*.8) 0 calc(var(--u)*1.6);}
+.marq{background:var(--white); color:var(--black); transform:rotate(-1.2deg); margin:0 -20px; padding:calc(var(--u)*.9) 0; overflow:hidden;}
+.marq-in{display:flex; width:max-content; animation:slide 34s linear infinite;}
+.marq span{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*1.7); text-transform:uppercase; padding-inline:calc(var(--u)*1.6); white-space:nowrap; display:inline-flex; align-items:center; gap:calc(var(--u)*1.6);}
+.marq span::after{content:""; width:calc(var(--u)*1.1); height:calc(var(--u)*1.1); border-radius:50%; background:var(--orange);}
+.marq span:nth-child(3n+2)::after{background:var(--pink);} .marq span:nth-child(3n)::after{background:var(--purple);}
+@keyframes slide{to{transform:translateX(-50%);}}
+
+/* ---------- new leader celebration ---------- */
+.pop{position:fixed; inset:0; z-index:20; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.78); backdrop-filter:blur(6px);}
+.pop.show{display:flex; animation:fade .3s ease;}
+@keyframes fade{from{opacity:0;}}
+.pop-card{text-align:center; animation:popIn .6s var(--ease);}
+@keyframes popIn{from{transform:scale(.6) rotate(-4deg); opacity:0;}}
+.pop-card .crown{width:calc(var(--u)*16); height:calc(var(--u)*13); margin:0 auto calc(var(--u)*1); animation:bob 2s ease-in-out infinite;}
+.pop-card p{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*2.4); letter-spacing:.2em; color:var(--gold-2); text-transform:uppercase;}
+.pop-card h2{font-size:calc(var(--u)*8); text-transform:uppercase; margin:calc(var(--u)*1) 0; color:var(--white); max-width:90vw; overflow-wrap:anywhere;}
+.pop-card .pts{font-family:var(--display); font-weight:800; font-size:calc(var(--u)*3); color:var(--orange); letter-spacing:0;}
+#confetti{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:21;}
+
+.hint{position:fixed; right:calc(var(--u)*2); bottom:calc(var(--u)*6.5); z-index:30; background:var(--white); color:var(--black); border-radius:100px; padding:calc(var(--u)*.6) calc(var(--u)*1.3); font-family:var(--display); font-weight:700; font-size:calc(var(--u)*1); transition:opacity .5s; cursor:pointer;}
+.hint.gone{opacity:0; pointer-events:none;}
+
+/* ---------- portrait / phone preview ---------- */
+@media (max-aspect-ratio: 1/1){
+  :root{--u:min(2.2vw, 1.2vh);}
+  body{overflow:auto; height:auto; min-height:100%;}
+  main{grid-template-columns:1fr; gap:calc(var(--u)*3);}
+  .mascot{display:none;}
+  .stats{margin-top:calc(var(--u)*2);}
+  .rows{flex:none;}
+  .row{flex:none; height:calc(var(--u)*7.4);}
+  .row.gold{height:calc(var(--u)*10);} .row.silver{height:calc(var(--u)*8.6);}
+  .updated{display:none;}
+  .chip.event{display:none;}
+  .hint{display:none;}
+  .score i{display:none;}
+  .nm{font-size:calc(var(--u)*2.3);}
+  .row.gold .nm{font-size:calc(var(--u)*2.7);} .row.silver .nm{font-size:calc(var(--u)*2.5);}
+  .row.gold .crown{width:calc(var(--u)*4.4); height:calc(var(--u)*3.6);} .crown{width:calc(var(--u)*3.6); height:calc(var(--u)*2.9);}
+  .row.gold .score b{font-size:calc(var(--u)*4.2);}
+  .row{grid-template-columns:calc(var(--u)*5.5) 1fr auto;}
+}
+@media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none !important; transition:none !important;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <img src="assets/branding/maacat-icon.png" alt="" width="44" height="44">
+    <div>
+      <div class="brand-txt" aria-label="MAACAT"><span>M</span><span>A</span><span>A</span><span>C</span><span>A</span><span>T</span></div>
+      <small>Marketing club · MNU</small>
+    </div>
+  </div>
+  <div class="head-right">
+    <span class="chip event">VARA Expo 2026 <em>·</em> Skills Experience Zone</span>
+    <span class="updated" id="updated"></span>
+    <span class="chip live" id="live"><b></b><span id="live-txt">LIVE</span></span>
+  </div>
+</header>
+
+<main>
+  <section class="side">
+    <h1 class="title"><span class="t1">Brand Relay</span><span class="t2">Leaderboard</span></h1>
+    <p class="tagline"><strong>Sort the logos. Beat 60 seconds.</strong></p>
+    <div class="mascot"><img src="assets/branding/maacat-logo.svg" alt="MAACAT" width="240" height="257"></div>
+    <div class="stats">
+      <div class="stat"><b id="teams">0</b><i>Teams played</i></div>
+      <div class="stat"><b id="top">–</b><i>Score to beat</i></div>
+    </div>
+  </section>
+
+  <section class="board" aria-live="polite">
+    <div class="board-head"><span style="text-align:center">Rank</span><span>Team</span><span>Logos</span></div>
+    <div class="rows" id="rows"></div>
+    <p class="more" id="more"></p>
+  </section>
+</main>
+
+<footer aria-hidden="true">
+  <div class="marq"><div class="marq-in">
+    <span>Think you can beat them?</span><span>Play Brand Relay at the MAACAT stall</span><span>2 players · 60 seconds</span><span>Enter the lucky draw at maacat.com</span><span>Create. Reach. Grow.</span>
+    <span>Think you can beat them?</span><span>Play Brand Relay at the MAACAT stall</span><span>2 players · 60 seconds</span><span>Enter the lucky draw at maacat.com</span><span>Create. Reach. Grow.</span>
+  </div></div>
+</footer>
+
+<div class="pop" id="pop" aria-hidden="true">
+  <div class="pop-card">
+    <svg class="crown" viewBox="0 0 64 52"><use href="#crown-gold"/></svg>
+    <p>New #1</p>
+    <h2 id="pop-name"></h2>
+    <span class="pts" id="pop-pts"></span>
+  </div>
+</div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+<button class="hint" id="hint" type="button">Press F for full screen</button>
+
+<!-- crown artwork -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF1A8"/><stop offset=".45" stop-color="#FFC51B"/><stop offset="1" stop-color="#C98400"/></linearGradient>
+    <linearGradient id="g-silver" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#D5DBE3"/><stop offset="1" stop-color="#8A94A3"/></linearGradient>
+    <symbol id="crown-gold" viewBox="0 0 64 52">
+      <path d="M6 18 L18 30 L32 8 L46 30 L58 18 L54 42 H10 Z" fill="url(#g-gold)" stroke="#5a3b00" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="9" y="41" width="46" height="8" rx="3" fill="url(#g-gold)" stroke="#5a3b00" stroke-width="2.5"/>
+      <circle cx="6" cy="16" r="4" fill="#FFF1A8" stroke="#5a3b00" stroke-width="2"/><circle cx="32" cy="6" r="4.5" fill="#FFF1A8" stroke="#5a3b00" stroke-width="2"/><circle cx="58" cy="16" r="4" fill="#FFF1A8" stroke="#5a3b00" stroke-width="2"/>
+      <circle cx="32" cy="32" r="4" fill="#EC1680" stroke="#5a3b00" stroke-width="1.5"/><circle cx="19" cy="36" r="2.6" fill="#2CD9D4"/><circle cx="45" cy="36" r="2.6" fill="#12D900"/>
+      <path d="M14 22 L18 30" stroke="#FFF8D6" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+    <symbol id="crown-silver" viewBox="0 0 64 52">
+      <path d="M6 18 L18 30 L32 8 L46 30 L58 18 L54 42 H10 Z" fill="url(#g-silver)" stroke="#3b424d" stroke-width="2.5" stroke-linejoin="round"/>
+      <rect x="9" y="41" width="46" height="8" rx="3" fill="url(#g-silver)" stroke="#3b424d" stroke-width="2.5"/>
+      <circle cx="6" cy="16" r="4" fill="#fff" stroke="#3b424d" stroke-width="2"/><circle cx="32" cy="6" r="4.5" fill="#fff" stroke="#3b424d" stroke-width="2"/><circle cx="58" cy="16" r="4" fill="#fff" stroke="#3b424d" stroke-width="2"/>
+      <circle cx="32" cy="32" r="4" fill="#7A00FF" stroke="#3b424d" stroke-width="1.5"/><circle cx="19" cy="36" r="2.6" fill="#2CD9D4"/><circle cx="45" cy="36" r="2.6" fill="#EC1680"/>
+      <path d="M14 22 L18 30" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+    </symbol>
+  </defs>
+</svg>
+
+<script>
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+// The Google Sheet the scores come from. It must be shared as
+// "Anyone with the link → Viewer". Override with ?sheet=ID in the URL.
+const SHEET_ID = '119wd7XfRbTOIFDh7VygetV92V-2DDXfJ1wfOkXymd2E';
+const REFRESH_SECONDS = 5;      // how often the screen checks the sheet
+const SHOW_TOP = 8;             // rows on screen
+
+/* ============================================================ */
+const params = new URLSearchParams(location.search);
+const sheetId = params.get('sheet') || SHEET_ID;
+const DEMO = params.has('demo');
+const $ = s => document.querySelector(s);
+const rowsEl = $('#rows');
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const crown = kind => `<svg class="crown" viewBox="0 0 64 52" aria-label="${kind} crown"><use href="#crown-${kind}"/></svg>`;
+
+/* ---------- demo data: add ?demo to the URL to preview ---------- */
+let demoTick = 0;
+function demoTable(){
+  demoTick++;
+  const base = [['Team','Score'],['Aisha & Hamdhan','14'],['Team Kurumba','12'],['Zain & Lamha','11'],['Blue Whales','11'],['Nashid & Ifu','9'],['MNU Squad','8'],['Hulhumalé Crew','7'],['Logo Lords','6'],['Fast & Curious','5'],['Late Night Duo','4']];
+  if (demoTick > 2) base.push(['Team Kurumba', '15']);   // a team improves and takes #1
+  if (demoTick > 4) base.push(['Rizzy & Co', '13']);     // a new team jumps in
+  return base;
+}
+
+/* ---------- CSV ---------- */
+function parseCSV(text){
+  const rows = []; let row = [], cell = '', q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) {
+      if (ch === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (ch === '"') q = false;
+      else cell += ch;
+    } else if (ch === '"') q = true;
+    else if (ch === ',') { row.push(cell); cell = ''; }
+    else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(cell); rows.push(row); row = []; cell = '';
+    } else cell += ch;
+  }
+  if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
+  return rows;
+}
+
+/* ---------- turn sheet rows into a ranked board ---------- */
+function buildBoard(table){
+  if (!table.length) return [];
+  const head = table[0].map(h => h.trim().toLowerCase());
+  let ni = head.findIndex(h => /team|name|player/.test(h)); if (ni < 0) ni = 0;
+  let si = head.findIndex(h => /score|point|logo|correct/.test(h)); if (si < 0) si = 1;
+  const best = new Map();
+  table.slice(1).forEach((r, order) => {
+    const name = (r[ni] || '').trim().replace(/\s+/g, ' ');
+    const score = parseFloat(String(r[si] || '').replace(/[^\d.\-]/g, ''));
+    if (!name || !isFinite(score)) return;
+    const key = name.toLowerCase();
+    const prev = best.get(key);
+    if (!prev || score > prev.score) best.set(key, { key, name, score, order });   // best attempt counts
+  });
+  const list = [...best.values()].sort((a, b) => b.score - a.score || a.order - b.order);
+  let rank = 0, last = null;
+  list.forEach((t, i) => { if (t.score !== last) { rank = i + 1; last = t.score; } t.rank = rank; });
+  return list;
+}
+
+/* ---------- fetch ---------- */
+async function fetchSheet(){
+  if (DEMO) return demoTable();
+  const url = `https://docs.google.com/spreadsheets/d/${encodeURIComponent(sheetId)}/gviz/tq?tqx=out:csv&headers=1&_=${Date.now()}`;
+  const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 10000);
+  try {
+    const r = await fetch(url, { cache: 'no-store', signal: ctrl.signal });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const text = await r.text();
+    if (/^\s*</.test(text)) throw new Error('not shared');        // Google sent a sign-in page
+    return parseCSV(text);
+  } finally { clearTimeout(t); }
+}
+
+/* ---------- render with smooth re-ordering ---------- */
+let board = [], leaderKey = null, loadedOnce = false, lastOk = 0;
+
+function render(list){
+  $('#teams').textContent = list.length;
+  $('#top').textContent = list.length ? fmt(list[0].score) : '–';
+  const shown = list.slice(0, SHOW_TOP);
+  $('#more').textContent = list.length > SHOW_TOP ? `+ ${list.length - SHOW_TOP} more team${list.length - SHOW_TOP > 1 ? 's' : ''} played` : '';
+
+  if (!shown.length) {
+    rowsEl.innerHTML = `<div class="empty"><img src="assets/branding/maacat-icon.png" alt=""><h2>No scores <em>yet</em></h2><p>Be the first team on the board. Play Brand Relay at the MAACAT stall!</p></div>`;
+    return;
+  }
+  rowsEl.querySelector('.empty')?.remove();
+
+  const before = new Map([...rowsEl.querySelectorAll('.row')].map(el => [el.dataset.key, el.getBoundingClientRect().top]));
+  const existing = new Map([...rowsEl.querySelectorAll('.row')].map(el => [el.dataset.key, el]));
+  const order = shown.map((t, i) => {
+    let el = existing.get(t.key);
+    const isNew = !el;
+    if (isNew) { el = document.createElement('div'); el.dataset.key = t.key; }
+    existing.delete(t.key);
+    const tier = t.rank === 1 ? 'gold' : t.rank === 2 ? 'silver' : '';
+    el.className = `row r${Math.min(i + 1, 6)} ${tier}`.trim();
+    const changed = el.dataset.score !== undefined && el.dataset.score !== String(t.score);
+    el.dataset.score = String(t.score);
+    el.innerHTML = `
+      <div class="rank">${t.rank}</div>
+      <div class="who">${tier ? crown(tier) : ''}<span class="nm">${esc(t.name)}</span></div>
+      <div class="score"><b>${fmt(t.score)}</b><i>logos</i></div>`;
+    if (changed && !reduceMotion) { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); }
+    return { el, isNew };
+  });
+  existing.forEach(el => el.remove());
+  order.forEach(({ el }) => rowsEl.appendChild(el));
+
+  if (reduceMotion) return;
+  order.forEach(({ el, isNew }, i) => {
+    const prev = before.get(el.dataset.key), now = el.getBoundingClientRect().top;
+    if (isNew) el.animate([{ opacity: 0, transform: 'translateX(6%)' }, { opacity: 1, transform: 'none' }], { duration: 550, delay: loadedOnce ? 0 : i * 70, easing: 'cubic-bezier(.2,.85,.3,1)', fill: 'backwards' });
+    else if (prev !== undefined && Math.abs(prev - now) > 1) el.animate([{ transform: `translateY(${prev - now}px)` }, { transform: 'none' }], { duration: 750, easing: 'cubic-bezier(.2,.85,.3,1)' });
+  });
+}
+const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1);
+
+/* ---------- new #1 celebration ---------- */
+let popTimer = null;
+function celebrate(t){
+  $('#pop-name').textContent = t.name;
+  $('#pop-pts').textContent = `${fmt(t.score)} logos`;
+  const pop = $('#pop'); pop.classList.add('show');
+  confetti();
+  clearTimeout(popTimer); popTimer = setTimeout(() => pop.classList.remove('show'), 5000);
+}
+
+/* ---------- loop ---------- */
+async function refresh(){
+  try {
+    const list = buildBoard(await fetchSheet());
+    const newLeader = list[0] && list[0].key;
+    if (loadedOnce && newLeader && newLeader !== leaderKey && list[0].rank === 1 && !(list[1] && list[1].rank === 1)) celebrate(list[0]);
+    leaderKey = newLeader;
+    board = list; render(list);
+    loadedOnce = true; lastOk = Date.now();
+    setLive(true);
+  } catch (err) {
+    console.warn('Leaderboard: could not read the sheet', err);
+    setLive(false);
+    if (!loadedOnce) {
+      rowsEl.innerHTML = `<div class="empty err"><img src="assets/branding/maacat-icon.png" alt=""><h2>Can't read the <em>sheet</em></h2><p>In Google Sheets: <code>Share</code> → General access → <code>Anyone with the link</code> → Viewer. This screen keeps trying.</p></div>`;
+    }
+  }
+}
+function setLive(ok){
+  $('#live').classList.toggle('off', !ok);
+  $('#live-txt').textContent = ok ? 'LIVE' : 'RECONNECTING';
+}
+setInterval(() => {
+  if (!lastOk) { $('#updated').textContent = ''; return; }
+  const s = Math.round((Date.now() - lastOk) / 1000);
+  $('#updated').textContent = s < 3 ? 'Updated just now' : `Updated ${s}s ago`;
+}, 1000);
+refresh();
+setInterval(refresh, REFRESH_SECONDS * 1000);
+
+/* ---------- screen helpers: full screen, hide cursor, keep awake ---------- */
+const hint = $('#hint');
+function goFull(){ if (!document.fullscreenElement) document.documentElement.requestFullscreen?.().catch(() => {}); else document.exitFullscreen?.(); }
+hint.addEventListener('click', goFull);
+document.addEventListener('keydown', e => { if (e.key === 'f' || e.key === 'F') goFull(); });
+setTimeout(() => hint.classList.add('gone'), 8000);
+let idleT; function wake(){ document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add('idle'), 3000); }
+document.addEventListener('mousemove', wake); wake();
+let lock = null;
+async function keepAwake(){ try { if ('wakeLock' in navigator && document.visibilityState === 'visible') lock = await navigator.wakeLock.request('screen'); } catch (e) {} }
+keepAwake(); document.addEventListener('visibilitychange', keepAwake); document.addEventListener('click', keepAwake);
+
+/* ---------- confetti ---------- */
+function confetti(){
+  if (reduceMotion) return;
+  const cv = $('#confetti'), ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
+  const W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr;
+  const cols = ['#FFC51B','#FFF1A8','#FF5A00','#EC1680','#7A00FF','#2CD9D4','#12D900'];
+  const bits = Array.from({ length: 220 }, () => ({ x: Math.random() * W, y: -Math.random() * H * .5, vx: (Math.random() - .5) * 6 * dpr, vy: (Math.random() * 4 + 3) * dpr,
+    w: (8 + Math.random() * 10) * dpr, h: (10 + Math.random() * 14) * dpr, r: Math.random() * 3, vr: (Math.random() - .5) * .3, c: cols[Math.floor(Math.random() * cols.length)] }));
+  const start = performance.now();
+  (function frame(t){
+    ctx.clearRect(0, 0, W, H);
+    bits.forEach(b => { b.vy += .08 * dpr; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+      ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.c; ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); ctx.restore(); });
+    if (t - start < 4500) requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
+  })(start);
+}
+
+</script>
+</body>
+</html>
