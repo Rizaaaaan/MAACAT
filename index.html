@@ -15,18 +15,376 @@
   gtag('config', 'G-63BEZC11HF');
 </script>
 
-<title>MAACAT at VARA Expo 2026 — Create. Reach. Grow.</title>
-<meta name="description" content="MAACAT, the student marketing club at MNU, is at VARA Expo 2026 — Education Zone, Hulhumalé Central Park, 26–28 November. Four games, our mascot and a lucky draw.">
+<title>MAACAT at VARA Expo 2026</title>
+<meta name="description" content="MAACAT, the student marketing club at MNU — at VARA Expo 2026, Education Zone, Hulhumalé Central Park, 26–28 November. Four games, our mascot and a lucky draw.">
 <meta property="og:title" content="MAACAT at VARA Expo 2026">
-<meta property="og:description" content="Four games, one mascot, one lucky draw. Find MAACAT in the Education Zone, Hulhumalé Central Park — 26–28 November 2026.">
-<meta property="og:image" content="assets/branding/maacat-logo.png">
+<meta property="og:description" content="Four games. One mascot. One lucky draw. Education Zone, Hulhumalé Central Park — 26–28 Nov.">
+<meta property="og:image" content="https://maacat.com/assets/branding/maacat-logo.png">
 <link rel="icon" href="assets/branding/maacat-icon.png">
 <link rel="apple-touch-icon" href="assets/branding/maacat-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css">
-<script src="assets/js/backend.js"></script>
+<!-- All styles live inside this file — nothing else to upload. -->
+<style>
+/* MAACAT — VARA EXPO 2026 · mobile-first */
+:root{
+  --black:#050505; --off:#0e0e0e; --card:#151515; --white:#fff; --grey:#a3a3a3; --grey-dim:#6b6b6b; --line:#262626;
+  --green:#12D900; --turq:#2CD9D4; --purple:#7A00FF; --yellow:#FFC51B; --pink:#EC1680; --orange:#FF5A00;
+  --display:'Poppins','Arial Black',system-ui,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --pad:20px; --nav-h:64px; --r:22px; --ease:cubic-bezier(.2,.85,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:calc(var(--nav-h) + 12px);}
+body{margin:0; background:var(--black); color:var(--white); font-family:var(--body); font-size:16px; line-height:1.5; overflow-x:hidden; -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;}
+body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+img{max-width:100%; display:block; height:auto;}
+svg{flex:0 0 auto;}
+button{font:inherit; color:inherit; cursor:pointer; border:none; background:none; padding:0;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3,h4{margin:0; font-family:var(--display); font-weight:800; line-height:1; letter-spacing:-.025em;}
+p{margin:0;} ul,ol{margin:0; padding:0; list-style:none;}
+:focus-visible{outline:3px solid var(--yellow); outline-offset:3px; border-radius:6px;}
+.wrap{width:100%; max-width:1180px; margin-inline:auto; padding-inline:var(--pad);}
+.sr{position:absolute; width:1px; height:1px; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+main{overflow-x:clip;}
+section{position:relative; z-index:2; padding-block:56px;}
+
+/* reveal */
+.js .reveal{opacity:0; transform:translateY(24px); transition:opacity .55s ease, transform .65s var(--ease);}
+.js .reveal.in{opacity:1; transform:none;}
+.js .reveal.d1{transition-delay:.07s;} .js .reveal.d2{transition-delay:.14s;} .js .reveal.d3{transition-delay:.21s;}
+
+/* headings */
+.sec-head{margin-bottom:24px;}
+.sec-head h2{font-size:clamp(2.2rem,11vw,3.6rem); text-transform:uppercase;}
+.sec-head h2 em{font-style:normal; color:var(--hc, var(--pink));}
+.sec-head p{color:var(--grey); margin-top:10px; font-size:1rem; max-width:40ch;}
+
+/* buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:54px; padding:14px 24px; border-radius:100px;
+  font-family:var(--display); font-weight:700; font-size:.95rem; text-transform:uppercase; letter-spacing:.01em; line-height:1.1; text-align:center;
+  transition:transform .16s ease, background .16s ease, color .16s ease, border-color .16s ease, box-shadow .16s ease;}
+.btn svg{width:20px; height:20px;}
+.btn-1{background:var(--white); color:var(--black);}
+.btn-2{background:transparent; color:var(--white); border:2.5px solid var(--pink);}
+.btn-3{background:var(--pink); color:var(--white);}
+.btn-ghost{background:transparent; color:var(--white); border:2px solid #333;}
+.btn:active{transform:scale(.97);}
+@media (hover:hover){
+  .btn-1:hover{background:var(--yellow); box-shadow:0 7px 0 -2px var(--pink);}
+  .btn-2:hover{background:var(--pink);}
+  .btn-3:hover{background:var(--yellow); color:var(--black);}
+  .btn-ghost:hover{border-color:var(--white);}
+}
+
+/* ============ NAV ============ */
+.nav{position:fixed; top:0; left:0; right:0; z-index:60; height:var(--nav-h); background:rgba(5,5,5,.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+.nav-in{height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; gap:12px;}
+.brand{display:flex; align-items:center; gap:10px; min-width:0;}
+.brand-img{width:42px; height:42px; transition:transform .4s var(--ease);}
+.brand:hover .brand-img{transform:rotate(-12deg) scale(1.06);}
+.brand-txt{font-family:var(--display); font-weight:800; font-size:1.1rem; white-space:nowrap;}
+.brand-txt span:nth-child(1){color:var(--green);} .brand-txt span:nth-child(2){color:var(--purple);} .brand-txt span:nth-child(3){color:var(--orange);}
+.brand-txt span:nth-child(4){color:var(--pink);} .brand-txt span:nth-child(5){color:var(--turq);} .brand-txt span:nth-child(6){color:var(--yellow);}
+.brand-club{display:none;}
+.nav-desk{display:none;}
+.burger{width:46px; height:46px; display:flex; flex-direction:column; align-items:center; justify-content:center; border:2px solid var(--line); border-radius:14px; background:var(--off);}
+.burger span{display:block; width:20px; height:2.5px; background:var(--white); border-radius:2px; transition:transform .25s, opacity .2s;}
+.burger span + span{margin-top:5px;}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.menu{position:fixed; inset:0; z-index:55; background:var(--black); padding:calc(var(--nav-h) + 24px) var(--pad) calc(36px + env(safe-area-inset-bottom));
+  display:flex; flex-direction:column; justify-content:space-between; transform:translateY(-100%); transition:transform .38s cubic-bezier(.65,0,.35,1); overflow-y:auto;}
+.menu.open{transform:none;}
+.menu li{border-bottom:1px solid var(--line);}
+.menu a{display:block; padding:18px 2px; font-family:var(--display); font-weight:800; font-size:clamp(1.8rem,10vw,2.4rem); text-transform:uppercase; line-height:1;}
+.menu li:nth-child(1) a{color:var(--green);} .menu li:nth-child(2) a{color:var(--pink);} .menu li:nth-child(3) a{color:var(--turq);} .menu li:nth-child(4) a{color:var(--yellow);}
+.menu-foot{margin-top:30px; color:var(--grey-dim); font-size:.86rem; line-height:1.6;}
+
+/* ============ HERO ============ */
+.hero{padding-top:calc(var(--nav-h) + 26px); padding-bottom:40px; overflow:hidden;}
+.hero::before{content:""; position:absolute; z-index:-1; width:520px; height:520px; right:-230px; top:30px; border-radius:50%; background:radial-gradient(closest-side, rgba(122,0,255,.34), transparent); pointer-events:none;}
+.hero-logo{display:block; width:min(44vw,180px); margin:0 0 14px -6px; animation:float 7s ease-in-out infinite; filter:drop-shadow(0 18px 30px rgba(236,22,128,.2));}
+.hero-logo.desk-only{display:none;}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-10px) rotate(2deg);}}
+.blip{display:inline-flex; align-items:center; gap:8px; border:2px solid var(--line); border-radius:100px; padding:7px 14px 7px 9px;
+  font-family:var(--display); font-weight:700; font-size:.72rem; letter-spacing:.08em; background:var(--off); margin-bottom:18px; text-transform:uppercase;}
+.blip b{width:9px; height:9px; border-radius:50%; background:var(--green); animation:pulse 1.9s infinite;}
+.blip em{font-style:normal; color:var(--yellow);}
+@keyframes pulse{0%,100%{opacity:1; transform:scale(1);}50%{opacity:.35; transform:scale(.7);}}
+.wordmark{font-size:clamp(2.8rem,17vw,8rem); line-height:.9; letter-spacing:-.035em; text-transform:uppercase; display:flex; white-space:nowrap; user-select:none; cursor:pointer;}
+.wordmark span{display:inline-block; animation:drop .6s var(--ease) both; transform-origin:50% 100%;}
+.wordmark span:nth-child(1){color:var(--green); animation-delay:.04s;} .wordmark span:nth-child(2){color:var(--purple); animation-delay:.1s;}
+.wordmark span:nth-child(3){color:var(--orange); animation-delay:.16s;} .wordmark span:nth-child(4){color:var(--pink); animation-delay:.22s;}
+.wordmark span:nth-child(5){color:var(--turq); animation-delay:.28s;} .wordmark span:nth-child(6){color:var(--yellow); animation-delay:.34s;}
+.wordmark span.boing{animation:boing .55s var(--ease) both;}
+@keyframes drop{from{opacity:0; transform:translateY(-26px) rotate(-6deg);} to{opacity:1; transform:none;}}
+@keyframes boing{0%{transform:none;}30%{transform:translateY(-22%) scale(1.08,.94) rotate(-6deg);}60%{transform:translateY(4%) scale(.96,1.05);}100%{transform:none;}}
+@media (hover:hover){ .wordmark span:hover{animation:boing .55s var(--ease) both;} }
+.slogan{font-family:var(--display); font-weight:800; text-transform:uppercase; font-size:clamp(1.4rem,7.4vw,2.6rem); line-height:1.04; margin-top:12px; letter-spacing:-.02em;}
+.slogan i{font-style:normal; display:block;}
+.slogan i:nth-child(1){color:var(--turq);} .slogan i:nth-child(2){color:var(--pink); padding-left:.9em;} .slogan i:nth-child(3){color:var(--yellow); padding-left:1.8em;}
+.hero-copy{margin-top:20px; font-family:var(--display); font-weight:600; font-size:1.05rem; color:var(--grey); max-width:30ch;}
+.hero-copy strong{color:var(--white); font-weight:700;}
+.cta-row{display:flex; flex-direction:column; gap:12px; margin-top:24px;}
+
+/* countdown / live */
+.count{margin-top:30px; border:2px solid var(--line); border-radius:var(--r); background:var(--off); padding:18px 14px;}
+.count[hidden]{display:none;}
+.count-lbl{font-family:var(--display); font-size:.7rem; font-weight:700; letter-spacing:.14em; color:var(--grey-dim); text-align:center; margin-bottom:12px; text-transform:uppercase;}
+.count-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:6px;}
+.cu{text-align:center; min-width:0;}
+.cu b{display:block; font-family:var(--display); font-weight:800; font-size:clamp(1.6rem,8.6vw,2.6rem); line-height:1; font-variant-numeric:tabular-nums;}
+.cu:nth-child(1) b{color:var(--green);} .cu:nth-child(2) b{color:var(--turq);} .cu:nth-child(3) b{color:var(--pink);} .cu:nth-child(4) b{color:var(--yellow);}
+.cu i{display:block; font-style:normal; font-size:.62rem; font-weight:700; letter-spacing:.1em; color:var(--grey-dim); margin-top:6px;}
+.live-pill{display:flex; width:max-content; margin:0 auto 10px; align-items:center; gap:8px; background:var(--green); color:#03210a; border-radius:100px; padding:5px 12px; font-family:var(--display); font-weight:800; font-size:.72rem; letter-spacing:.12em;}
+.live-pill b{width:8px; height:8px; border-radius:50%; background:#03210a; animation:pulse 1.4s infinite;}
+.count-today{font-family:var(--display); font-weight:800; font-size:clamp(2.4rem,13vw,3.8rem); text-align:center; text-transform:uppercase; line-height:1;}
+.count-today small{font-size:.42em; color:var(--grey);}
+
+/* ============ MARQUEE ============ */
+.marq-wrap{overflow:hidden; padding-block:12px; position:relative; z-index:2;}
+.marq{background:var(--white); color:var(--black); overflow:hidden; padding:11px 0; transform:rotate(-1.4deg); margin:0 -10px;}
+.marq-in{display:flex; width:max-content; animation:slide 28s linear infinite;}
+.marq span{font-family:var(--display); font-weight:800; font-size:1.05rem; text-transform:uppercase; padding-inline:16px; white-space:nowrap; display:inline-flex; align-items:center; gap:16px;}
+.marq span::after{content:""; width:11px; height:11px; border-radius:50%; background:var(--pink);}
+.marq span:nth-child(3n+2)::after{background:var(--purple);} .marq span:nth-child(3n)::after{background:var(--green);}
+@keyframes slide{to{transform:translateX(-50%);}}
+
+/* ============ ACTIVITIES (colour tiles) ============ */
+.act-top{display:flex; flex-direction:column; gap:16px; margin-bottom:22px;}
+.act-top .sec-head{margin-bottom:0;}
+.picker{align-self:flex-start; display:inline-flex; align-items:center; gap:10px; min-height:48px; padding:10px 18px; border-radius:100px; border:2px dashed var(--white);
+  font-family:var(--display); font-weight:700; font-size:.86rem; text-transform:uppercase; transition:background .16s, color .16s;}
+.picker svg{width:22px; height:22px; transition:transform .5s var(--ease);}
+.picker.rolling svg{transform:rotate(540deg);}
+@media (hover:hover){ .picker:hover{background:var(--white); color:var(--black);} }
+
+.act-list{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.act{--c:var(--white); --ink:#000; position:relative; display:flex; flex-direction:column; text-align:left; overflow:hidden;
+  background:var(--c); color:var(--ink); border-radius:var(--r); padding:16px 14px 16px; min-height:190px;
+  transition:transform .2s ease, box-shadow .2s ease;}
+.act::after{content:""; position:absolute; right:-30px; bottom:-30px; width:110px; height:110px; border-radius:50%; background:rgba(255,255,255,.16); pointer-events:none;}
+.act-num{font-family:var(--display); font-weight:800; font-size:2.5rem; line-height:.8; letter-spacing:-.04em; opacity:.92;}
+.act h3{margin-top:auto; font-size:clamp(1.05rem,4.9vw,1.5rem); text-transform:uppercase; line-height:1.02; position:relative; z-index:1;}
+.act .teaser{margin-top:6px; font-size:.82rem; font-weight:600; line-height:1.3; opacity:.82; position:relative; z-index:1;}
+.act .go{position:absolute; top:12px; right:12px; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:var(--ink); color:var(--c); transition:transform .25s var(--ease);}
+.act .go svg{width:16px; height:16px; transform:rotate(-45deg);}
+.act:active{transform:scale(.97);}
+.act.picking{transform:translateY(-4px) scale(1.03); box-shadow:0 0 0 4px var(--black), 0 0 0 7px var(--c);}
+.act.picked{animation:picked .6s var(--ease);}
+@keyframes picked{40%{transform:scale(1.06) rotate(-1.5deg);}}
+@media (hover:hover){ .act:hover{transform:translateY(-5px) rotate(-.6deg); box-shadow:0 16px 36px -14px var(--c);} .act:hover .go{transform:rotate(45deg) scale(1.08);} }
+
+/* ============ MODAL ============ */
+.modal{position:fixed; inset:0; z-index:80; display:none;}
+.modal.open{display:block;}
+.modal-bg{position:absolute; inset:0; background:rgba(0,0,0,.78); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);}
+.sheet{--c:var(--white); --ink:#000; position:absolute; left:0; right:0; bottom:0; max-height:calc(100% - 40px); background:var(--black); border-top:5px solid var(--c);
+  border-radius:26px 26px 0 0; overflow-y:auto; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; animation:up .34s var(--ease); padding:0 var(--pad) calc(28px + env(safe-area-inset-bottom));}
+@keyframes up{from{transform:translateY(40px); opacity:0;} to{transform:none; opacity:1;}}
+.sheet-bar{position:sticky; top:0; z-index:3; background:var(--black); display:flex; align-items:center; justify-content:space-between; padding:14px 0 10px;}
+.sheet-bar .tag{font-family:var(--display); font-weight:800; font-size:2.6rem; line-height:1; color:var(--c); letter-spacing:-.04em;}
+.x{width:44px; height:44px; border-radius:50%; border:2px solid var(--line); display:grid; place-items:center; background:var(--off);}
+.x svg{width:18px; height:18px;}
+.sheet h3{font-size:clamp(1.9rem,9vw,2.6rem); text-transform:uppercase; margin:2px 0 10px;}
+.sheet-lede{color:var(--grey); font-size:1rem; margin-bottom:20px;}
+.steps{counter-reset:s; margin-bottom:20px;}
+.steps li{counter-increment:s; position:relative; padding:4px 0 4px 40px; margin-bottom:10px; font-size:.98rem; min-height:28px;}
+.steps li::before{content:counter(s); position:absolute; left:0; top:2px; width:28px; height:28px; border-radius:50%; background:var(--c); color:var(--ink); font-family:var(--display); font-weight:800; font-size:.82rem; display:grid; place-items:center;}
+.learn{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px;}
+.learn span{border:2px solid var(--c); color:var(--white); border-radius:100px; padding:6px 12px; font-size:.8rem; font-weight:600;}
+.learn b{width:100%; font-family:var(--display); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--grey-dim);}
+.sheet-actions{display:grid; gap:10px;}
+.sheet-nav{display:flex; justify-content:space-between; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid var(--line);}
+.sheet-nav button{font-family:var(--display); font-weight:700; font-size:.78rem; text-transform:uppercase; color:var(--grey); padding:8px 0; display:inline-flex; align-items:center; gap:6px;}
+.sheet-nav button:hover{color:var(--white);}
+.sheet-nav svg{width:16px; height:16px;}
+
+/* ============ MASCOT ============ */
+#mascot{overflow:hidden;}
+.mascot-grid{display:grid; gap:26px; align-items:center;}
+.mascot-stage{position:relative; width:min(76vw,330px); aspect-ratio:1; margin:0 auto; container-type:inline-size;}
+.ring{position:absolute; inset:0; border-radius:50%; border:2px dashed rgba(255,255,255,.14); animation:spin 40s linear infinite;}
+.ring.r2{inset:13%; border-color:rgba(236,22,128,.35); animation-duration:28s; animation-direction:reverse;}
+.orbit{position:absolute; inset:0; animation:spin 16s linear infinite;}
+.orbit i{position:absolute; width:14px; height:14px; border-radius:50%; left:calc(50% - 7px); top:calc(50% - 7px); transform:rotate(var(--a)) translateY(-50cqw);}
+@keyframes spin{to{transform:rotate(360deg);}}
+.cat-btn{position:absolute; inset:21%; border-radius:50%; box-shadow:0 0 0 6px var(--black), 0 0 0 9px var(--pink), 0 24px 60px -10px rgba(236,22,128,.55); transition:transform .2s;}
+.cat-btn img{width:100%; height:100%; border-radius:50%;}
+.cat-btn:active{transform:scale(.95);}
+.cat-btn.wiggle{animation:wiggle .7s var(--ease);}
+@keyframes wiggle{20%{transform:rotate(-12deg) scale(1.06);}45%{transform:rotate(10deg) scale(1.04);}70%{transform:rotate(-5deg);}}
+.bubble{position:absolute; top:-3%; right:-2%; max-width:60%; z-index:2; background:var(--white); color:var(--black); border-radius:18px 18px 18px 4px; padding:10px 14px;
+  font-family:var(--display); font-weight:700; font-size:.86rem; line-height:1.25; box-shadow:4px 4px 0 var(--pink);}
+.bubble.pop{animation:bubble .35s var(--ease);}
+@keyframes bubble{from{transform:scale(.6); opacity:0;}}
+.mascot-copy{text-align:center;}
+.mascot-copy .sec-head p{margin-inline:auto;}
+
+/* ============ FIND US ============ */
+.ticket{position:relative; display:grid; border-radius:24px; overflow:hidden; background:var(--off); border:2px solid var(--line);}
+.ticket-date{background:var(--yellow); color:var(--black); padding:22px; text-align:center; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+.ticket-date span{font-family:var(--display); font-weight:800; font-size:.8rem; letter-spacing:.18em;}
+.ticket-date b{font-family:var(--display); font-weight:800; font-size:clamp(3rem,17vw,4.6rem); line-height:.95; letter-spacing:-.04em;}
+.ticket-date::before,.ticket-date::after{content:""; position:absolute; width:26px; height:26px; border-radius:50%; background:var(--black); bottom:-13px;}
+.ticket-date::before{left:-13px;} .ticket-date::after{right:-13px;}
+.ticket-info{margin:0; padding:22px; display:grid; gap:16px;}
+.ticket-info dt{font-family:var(--display); font-size:.66rem; font-weight:700; letter-spacing:.14em; color:var(--grey-dim); margin-bottom:2px; text-transform:uppercase;}
+.ticket-info dd{margin:0; font-family:var(--display); font-weight:800; font-size:1.35rem; text-transform:uppercase; line-height:1.08;}
+.ticket-info .c1{color:var(--turq);} .ticket-info .c2{color:var(--green);} .ticket-info .c3{color:var(--orange);}
+.find-actions{display:grid; gap:12px; margin-top:14px;}
+
+/* ============ LUCKY DRAW ============ */
+.form-card{border:2px solid var(--line); border-radius:var(--r); padding:20px 16px; background:var(--off); position:relative;}
+.ld-progress{position:sticky; top:calc(var(--nav-h) + 8px); z-index:4; display:flex; align-items:center; gap:12px; background:rgba(14,14,14,.94); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  border:2px solid var(--line); border-radius:100px; padding:8px 14px; margin-bottom:22px;}
+.ld-bar{flex:1; height:8px; border-radius:8px; background:#222; overflow:hidden;}
+.ld-bar i{display:block; height:100%; width:0; border-radius:8px; background:linear-gradient(90deg,var(--green),var(--turq),var(--purple),var(--yellow),var(--pink),var(--orange)); transition:width .35s var(--ease);}
+.ld-count{font-family:var(--display); font-weight:700; font-size:.76rem; color:var(--grey); white-space:nowrap;}
+.ld-progress.done .ld-count{color:var(--green);}
+.field{margin-bottom:22px;}
+.field > label:not(.consent), .field legend{display:block; font-family:var(--display); font-weight:800; font-size:1rem; text-transform:uppercase; margin-bottom:10px; padding:0;}
+.q-num{color:var(--grey-dim); margin-right:6px;}
+.opt-note{font-family:var(--body); font-weight:500; text-transform:none; color:var(--grey-dim); font-size:.82rem; margin-left:4px;}
+fieldset{border:0; margin:0; padding:0; min-width:0;}
+.opts{display:grid; grid-template-columns:repeat(2,1fr); gap:8px;}
+.opts.acts{grid-template-columns:repeat(2,1fr);}
+.opt{position:relative;}
+.opt input{position:absolute; opacity:0; inset:0; width:100%; height:100%; margin:0; cursor:pointer;}
+.opt span{display:flex; align-items:center; gap:10px; min-height:52px; padding:10px 12px; border:2px solid var(--line); border-radius:14px; background:var(--card); font-weight:500; font-size:.93rem; line-height:1.2; transition:border-color .15s, background .15s, color .15s, transform .15s;}
+.opt span::before{content:""; width:16px; height:16px; flex:0 0 auto; border-radius:50%; border:2px solid #444;}
+.opt input:checked + span{background:var(--white); color:var(--black); border-color:var(--white); font-weight:700;}
+.opt input:checked + span::before{border-color:currentColor; background:currentColor; box-shadow:inset 0 0 0 3px var(--white);}
+.opt.c input:checked + span{background:var(--c); border-color:var(--c); color:var(--ink);}
+.opt.c input:checked + span::before{box-shadow:inset 0 0 0 3px var(--c);}
+.opt input:active + span{transform:scale(.98);}
+.opt input:focus-visible + span{outline:3px solid var(--yellow); outline-offset:2px;}
+input[type=tel], textarea{width:100%; font-family:var(--body); font-size:16px; color:var(--white); background:var(--card); border:2px solid var(--line); border-radius:14px; padding:14px; min-height:54px; transition:border-color .15s;}
+textarea{resize:vertical; min-height:88px; line-height:1.5;}
+input[type=tel]:focus, textarea:focus{border-color:var(--yellow); outline:none;}
+::placeholder{color:#555;}
+.consent{display:flex; gap:12px; align-items:flex-start; cursor:pointer;}
+.consent input{flex:0 0 auto; width:26px; height:26px; margin:0; accent-color:var(--pink); cursor:pointer;}
+.consent span{font-size:.9rem; color:var(--grey); line-height:1.45;}
+.err{display:none; color:var(--orange); font-size:.86rem; font-weight:600; margin-top:8px;}
+.err.show{display:block; animation:shake .3s ease;}
+@keyframes shake{25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+.field.bad input[type=tel], .field.bad textarea{border-color:var(--orange);}
+.submit{width:100%; background:var(--yellow); color:var(--black); min-height:60px; font-size:1.05rem;}
+.submit.ready{animation:ready 1.8s ease-in-out infinite;}
+@keyframes ready{0%,100%{box-shadow:0 0 0 0 rgba(255,197,27,.55);}50%{box-shadow:0 0 0 10px rgba(255,197,27,0);}}
+@media (hover:hover){ .submit:hover{background:var(--green);} }
+.submit[disabled]{opacity:.6; cursor:progress; animation:none;}
+.spinner{width:18px; height:18px; border-radius:50%; border:3px solid rgba(0,0,0,.25); border-top-color:#000; animation:spin .7s linear infinite; display:none;}
+.submit[disabled] .spinner{display:inline-block;}
+
+/* popup */
+.popup-overlay{position:fixed; inset:0; z-index:95; display:none; background:rgba(0,0,0,.8); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); align-items:center; justify-content:center; padding:24px;}
+.popup-overlay.open{display:flex;}
+.popup-card{--c:var(--green); width:100%; max-width:380px; background:var(--black); border:3px solid var(--c); border-radius:24px; padding:30px 22px 22px; text-align:center; animation:popIn .3s var(--ease); box-shadow:8px 8px 0 var(--c);}
+@keyframes popIn{from{transform:scale(.88); opacity:0;}}
+.popup-icon{width:64px; height:64px; margin:0 auto 16px; border-radius:50%; background:var(--c); display:flex; align-items:center; justify-content:center; font-family:var(--display); font-weight:800; font-size:1.9rem; color:#000;}
+.popup-card h3{font-size:1.5rem; text-transform:uppercase; color:var(--c); margin-bottom:10px;}
+.popup-card p{color:#ddd; font-size:.98rem; margin-bottom:22px;}
+.popup-actions{display:grid; gap:10px;}
+.popup-actions .btn{width:100%;}
+.popup-actions [hidden]{display:none;}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line); padding:36px 0 calc(90px + env(safe-area-inset-bottom)); position:relative; z-index:2; text-align:center;}
+.foot-logo{width:120px; margin:0 auto 14px;}
+.foot-slogan{font-family:var(--display); font-weight:800; font-size:1.3rem; text-transform:uppercase;}
+.foot-slogan i{font-style:normal;} .foot-slogan i:nth-child(1){color:var(--turq);} .foot-slogan i:nth-child(2){color:var(--pink);} .foot-slogan i:nth-child(3){color:var(--yellow);}
+.foot-social{display:flex; justify-content:center; gap:12px; margin:18px 0;}
+.foot-social a{width:46px; height:46px; border-radius:50%; border:2px solid var(--line); display:flex; align-items:center; justify-content:center; background:var(--off); transition:transform .18s, background .18s, border-color .18s;}
+.foot-social svg{width:20px; height:20px; fill:var(--white);}
+@media (hover:hover){ .foot-social a:hover{border-color:var(--pink); background:var(--pink); transform:translateY(-3px);} }
+footer small{display:block; color:var(--grey-dim); font-size:.8rem; line-height:1.6;}
+
+/* sticky lucky-draw button (phones) */
+.fab{position:fixed; left:50%; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:50; transform:translate(-50%,160%); transition:transform .35s var(--ease);
+  display:inline-flex; align-items:center; gap:10px; white-space:nowrap; background:var(--yellow); color:#000; border-radius:100px; padding:14px 22px; min-height:52px;
+  font-family:var(--display); font-weight:800; font-size:.92rem; text-transform:uppercase; box-shadow:0 10px 30px rgba(0,0,0,.55), 0 0 0 3px var(--black);}
+.fab svg{width:20px; height:20px;}
+.fab.show{transform:translate(-50%,0);}
+#confetti{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:96;}
+
+/* ============ SMALL PHONES ============ */
+@media (max-width:360px){
+  :root{--pad:16px;}
+  .act{min-height:170px; padding:14px 12px;}
+  .opts.acts{grid-template-columns:1fr;}
+}
+
+/* ============ TABLET ≥ 640 ============ */
+@media (min-width:640px){
+  :root{--pad:32px;}
+  section{padding-block:80px;}
+  .cta-row{flex-direction:row; flex-wrap:wrap;}
+  .act-top{flex-direction:row; align-items:flex-end; justify-content:space-between;}
+  .picker{align-self:auto;}
+  .act{min-height:230px; padding:20px 18px;}
+  .act-num{font-size:3rem;}
+  .opts{grid-template-columns:repeat(3,1fr);}
+  .form-card{padding:30px;}
+  .count{padding:24px;}
+  .ticket{grid-template-columns:220px 1fr;}
+  .ticket-date::before{left:auto; right:-13px; top:-13px; bottom:auto;}
+  .ticket-date::after{right:-13px; bottom:-13px;}
+  .ticket-info{grid-template-columns:repeat(3,1fr); padding:30px; align-content:center;}
+  .find-actions{grid-template-columns:repeat(2,max-content);}
+  .sheet{left:auto; right:0; top:0; max-height:none; width:min(540px,100%); border-radius:0; border-top:0; border-left:5px solid var(--c); padding-inline:34px;}
+  @keyframes up{from{transform:translateX(30px); opacity:0;}}
+  .sheet-actions{grid-template-columns:1fr 1fr;}
+}
+
+/* ============ DESKTOP ≥ 960 ============ */
+@media (min-width:960px){
+  :root{--nav-h:76px;}
+  .burger,.menu,.fab{display:none;}
+  .brand-club{display:inline; font-family:var(--body); font-weight:600; font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--grey-dim); border-left:1px solid var(--line); padding-left:10px;}
+  .nav-desk{display:flex; align-items:center; gap:30px;}
+  .nav-desk a{font-family:var(--display); font-weight:600; font-size:.88rem; position:relative; padding:6px 0;}
+  .nav-desk a:not(.btn)::after{content:""; position:absolute; left:0; right:0; bottom:0; height:2.5px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .22s;}
+  .nav-desk a:not(.btn):hover::after{transform:scaleX(1);}
+  .nav-desk a:nth-child(1):hover{color:var(--green);} .nav-desk a:nth-child(2):hover{color:var(--pink);} .nav-desk a:nth-child(3):hover{color:var(--turq);}
+  .nav-desk .btn{min-height:44px; padding:10px 22px; font-size:.84rem;}
+  .hero{padding-top:calc(var(--nav-h) + 60px); padding-bottom:80px;}
+  .hero-in{display:grid; grid-template-columns:1.25fr .75fr; gap:56px; align-items:end;}
+  .hero-logo{display:none;}
+  .hero-logo.desk-only{display:block; width:100%; max-width:300px; margin:0 auto 26px;}
+  .hero-copy{font-size:1.2rem;}
+  .count{margin-top:0;}
+  .act-list{grid-template-columns:repeat(4,1fr); gap:18px;}
+  .act{min-height:280px; padding:24px 22px;}
+  .act h3{font-size:1.6rem;}
+  .act .teaser{font-size:.92rem;}
+  .mascot-grid{grid-template-columns:1fr 1fr; gap:64px;}
+  .mascot-stage{width:100%; max-width:400px;}
+  .mascot-copy{text-align:left;}
+  .mascot-copy .sec-head p{margin-inline:0;}
+  .ticket{grid-template-columns:280px 1fr;}
+  .ticket-info{padding:36px 40px;}
+  .ticket-info dd{font-size:1.6rem;}
+  .form-card{max-width:760px; margin-inline:auto;}
+  #luckydraw .sec-head{text-align:center;}
+  #luckydraw .sec-head p{margin-inline:auto;}
+  .opts.acts{grid-template-columns:repeat(2,1fr);}
+  .marq span{font-size:1.25rem;}
+  footer{padding-bottom:40px;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  .js .reveal{opacity:1; transform:none;}
+}
+
+</style>
 </head>
 <body>
 
@@ -34,35 +392,30 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="MAACAT home">
-      <img class="brand-img" src="assets/branding/maacat-icon.png" alt="" onerror="this.style.display='none'">
+      <img class="brand-img" src="assets/branding/maacat-icon.png" alt="" width="42" height="42">
       <span class="brand-txt" aria-hidden="true"><span>M</span><span>A</span><span>A</span><span>C</span><span>A</span><span>T</span></span>
       <span class="brand-club" aria-hidden="true">Marketing club · MNU</span>
-      <span class="sr">MAACAT</span>
     </a>
-
     <nav class="nav-desk" aria-label="Main">
       <a href="#activities">Activities</a>
       <a href="#mascot">Mascot</a>
       <a href="#find">Find us</a>
       <a href="#luckydraw" class="btn btn-3">Lucky Draw</a>
     </nav>
-
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <div class="menu" id="menu" hidden>
   <nav aria-label="Mobile">
     <ol>
-      <li><a href="#activities">Activities <i>01–04</i></a></li>
-      <li><a href="#mascot">Mascot <i>Say hi</i></a></li>
-      <li><a href="#find">Find us <i>Education Zone</i></a></li>
-      <li><a href="#luckydraw">Lucky Draw <i>Win</i></a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#mascot">Mascot</a></li>
+      <li><a href="#find">Find us</a></li>
+      <li><a href="#luckydraw">Lucky Draw</a></li>
     </ol>
   </nav>
-  <p class="menu-foot">VARA Expo 2026 · 26–28 November<br>Education Zone · Hulhumalé Central Park</p>
+  <p class="menu-foot">VARA Expo 2026 · 26–28 Nov<br>Education Zone · Hulhumalé Central Park</p>
 </div>
 
 <main id="top">
@@ -72,111 +425,62 @@
   <div class="wrap">
     <div class="hero-in">
       <div>
-        <img class="hero-logo" src="assets/branding/maacat-logo.svg" alt="" aria-hidden="true" onerror="this.remove()">
-
+        <img class="hero-logo" src="assets/branding/maacat-logo.svg" alt="" width="180" height="193">
         <p class="blip"><b></b> VARA Expo 2026 <em>·</em> 26–28 Nov</p>
-
-        <h1 class="wordmark" id="wordmark" aria-label="MAACAT">
-          <span aria-hidden="true">M</span><span aria-hidden="true">A</span><span aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">A</span><span aria-hidden="true">T</span>
-        </h1>
-
-        <p class="slogan" aria-label="Create. Reach. Grow.">
-          <i aria-hidden="true">Create.</i>
-          <i aria-hidden="true">Reach.</i>
-          <i aria-hidden="true">Grow.</i>
-        </p>
-
-        <p class="hero-copy">
-          The student marketing club from MNU is taking over the Education Zone.
-          Four games, one mascot, one lucky draw. <strong>Come play.</strong>
-        </p>
-
+        <h1 class="wordmark" id="wordmark" aria-label="MAACAT"><span aria-hidden="true">M</span><span aria-hidden="true">A</span><span aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">A</span><span aria-hidden="true">T</span></h1>
+        <p class="slogan"><i>Create.</i><i>Reach.</i><i>Grow.</i></p>
+        <p class="hero-copy"><strong>Four games. One mascot. One lucky draw.</strong> Find us in the Education Zone.</p>
         <div class="cta-row">
-          <a href="#activities" class="btn btn-1">See the activities</a>
+          <a href="#activities" class="btn btn-1">See the games</a>
           <a href="#luckydraw" class="btn btn-2">Enter the lucky draw</a>
         </div>
       </div>
-
       <div class="hero-side">
-        <img class="hero-logo desk-only" src="assets/branding/maacat-logo.svg" alt="MAACAT logo" onerror="this.remove()">
-        <div class="count" id="count" aria-live="off">
-          <p class="count-lbl">VARA Expo starts in</p>
+        <img class="hero-logo desk-only" src="assets/branding/maacat-logo.svg" alt="MAACAT logo" width="300" height="321">
+        <div class="count" id="count">
+          <p class="count-lbl">Starts in</p>
           <div class="count-grid">
             <span class="cu"><b id="cd-d">--</b><i>DAYS</i></span>
             <span class="cu"><b id="cd-h">--</b><i>HRS</i></span>
             <span class="cu"><b id="cd-m">--</b><i>MIN</i></span>
             <span class="cu"><b id="cd-s">--</b><i>SEC</i></span>
           </div>
-          <p class="count-foot">Education Zone · Hulhumalé Central Park</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= MARQUEE ================= -->
 <div class="marq-wrap" aria-hidden="true">
-  <div class="marq">
-    <div class="marq-in" id="marq">
-      <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
-      <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
-    </div>
-  </div>
+  <div class="marq"><div class="marq-in" id="marq">
+    <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
+    <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
+  </div></div>
 </div>
-
-<!-- ================= ABOUT ================= -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker" style="--k:var(--green)">Who we are</p>
-      <h2>We are MAACAT</h2>
-      <p>We started as the marketing team's stall crew at L.E.A.D. 2026. Now we're a student marketing club at MNU, and we're bringing the games to VARA Expo. Our slogan isn't decoration: it's the three things every activity we build has to do.</p>
-    </div>
-    <div class="about-grid">
-      <article class="abt reveal" style="--c:var(--green)">
-        <h3>Create</h3>
-        <p>Fresh ideas and bold designs, built into a visual identity loud enough to stop you mid-scroll and mid-walk.</p>
-        <span class="big" aria-hidden="true">C</span>
-      </article>
-      <article class="abt reveal d1" style="--c:var(--pink)">
-        <h3>Reach</h3>
-        <p>Four activities, four ways in. Guess, race, build or get painted — one of them is for you.</p>
-        <span class="big" aria-hidden="true">R</span>
-      </article>
-      <article class="abt reveal d2" style="--c:var(--yellow)">
-        <h3>Grow</h3>
-        <p>Every game hides a real marketing idea. You'll leave knowing something new about brands and how they win people over.</p>
-        <span class="big" aria-hidden="true">G</span>
-      </article>
-    </div>
-  </div>
-</section>
 
 <!-- ================= ACTIVITIES ================= -->
 <section id="activities">
   <div class="wrap">
     <div class="act-top">
       <div class="sec-head reveal">
-        <p class="kicker" style="--k:var(--orange)">At the stall</p>
-        <h2>Pick your game</h2>
-        <p>Four activities at the MAACAT stall. Tap any one to see how it works and what it teaches.</p>
+        <h2>Pick your <em style="--hc:var(--orange)">game</em></h2>
+        <p>Tap one to see how it works.</p>
       </div>
       <button type="button" class="picker reveal" id="picker">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
-        Can't decide? Let the cat pick
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.3" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.3" fill="currentColor"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
+        Let the cat pick
       </button>
     </div>
-    <div class="act-list" id="act-list"><!-- rendered from data below --></div>
+    <div class="act-list" id="act-list"></div>
   </div>
 </section>
 
-<!-- ================= ACTIVITY MODAL ================= -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
   <div class="modal-bg" data-close></div>
   <div class="sheet" id="sheet">
     <div class="sheet-bar">
-      <span class="tag" id="sheet-tag">ACTIVITY</span>
-      <button class="x" data-close aria-label="Close activity details">&times;</button>
+      <span class="tag" id="sheet-tag" aria-hidden="true">01</span>
+      <button class="x" data-close aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div id="sheet-body"></div>
   </div>
@@ -185,31 +489,20 @@
 <!-- ================= MASCOT ================= -->
 <section id="mascot">
   <div class="wrap mascot-grid">
-    <div class="mascot-stage reveal" aria-label="MAACAT mascot">
-      <div class="ring"></div>
-      <div class="ring r2"></div>
-      <div class="orbit" aria-hidden="true"><i style="--a:0deg; background:var(--green)"></i><i style="--a:60deg; background:var(--turq)"></i><i style="--a:120deg; background:var(--purple)"></i><i style="--a:180deg; background:var(--yellow)"></i><i style="--a:240deg; background:var(--pink)"></i><i style="--a:300deg; background:var(--orange)"></i></div>
-      <button type="button" class="cat-btn" id="cat-btn" aria-label="Say hi to the MAACAT cat">
-        <img src="assets/branding/maacat-icon.png" alt="">
-      </button>
-      <p class="bubble" id="bubble" aria-live="polite">Psst… tap me.</p>
-      <p class="tap-hint" aria-hidden="true">Tap the cat</p>
+    <div class="mascot-stage reveal">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="orbit" aria-hidden="true"><i style="--a:0deg;background:var(--green)"></i><i style="--a:60deg;background:var(--turq)"></i><i style="--a:120deg;background:var(--purple)"></i><i style="--a:180deg;background:var(--yellow)"></i><i style="--a:240deg;background:var(--pink)"></i><i style="--a:300deg;background:var(--orange)"></i></div>
+      <button type="button" class="cat-btn" id="cat-btn" aria-label="Tap the MAACAT cat"><img src="assets/branding/maacat-icon.png" alt="" width="200" height="200"></button>
+      <p class="bubble" id="bubble" aria-live="polite">Tap me!</p>
     </div>
-
     <div class="mascot-copy">
       <div class="sec-head reveal">
-        <p class="kicker" style="--k:var(--pink)">Special guest</p>
-        <h2>Meet the mascot</h2>
-        <p>The MAACAT cat is coming to VARA Expo. Come find it at our stall, say hi, and take a photo with it.</p>
+        <h2>Meet the <em style="--hc:var(--pink)">mascot</em></h2>
+        <p>The MAACAT cat is coming to VARA Expo. Say hi and grab a photo.</p>
       </div>
-      <ol class="mascot-steps reveal d1">
-        <li style="--c:var(--green)"><b>1</b>Find the cat at the MAACAT stall</li>
-        <li style="--c:var(--turq)"><b>2</b>Grab a photo together</li>
-        <li style="--c:var(--yellow)"><b>3</b>Tag @maacatexp when you post it</li>
-      </ol>
-      <a class="btn btn-3 reveal d2" href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" data-track="instagram">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
-        Follow @maacatexp
+      <a class="btn btn-3 reveal d1" href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" data-track="instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
+        @maacatexp
       </a>
     </div>
   </div>
@@ -218,32 +511,22 @@
 <!-- ================= FIND US ================= -->
 <section id="find">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker" style="--k:var(--yellow)">Come say hi</p>
-      <h2>Where to find us</h2>
-    </div>
-
+    <div class="sec-head reveal"><h2>Find <em style="--hc:var(--yellow)">us</em></h2></div>
     <div class="ticket reveal d1">
-      <div class="ticket-date" aria-hidden="true">
-        <span>NOV</span>
-        <b>26–28</b>
-        <span>2026</span>
-      </div>
+      <div class="ticket-date" aria-hidden="true"><span>NOV</span><b>26–28</b><span>2026</span></div>
       <dl class="ticket-info">
         <div><dt>Event</dt><dd class="c1">VARA Expo 2026</dd></div>
         <div><dt>Venue</dt><dd class="c2">Hulhumalé Central Park</dd></div>
         <div><dt>Stall</dt><dd class="c3">Education Zone</dd></div>
-        <div><dt>Date</dt><dd class="c4">26–28 Nov 2026</dd></div>
       </dl>
     </div>
-
     <div class="find-actions reveal d2">
       <a class="btn btn-1" href="https://www.google.com/maps/search/?api=1&amp;query=Hulhumal%C3%A9%20Central%20Park" target="_blank" rel="noopener" data-track="open_maps">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
         Open in Maps
       </a>
       <a class="btn btn-ghost" id="add-cal" href="#" download="maacat-vara-expo-2026.ics" data-track="add_to_calendar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
         Add to calendar
       </a>
     </div>
@@ -254,51 +537,38 @@
 <section id="luckydraw">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="kicker" style="--k:var(--turq)">Win something</p>
-      <h2>Enter the lucky draw</h2>
-      <p>Played a game? Tell us what you thought and you're in. Quick survey, one entry per number.</p>
+      <h2>Lucky <em style="--hc:var(--turq)">draw</em></h2>
+      <p>Played a game? Tell us about it and you're in.</p>
     </div>
 
     <form class="form-card reveal" id="form" novalidate>
-      <div class="ld-progress" id="ld-progress" aria-hidden="true">
-        <div class="ld-bar"><i id="ld-fill"></i></div>
-        <span class="ld-count" id="ld-count">0 / 5 done</span>
-      </div>
+      <div class="ld-progress" id="ld-progress" aria-hidden="true"><div class="ld-bar"><i id="ld-fill"></i></div><span class="ld-count" id="ld-count">0 / 5</span></div>
 
       <div class="field">
-        <fieldset>
-          <legend><span class="q-num">01</span>Age group</legend>
-          <div class="opts" id="age-opts"></div>
-        </fieldset>
+        <fieldset><legend><span class="q-num">01</span>Age</legend><div class="opts" id="age-opts"></div></fieldset>
         <p class="err" id="err-age">Choose an age group.</p>
       </div>
 
       <div class="field" id="f-phone">
         <label for="phone"><span class="q-num">02</span>Mobile number</label>
-        <span class="hint">Used only for the lucky draw — one entry per number.</span>
-        <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel"
-               placeholder="7XXXXXX" maxlength="15">
+        <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel" placeholder="7XXXXXX" maxlength="15">
         <p class="err" id="err-phone">Enter a valid mobile number.</p>
       </div>
 
       <div class="field">
-        <fieldset>
-          <legend><span class="q-num">03</span>Favourite activity</legend>
-          <div class="opts one" id="stall-opts"></div>
-        </fieldset>
-        <p class="err" id="err-stall">Pick your favourite activity.</p>
+        <fieldset><legend><span class="q-num">03</span>Favourite game</legend><div class="opts acts" id="stall-opts"></div></fieldset>
+        <p class="err" id="err-stall">Pick your favourite.</p>
       </div>
 
       <div class="field" id="f-why">
-        <label for="why"><span class="q-num">04</span>Why did you like it?</label>
-        <textarea id="why" name="why" rows="3" maxlength="1000" placeholder="It was..."></textarea>
+        <label for="why"><span class="q-num">04</span>Why?</label>
+        <textarea id="why" name="why" rows="2" maxlength="1000" placeholder="It was..."></textarea>
         <p class="err" id="err-why">Say a little about why.</p>
       </div>
 
       <div class="field">
-        <label for="improve"><span class="q-num">05</span>What could we improve?</label>
-        <span class="hint">Optional — but we read every one.</span>
-        <textarea id="improve" name="improve" rows="3" maxlength="1000" placeholder="Optional"></textarea>
+        <label for="improve"><span class="q-num">05</span>Anything to improve? <span class="opt-note">Optional</span></label>
+        <textarea id="improve" name="improve" rows="2" maxlength="1000"></textarea>
       </div>
 
       <div class="field">
@@ -309,16 +579,11 @@
         <p class="err" id="err-consent">Tick this to enter the draw.</p>
       </div>
 
-      <button type="submit" class="btn submit" id="submit">
-        <span class="spinner" aria-hidden="true"></span>
-        <span id="submit-label">Enter the lucky draw</span>
-      </button>
-      <p class="form-foot">One entry per mobile number for VARA Expo 2026.</p>
+      <button type="submit" class="btn submit" id="submit"><span class="spinner" aria-hidden="true"></span><span id="submit-label">Enter the draw</span></button>
     </form>
   </div>
 </section>
 
-<!-- ================= RESULT POPUP ================= -->
 <div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
   <div class="popup-card" id="popup-card">
     <div class="popup-icon" id="popup-icon" aria-hidden="true">✓</div>
@@ -326,238 +591,253 @@
     <p id="popup-message"></p>
     <div class="popup-actions">
       <button class="btn btn-1" id="popup-retry" type="button" hidden>Try again</button>
-      <button class="btn btn-1" id="popup-close" type="button">Got it</button>
+      <button class="btn btn-1" id="popup-close" type="button">Done</button>
     </div>
   </div>
 </div>
 
-<!-- ================= OUTRO ================= -->
-<section id="outro">
-  <div class="wrap">
-    <div class="draw reveal">
-      <img src="assets/branding/maacat-icon.png" alt="">
-      <h2>See you at VARA Expo.</h2>
-      <p>26–28 November · Education Zone · Hulhumalé Central Park</p>
-      <a href="#activities" class="btn">See the activities</a>
-    </div>
-  </div>
-</section>
-
 </main>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
-    <div class="foot-mark">
-      <img src="assets/branding/maacat-logo.svg" alt="MAACAT logo" onerror="this.style.display='none'">
-      <p class="foot-slogan"><i>Create.</i> <i>Reach.</i> <i>Grow.</i></p>
-    </div>
+    <img class="foot-logo" src="assets/branding/maacat-logo.svg" alt="MAACAT logo" width="120" height="129">
+    <p class="foot-slogan"><i>Create.</i> <i>Reach.</i> <i>Grow.</i></p>
     <div class="foot-social">
-      <a href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on Instagram" data-track="instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
-      </a>
-      <a href="https://www.tiktok.com/@maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on TikTok" data-track="tiktok">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.1v13.6a2.9 2.9 0 1 1-2.9-2.9c.28 0 .55.03.8.1V9.6a5.98 5.98 0 0 0-.8-.05A6 6 0 1 0 16.6 15.6V9c1.2.86 2.66 1.37 4.2 1.4V7.3c-1.9-.06-3.5-1.17-4.2-2.67V2z"/></svg>
-      </a>
+      <a href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on Instagram" data-track="instagram"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg></a>
+      <a href="https://www.tiktok.com/@maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on TikTok" data-track="tiktok"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.1v13.6a2.9 2.9 0 1 1-2.9-2.9c.28 0 .55.03.8.1V9.6a5.98 5.98 0 0 0-.8-.05A6 6 0 1 0 16.6 15.6V9c1.2.86 2.66 1.37 4.2 1.4V7.3c-1.9-.06-3.5-1.17-4.2-2.67V2z"/></svg></a>
     </div>
-    <div class="dots" aria-hidden="true">
-      <b style="background:var(--green)"></b><b style="background:var(--turq)"></b><b style="background:var(--purple)"></b>
-      <b style="background:var(--yellow)"></b><b style="background:var(--pink)"></b><b style="background:var(--orange)"></b>
-    </div>
-    <small>
-      MAACAT — student marketing club, The Maldives National University. Club registration in progress.<br>
-      At VARA Expo 2026 · 26–28 November 2026 · Education Zone, Hulhumalé Central Park.<br>
-      This is MAACAT's own page, not the official VARA Expo website.
-    </small>
+    <small>MAACAT · Student marketing club, MNU<br>Not the official VARA Expo website</small>
   </div>
 </footer>
 
-<!-- sticky lucky-draw button (phones only) -->
 <a href="#luckydraw" class="fab" id="fab" aria-label="Enter the lucky draw">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 7.5 3a2.5 2.5 0 0 0 0 5M12 8s1.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 7.5 3a2.5 2.5 0 0 0 0 5M12 8s1.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
   Lucky draw
 </a>
-
 <canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- Lucky draw backend (Supabase). Keys + event name are at the top. -->
+<script>
+/* ============================================================
+   MAACAT backend bridge (lucky draw only)
+   ------------------------------------------------------------
+   Talks to Supabase directly with fetch() — no extra library to
+   load, so there is one less thing that can fail on bad expo wifi.
+
+   Every entry is tagged with LUCKY_DRAW_EVENT. Once you've run
+   supabase-vara-update.sql, "one entry per number" means one per
+   number PER EVENT, so people who entered at L.E.A.D. 2026 can
+   enter again at VARA Expo. Change LUCKY_DRAW_EVENT before the
+   next event and the draw starts fresh — old entries stay saved.
+
+   Leave SUPABASE_URL / SUPABASE_ANON_KEY blank and it runs in
+   "local" mode: saved to this browser only, for testing.
+   ============================================================ */
+
+const SUPABASE_URL = 'https://gnpswfsreebzevkpyxrf.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImducHN3ZnNyZWViemV2a3B5eHJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2NTYyMzEsImV4cCI6MjEwNjIzMjIzMX0.HqebMgOOpJd9F4sR-nbGVaN7WHHdmPTcAJ7Mg32Z3FA';
+
+const LUCKY_DRAW_EVENT = 'VARA EXPO 2026';
+
+const BACKEND_ENABLED = SUPABASE_URL.startsWith('https://') && SUPABASE_ANON_KEY.length > 20;
+const REQUEST_TIMEOUT_MS = 12000;
+const LOCAL_ENTRIES_KEY = 'maacat_entries_prototype';
+
+const LD_DEFAULT_MESSAGES = {
+  ok:          "You've entered the lucky draw!",
+  duplicate:   'You have already entered the lucky draw.',
+  invalid:     'Please check your answers and try again.',
+  unreachable: "We couldn't reach the lucky draw just now. Please try again in a moment.",
+  error:       'Something went wrong on our side. Please try again in a moment.'
+};
+
+function _cleanPhone(v){ return String(v || '').replace(/\D/g, ''); }
+function _result(status, message){
+  return { success: status === 'ok', status, message: message || LD_DEFAULT_MESSAGES[status] };
+}
+
+/* One POST to the submit_lucky_draw function, with a timeout so the
+   button never hangs on a dead connection. */
+async function _callSubmit(body){
+  const ctrl = ('AbortController' in window) ? new AbortController() : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS) : null;
+  try {
+    const r = await fetch(SUPABASE_URL + '/rest/v1/rpc/submit_lucky_draw', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(body),
+      signal: ctrl ? ctrl.signal : undefined
+    });
+    let data = null;
+    try { data = await r.json(); } catch (e) {}
+    return { ok: r.ok, httpStatus: r.status, data };
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+/* ============================================================
+   Public API — the only thing the page calls.
+   Returns { success, status, message }
+   status: 'ok' | 'duplicate' | 'invalid' | 'unreachable' | 'error'
+   ============================================================ */
+const MaacatBackend = {
+  mode: BACKEND_ENABLED ? 'live' : 'local',
+  event: LUCKY_DRAW_EVENT,
+
+  async submitLuckyDraw(payload){
+    const phone = _cleanPhone(payload.phone);
+
+    if (BACKEND_ENABLED) {
+      const base = {
+        p_phone: phone,
+        p_age: payload.age,
+        p_favourite_stall: payload.favouriteStall,
+        p_why: payload.why,
+        p_improve: payload.improve || null
+      };
+
+      let res;
+      try {
+        res = await _callSubmit({ ...base, p_event: LUCKY_DRAW_EVENT });
+        // PGRST202/203 = the database still has the original L.E.A.D. version
+        // of the function (supabase-vara-update.sql not run yet). Fall back to it
+        // so entries still save.
+        const code = res.data && res.data.code;
+        if (!res.ok && (code === 'PGRST202' || code === 'PGRST203')) {
+          console.warn('MAACAT: run supabase-vara-update.sql — using the original lucky draw function for now.');
+          res = await _callSubmit(base);
+        }
+      } catch (err) {
+        // Network failure, timeout, DNS, or the Supabase project is paused.
+        console.error('MAACAT lucky draw: could not reach Supabase', err);
+        return _result('unreachable');
+      }
+
+      if (!res.ok) {
+        console.error('MAACAT lucky draw: Supabase returned', res.httpStatus, res.data);
+        return _result(res.httpStatus >= 500 ? 'unreachable' : 'error');
+      }
+
+      const d = res.data || {};
+      if (d.success) return _result('ok', d.message);
+      if (d.status === 'duplicate' || /already entered/i.test(d.message || '')) return _result('duplicate');
+      if (d.status === 'invalid') return _result('invalid', d.message);
+      return _result('error', d.message);
+    }
+
+    // Local fallback: same duplicate rule (per event), this browser only.
+    let entries = [];
+    try { entries = JSON.parse(localStorage.getItem(LOCAL_ENTRIES_KEY) || '[]'); } catch (e) {}
+    if (entries.some(e => e.phone === phone && (e.event || LUCKY_DRAW_EVENT) === LUCKY_DRAW_EVENT)) {
+      return _result('duplicate');
+    }
+    entries.push({ ...payload, phone, event: LUCKY_DRAW_EVENT, at: new Date().toISOString() });
+    try { localStorage.setItem(LOCAL_ENTRIES_KEY, JSON.stringify(entries)); } catch (e) {}
+    return _result('ok');
+  }
+};
+
+</script>
 
 <script>
 /* ============================================================
-   SETTINGS — edit here, the page rebuilds itself.
+   SETTINGS — edit here
    ============================================================ */
+const EXPO_OPENS  = new Date('2026-11-26T16:00:00+05:00');   // countdown target (4 PM — change if different)
+const EXPO_CLOSES = new Date('2026-11-29T00:00:00+05:00');   // end of 28 Nov — countdown hides after this
 
-// VARA Expo opening time (used for the countdown). Last year it opened
-// at 4 PM, so that's the default — change the time here if it's different.
-const EXPO_OPENS  = new Date('2026-11-26T16:00:00+05:00');
-const EXPO_CLOSES = new Date('2026-11-29T00:00:00+05:00');   // end of 28 Nov
-
-// What the lucky draw popup says.
 const LUCKY_DRAW_COPY = {
-  ok:          { title:"You're in!",       msg:"You've entered the VARA Expo lucky draw. Good luck — and thanks for playing with MAACAT!" },
-  duplicate:   { title:'Already entered',   msg:'You have already entered the lucky draw.' },
-  invalid:     { title:'Check your answers', msg:null /* uses the database's message */ },
-  unreachable: { title:"Couldn't submit",   msg:"We couldn't reach the lucky draw just now. Please try again in a moment — or let someone at the MAACAT stall know." },
-  error:       { title:"Couldn't submit",   msg:'Something went wrong on our side. Please try again — or let someone at the MAACAT stall know.' }
+  ok:          { title:"You're in!",        msg:"You've entered the VARA Expo lucky draw. Good luck!" },
+  duplicate:   { title:'Already entered',    msg:'You have already entered the lucky draw.' },
+  invalid:     { title:'Check your answers', msg:null },
+  unreachable: { title:"Couldn't submit",    msg:"We couldn't reach the lucky draw just now. Try again in a moment, or ask someone at the MAACAT stall." },
+  error:       { title:"Couldn't submit",    msg:'Something went wrong. Try again in a moment, or ask someone at the MAACAT stall.' }
 };
 
 const ACTIVITIES = [
-  {
-    id:"01", name:"Marketing Ladder", color:"var(--green)", ink:"#04210a",
-    teaser:"Describe a product without naming it. Can they guess?",
-    tag:"Guessing game",
-    lede:"You pick a product, then give the group clues about it — without ever saying its name. If they can't work it out, you walk away with the prize.",
-    doList:[
-      "Choose a product from our set",
-      "Give clues about it without naming it directly",
-      "The group tries to guess the product from your clues",
-      "If they fail to guess it, the clue-giver wins a prize"
-    ],
-    learnList:[
-      "How to identify products through marketing-related clues",
-      "How product characteristics communicate a brand"
-    ]
-  },
-  {
-    id:"02", name:"Brand Relay", color:"var(--orange)", ink:"#2a0e00",
-    teaser:"Two-person relay. Sort mixed logos into the right industry — fast.",
-    tag:"60-second relay",
-    lede:"A fast-paced 2-member team challenge: identify mixed-up brand logos and relay them into the correct industry category boxes within 60 seconds. Most correct classifications wins.",
-    doList:[
-      "Pair up into a 2-member team",
-      "Sort mixed brand logos into their correct industry category boxes",
-      "Race the 60-second clock as a relay — one runs, one sorts",
-      "Most correct classifications when time's up takes the highest score"
-    ],
-    learnList:[
-      "How quickly brand logos communicate their industry",
-      "Working under time pressure as a team"
-    ]
-  },
-  {
-    id:"03", name:"Build-a-Brand", color:"var(--purple)", ink:"#ffffff",
-    teaser:"Five minutes. Random brief. Build a brand from nothing.",
-    tag:"5-minute build",
-    lede:"Randomly select a product, target market, brand personality and colour, then use them to develop a brand name, logo, slogan and USP before the timer runs out. Your card joins the Marketing Wall.",
-    doList:[
-      "Randomly select a product, target market, brand personality and colour",
-      "Develop a brand name, logo, slogan and unique selling point from those elements",
-      "Finish inside 5 minutes",
-      "Place your completed brand card on the Marketing Wall"
-    ],
-    learnList:[
-      "Target markets and brand positioning",
-      "Brand identity and unique selling propositions",
-      "Creativity, strategic thinking and quick decision-making"
-    ]
-  },
-  {
-    id:"04", name:"Face Paint", color:"var(--yellow)", ink:"#2a1d00",
-    teaser:"Get a custom MAACAT design painted on. Walk out as a moving billboard.",
-    tag:"Face paint",
-    lede:"Grab a seat at the Face Paint Corner and get a custom MAACAT design painted on — then go show it off around the expo.",
-    doList:[
-      "Grab a seat at the Face Paint Corner",
-      "Get a custom MAACAT design painted on",
-      "Show it off around the expo — and tag @maacatexp if you post it"
-    ],
-    learnList:[
-      "How fans become walking ads for the brands they like",
-      "Why wearable, shareable moments spread a brand further"
-    ]
-  }
+  { id:"01", name:"Marketing Ladder", color:"var(--green)",  ink:"#04210a",
+    teaser:"Describe it. Don't name it.",
+    lede:"Give clues about a product without saying its name. If the group can't guess it, you win.",
+    steps:["Pick a product","Give clues — never say the name","Group guesses","They miss? You win a prize"],
+    learn:["Product clues","How products signal a brand"] },
+  { id:"02", name:"Brand Relay", color:"var(--orange)", ink:"#2a0e00",
+    teaser:"Sort the logos. Beat 60 seconds.",
+    lede:"Two-person relay: sort mixed brand logos into the right industry boxes before the clock runs out.",
+    steps:["Team up in pairs","One runs, one sorts","Logos into the right industry box","Most correct in 60s wins"],
+    learn:["Logo recognition","Teamwork under pressure"] },
+  { id:"03", name:"Build-a-Brand", color:"var(--purple)", ink:"#ffffff",
+    teaser:"Random brief. Five minutes. Go.",
+    lede:"Draw a random product, target market, personality and colour — then build a brand from it in 5 minutes.",
+    steps:["Draw your random brief","Create a name, logo, slogan and USP","Beat the 5-minute timer","Stick it on the Marketing Wall"],
+    learn:["Target markets","Positioning","Brand identity","USPs"] },
+  { id:"04", name:"Face Paint", color:"var(--yellow)", ink:"#2a1d00",
+    teaser:"Wear the brand.",
+    lede:"Get a custom MAACAT design painted on, then show it off around the expo.",
+    steps:["Grab a seat at the Face Paint Corner","Get your MAACAT design","Snap it — tag @maacatexp"],
+    learn:["Fans as walking ads","Shareable brand moments"] }
 ];
 
 const AGES = ["Under 18","18–20","21–24","25–34","35+"];
+const MASCOT_LINES = ["Meow-keting!","Create. Reach. Grow. Purr.","Photo? I'm ready.","Find me in the Education Zone!","Four games. Zero excuses.","Tap me again. I dare you.","Psst… lucky draw's below."];
 
-const MASCOT_LINES = [
-  "Meow-keting at its finest.",
-  "Psst… the lucky draw is just down the page.",
-  "Create. Reach. Grow. Purr.",
-  "I've been practising my photo pose all week.",
-  "Four games. Zero excuses.",
-  "Tap me again. I dare you.",
-  "Find me in the Education Zone!",
-  "I'm the face of the brand. Literally."
-];
-
-/* ============================================================
-   HELPERS
-   ============================================================ */
+/* ============================================================ */
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => [...el.querySelectorAll(s)];
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 function track(name, params){ try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){} }
-const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ARROW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const ARROW_L = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
-/* ============================================================
-   ACTIVITY CARDS
-   ============================================================ */
+/* ---------- activity tiles ---------- */
 $('#act-list').innerHTML = ACTIVITIES.map((a, i) => `
-  <button class="act reveal d${i % 4}" style="--c:${a.color}" data-act="${a.id}"
-          aria-haspopup="dialog" aria-label="${a.id}, ${a.name}. Open details.">
+  <button class="act reveal d${i}" style="--c:${a.color}; --ink:${a.ink}" data-act="${a.id}" aria-haspopup="dialog" aria-label="${a.name}. Open details.">
     <span class="act-num" aria-hidden="true">${a.id}</span>
+    <span class="go" aria-hidden="true">${ARROW}</span>
     <h3>${a.name}</h3>
     <p class="teaser">${a.teaser}</p>
-    <span class="act-foot">
-      <span class="chip">${a.tag}</span>
-      <span class="open-lbl" aria-hidden="true">Open ${arrow}</span>
-    </span>
-  </button>
-`).join('');
+  </button>`).join('');
 
-/* ============================================================
-   COUNTDOWN → LIVE → (hidden after the expo; the logo stays)
-   ============================================================ */
+/* ---------- countdown → live → hidden ---------- */
 const countBox = $('#count');
 const pad = n => String(n).padStart(2, '0');
-let countTimer = null;
-let countMode = 'countdown';
-
-function tickCountdown(){
+let countMode = '', countTimer = null;
+function tick(){
   const now = Date.now();
-  if (now >= EXPO_CLOSES.getTime()) {
-    countBox.hidden = true;
-    clearInterval(countTimer);
-    return;
-  }
+  if (now >= EXPO_CLOSES.getTime()) { countBox.hidden = true; clearInterval(countTimer); return; }
   if (now >= EXPO_OPENS.getTime()) {
     const day = Math.min(3, Math.floor((now - new Date('2026-11-26T00:00:00+05:00').getTime()) / 86400000) + 1);
     if (countMode !== 'live' + day) {
       countMode = 'live' + day;
-      countBox.innerHTML = `
-        <p class="live-pill"><b></b>LIVE NOW</p>
-        <p class="count-today">Day ${day}<small> of 3</small></p>
-        <p class="count-foot">Education Zone · Hulhumalé Central Park</p>`;
+      countBox.innerHTML = `<p class="live-pill"><b></b>LIVE NOW</p><p class="count-today">Day ${day}<small> of 3</small></p>`;
     }
     return;
   }
-  const diff = EXPO_OPENS.getTime() - now;
-  $('#cd-d').textContent = pad(Math.floor(diff / 86400000));
-  $('#cd-h').textContent = pad(Math.floor(diff / 3600000) % 24);
-  $('#cd-m').textContent = pad(Math.floor(diff / 60000) % 60);
-  $('#cd-s').textContent = pad(Math.floor(diff / 1000) % 60);
+  const d = EXPO_OPENS.getTime() - now;
+  $('#cd-d').textContent = pad(Math.floor(d / 86400000));
+  $('#cd-h').textContent = pad(Math.floor(d / 3600000) % 24);
+  $('#cd-m').textContent = pad(Math.floor(d / 60000) % 60);
+  $('#cd-s').textContent = pad(Math.floor(d / 1000) % 60);
 }
-tickCountdown();
-countTimer = setInterval(tickCountdown, 1000);
+tick(); countTimer = setInterval(tick, 1000);
 
-/* ============================================================
-   WORDMARK — tap a letter, it bounces
-   ============================================================ */
+/* ---------- wordmark bounce ---------- */
 $('#wordmark').addEventListener('click', e => {
-  const letters = $$('#wordmark span');
   const hit = e.target.closest('#wordmark span');
-  const targets = hit ? [hit] : letters;
-  targets.forEach((s, i) => {
+  (hit ? [hit] : $$('#wordmark span')).forEach((s, i) => {
     s.classList.remove('boing'); void s.offsetWidth;
-    s.style.animationDelay = hit ? '0s' : (i * 0.06) + 's';
+    s.style.animationDelay = hit ? '0s' : (i * .06) + 's';
     s.classList.add('boing');
   });
 });
 
-/* ============================================================
-   MOBILE MENU
-   ============================================================ */
-const burger = $('#burger');
-const menu = $('#menu');
+/* ---------- mobile menu ---------- */
+const burger = $('#burger'), menu = $('#menu');
 function setMenu(open){
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -570,71 +850,51 @@ function setMenu(open){
 burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
 $$('#menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
-/* ============================================================
-   ACTIVITY MODAL — focus trapped, ESC to close, prev/next
-   ============================================================ */
-const modal = $('#modal');
-const sheet = $('#sheet');
-const sheetBody = $('#sheet-body');
-const sheetTag = $('#sheet-tag');
+/* ---------- activity sheet ---------- */
+const modal = $('#modal'), sheet = $('#sheet'), sheetBody = $('#sheet-body');
 let lastFocus = null;
-
 function openActivity(id){
-  const idx = ACTIVITIES.findIndex(x => x.id === id);
-  if (idx < 0) return;
-  const a = ACTIVITIES[idx];
-  const prev = ACTIVITIES[(idx + ACTIVITIES.length - 1) % ACTIVITIES.length];
-  const next = ACTIVITIES[(idx + 1) % ACTIVITIES.length];
+  const i = ACTIVITIES.findIndex(x => x.id === id);
+  if (i < 0) return;
+  const a = ACTIVITIES[i], prev = ACTIVITIES[(i + 3) % 4], next = ACTIVITIES[(i + 1) % 4];
   if (!modal.classList.contains('open')) lastFocus = document.activeElement;
-
-  sheet.style.setProperty('--c', a.color);
-  sheetTag.textContent = `ACTIVITY ${a.id} OF 0${ACTIVITIES.length}`;
+  sheet.style.setProperty('--c', a.color); sheet.style.setProperty('--ink', a.ink);
+  $('#sheet-tag').textContent = a.id;
   sheetBody.innerHTML = `
-    <p class="sheet-num" aria-hidden="true">${a.id}</p>
     <h3 id="sheet-title">${a.name}</h3>
     <p class="sheet-lede">${a.lede}</p>
-    <div class="blk"><h4>How it works</h4><ol>${a.doList.map(x => `<li>${x}</li>`).join('')}</ol></div>
-    <div class="blk"><h4>What you'll learn</h4><ul>${a.learnList.map(x => `<li>${x}</li>`).join('')}</ul></div>
+    <ol class="steps">${a.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+    <div class="learn"><b>You'll learn</b>${a.learn.map(s => `<span>${s}</span>`).join('')}</div>
     <div class="sheet-actions">
       <a href="#find" class="btn btn-1" data-close>Find the stall</a>
-      <a href="#luckydraw" class="btn btn-ghost" data-close>Played it? Enter the draw</a>
+      <a href="#luckydraw" class="btn btn-ghost" data-close>Enter the draw</a>
     </div>
     <div class="sheet-nav">
-      <button type="button" data-goto="${prev.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>${prev.name}</button>
-      <button type="button" data-goto="${next.id}">${next.name}${arrow}</button>
-    </div>
-  `;
-
-  modal.hidden = false;
-  modal.classList.add('open');
+      <button type="button" data-goto="${prev.id}">${ARROW_L}${prev.name}</button>
+      <button type="button" data-goto="${next.id}">${next.name}${ARROW}</button>
+    </div>`;
+  modal.hidden = false; modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   sheet.scrollTop = 0;
   $('.x', sheet).focus({ preventScroll:true });
   history.replaceState(null, '', `?activity=${a.id}`);
   updateFab();
-  track('activity_open', { activity: a.name });
+  track('activity_open', { activity:a.name });
 }
-
 function closeActivity(){
   if (!modal.classList.contains('open')) return;
-  modal.classList.remove('open');
-  modal.hidden = true;
+  modal.classList.remove('open'); modal.hidden = true;
   document.body.style.overflow = '';
   history.replaceState(null, '', location.pathname + location.hash);
   if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll:true });
   updateFab();
 }
-
 document.addEventListener('click', e => {
-  const goto = e.target.closest('[data-goto]');
-  if (goto) { openActivity(goto.dataset.goto); return; }
-  const card = e.target.closest('[data-act]');
-  if (card) { openActivity(card.dataset.act); return; }
+  const g = e.target.closest('[data-goto]'); if (g) { openActivity(g.dataset.goto); return; }
+  const c = e.target.closest('[data-act]');  if (c) { openActivity(c.dataset.act); return; }
   if (e.target.closest('[data-close]')) closeActivity();
-  const t = e.target.closest('[data-track]');
-  if (t) track(t.dataset.track);
+  const t = e.target.closest('[data-track]'); if (t) track(t.dataset.track);
 });
-
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (popup.classList.contains('open')) hidePopup();
@@ -642,212 +902,120 @@ document.addEventListener('keydown', e => {
     else if (menu.classList.contains('open')) setMenu(false);
   }
   if (e.key === 'Tab') {
-    const scope = popup.classList.contains('open') ? $('#popup-card')
-               : modal.classList.contains('open') ? sheet : null;
+    const scope = popup.classList.contains('open') ? $('#popup-card') : modal.classList.contains('open') ? sheet : null;
     if (!scope) return;
-    const f = $$('button:not([hidden]), a[href], input, textarea, [tabindex]:not([tabindex="-1"])', scope);
+    const f = $$('button:not([hidden]), a[href], input, textarea', scope);
     if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
   }
 });
+(function(){ const p = new URLSearchParams(location.search); const id = p.get('activity') || p.get('stall');
+  if (id && ACTIVITIES.some(a => a.id === id)) setTimeout(() => openActivity(id), 350); })();
 
-/* deep link: ?activity=03  (old QR codes used ?stall=) */
-(function(){
-  const p = new URLSearchParams(location.search);
-  const id = p.get('activity') || p.get('stall');
-  if (id && ACTIVITIES.some(a => a.id === id)) setTimeout(() => openActivity(id), 350);
-})();
-
-/* ============================================================
-   "LET THE CAT PICK" — shuffles across the cards, opens one
-   ============================================================ */
-const picker = $('#picker');
-let picking = false;
+/* ---------- let the cat pick ---------- */
+const picker = $('#picker'); let picking = false;
 picker.addEventListener('click', () => {
-  if (picking) return;
-  picking = true;
-  track('cat_pick');
-  const cards = $$('.act');
-  const winner = Math.floor(Math.random() * cards.length);
+  if (picking) return; picking = true; track('cat_pick');
+  const cards = $$('.act'), win = Math.floor(Math.random() * cards.length);
   const finish = () => {
     cards.forEach(c => c.classList.remove('picking'));
-    cards[winner].classList.add('picked');
-    setTimeout(() => {
-      cards[winner].classList.remove('picked');
-      openActivity(cards[winner].dataset.act);
-      picker.classList.remove('rolling');
-      picking = false;
-    }, reduceMotion ? 0 : 650);
+    cards[win].classList.add('picked');
+    setTimeout(() => { cards[win].classList.remove('picked'); openActivity(cards[win].dataset.act); picker.classList.remove('rolling'); picking = false; }, reduceMotion ? 0 : 600);
   };
   if (reduceMotion) { finish(); return; }
-
-  $('#activities').scrollIntoView({ behavior:'smooth', block:'start' });
+  $('#act-list').scrollIntoView({ behavior:'smooth', block:'center' });
   picker.classList.add('rolling');
-  const steps = 10 + winner + cards.length;   // lands on the winner
-  let i = 0;
+  const steps = 10 + win + cards.length; let i = 0;
   (function hop(){
     cards.forEach(c => c.classList.remove('picking'));
     cards[i % cards.length].classList.add('picking');
-    if (i >= steps - 1 && i % cards.length === winner) { setTimeout(finish, 260); return; }
-    i++;
-    setTimeout(hop, 55 + i * i * 0.75);
+    if (i >= steps - 1 && i % cards.length === win) { setTimeout(finish, 260); return; }
+    i++; setTimeout(hop, 55 + i * i * .75);
   })();
 });
 
-/* ============================================================
-   MASCOT — tap for a wiggle and a new line
-   ============================================================ */
-const catBtn = $('#cat-btn');
-const bubble = $('#bubble');
-let lastLine = -1;
+/* ---------- mascot ---------- */
+const catBtn = $('#cat-btn'), bubble = $('#bubble'); let lastLine = -1;
 catBtn.addEventListener('click', () => {
-  let n;
-  do { n = Math.floor(Math.random() * MASCOT_LINES.length); } while (n === lastLine && MASCOT_LINES.length > 1);
-  lastLine = n;
-  bubble.textContent = MASCOT_LINES[n];
-  bubble.classList.remove('pop'); catBtn.classList.remove('wiggle');
-  void bubble.offsetWidth;
+  let n; do { n = Math.floor(Math.random() * MASCOT_LINES.length); } while (n === lastLine);
+  lastLine = n; bubble.textContent = MASCOT_LINES[n];
+  bubble.classList.remove('pop'); catBtn.classList.remove('wiggle'); void bubble.offsetWidth;
   bubble.classList.add('pop'); catBtn.classList.add('wiggle');
   track('mascot_tap');
 });
 
-/* ============================================================
-   ADD TO CALENDAR (.ics, all-day 26–28 Nov)
-   ============================================================ */
-(function(){
-  const ics = [
-    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//MAACAT//VARA Expo 2026//EN', 'CALSCALE:GREGORIAN',
-    'BEGIN:VEVENT',
-    'UID:maacat-vara-expo-2026@maacat.com',
-    'DTSTAMP:20261125T000000Z',
-    'DTSTART;VALUE=DATE:20261126',
-    'DTEND;VALUE=DATE:20261129',
-    'SUMMARY:MAACAT at VARA Expo 2026',
-    'LOCATION:Education Zone\\, Hulhumalé Central Park',
-    'DESCRIPTION:Marketing Ladder\\, Brand Relay\\, Build-a-Brand\\, Face Paint\\, the MAACAT mascot and a lucky draw. https://maacat.com',
-    'URL:https://maacat.com',
-    'END:VEVENT', 'END:VCALENDAR'
-  ].join('\r\n');
-  $('#add-cal').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
-})();
+/* ---------- add to calendar ---------- */
+$('#add-cal').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent([
+  'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MAACAT//VARA Expo 2026//EN','BEGIN:VEVENT',
+  'UID:maacat-vara-expo-2026@maacat.com','DTSTAMP:20261125T000000Z',
+  'DTSTART;VALUE=DATE:20261126','DTEND;VALUE=DATE:20261129',
+  'SUMMARY:MAACAT at VARA Expo 2026','LOCATION:Education Zone\\, Hulhumalé Central Park',
+  'DESCRIPTION:Four games\\, the MAACAT mascot and a lucky draw. https://maacat.com',
+  'END:VEVENT','END:VCALENDAR'].join('\r\n'));
 
-/* ============================================================
-   SCROLL REVEAL + STICKY LUCKY-DRAW BUTTON
-   ============================================================ */
-const fab = $('#fab');
-const seen = { hero:true, draw:false, outro:false };
+/* ---------- reveal + sticky button ---------- */
+const fab = $('#fab'); const seen = { hero:true, draw:false, foot:false };
 function updateFab(){
   const blocked = menu.classList.contains('open') || modal.classList.contains('open') || popup.classList.contains('open');
-  fab.classList.toggle('show', !blocked && !seen.hero && !seen.draw && !seen.outro);
+  fab.classList.toggle('show', !blocked && !seen.hero && !seen.draw && !seen.foot);
 }
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => es.forEach(en => {
-    if (en.isIntersecting) {
-      const el = en.target;
-      el.classList.add('in'); io.unobserve(el);
-      // once it's in, hand transitions back to the element's own hover styles
-      setTimeout(() => el.classList.remove('reveal', 'in', 'd1', 'd2', 'd3'), 1100);
-    }
+    if (!en.isIntersecting) return;
+    const el = en.target; el.classList.add('in'); io.unobserve(el);
+    setTimeout(() => el.classList.remove('reveal','in','d1','d2','d3'), 1100);
   }), { threshold:.12, rootMargin:'0px 0px -40px 0px' });
   $$('.reveal').forEach(el => io.observe(el));
-
-  const watch = (el, key) => new IntersectionObserver(es => es.forEach(en => { seen[key] = en.isIntersecting; updateFab(); }), { threshold:0 }).observe(el);
-  watch($('.hero'), 'hero');
-  watch($('#luckydraw'), 'draw');
-  watch($('footer'), 'outro');
-
+  const watch = (el, k) => new IntersectionObserver(es => es.forEach(en => { seen[k] = en.isIntersecting; updateFab(); })).observe(el);
+  watch($('.hero'), 'hero'); watch($('#luckydraw'), 'draw'); watch($('footer'), 'foot');
   const marq = $('#marq');
   new IntersectionObserver(es => es.forEach(en => marq.style.animationPlayState = en.isIntersecting ? 'running' : 'paused')).observe(marq);
-} else {
-  $$('.reveal').forEach(el => el.classList.add('in'));
-}
+} else { $$('.reveal').forEach(el => el.classList.remove('reveal')); }
 
-/* ============================================================
-   LUCKY DRAW SURVEY
-   ============================================================ */
-$('#age-opts').innerHTML = AGES.map(a => `
-  <label class="opt"><input type="radio" name="age" value="${a}"><span>${a}</span></label>
-`).join('');
-$('#stall-opts').innerHTML = ACTIVITIES.map(a => `
-  <label class="opt c" style="--c:${a.color}; --ink:${a.ink}"><input type="radio" name="stall" value="${a.id} — ${a.name}"><span>${a.id} — ${a.name}</span></label>
-`).join('');
+/* ---------- lucky draw form ---------- */
+$('#age-opts').innerHTML = AGES.map(a => `<label class="opt"><input type="radio" name="age" value="${a}"><span>${a}</span></label>`).join('');
+$('#stall-opts').innerHTML = ACTIVITIES.map(a => `<label class="opt c" style="--c:${a.color}; --ink:${a.ink}"><input type="radio" name="stall" value="${a.id} — ${a.name}"><span>${a.name}</span></label>`).join('');
 
-const form = $('#form');
-const submitBtn = $('#submit');
-const submitLabel = $('#submit-label');
+const form = $('#form'), submitBtn = $('#submit'), submitLabel = $('#submit-label');
 const showErr = (id, on) => $('#' + id).classList.toggle('show', on);
 const markBad = (id, on) => { const el = $('#' + id); if (el) el.classList.toggle('bad', on); };
-const cleanPhone = v => v.replace(/[^\d]/g, '');
-
 function readForm(){
-  const age = $('input[name=age]:checked', form);
-  const stall = $('input[name=stall]:checked', form);
-  return {
-    age: age ? age.value : '',
-    stall: stall ? stall.value : '',
-    phone: cleanPhone($('#phone').value),
-    why: $('#why').value.trim(),
-    improve: $('#improve').value.trim(),
-    consent: $('#consent').checked
-  };
+  const age = $('input[name=age]:checked', form), stall = $('input[name=stall]:checked', form);
+  return { age: age ? age.value : '', stall: stall ? stall.value : '', phone: $('#phone').value.replace(/\D/g, ''),
+           why: $('#why').value.trim(), improve: $('#improve').value.trim(), consent: $('#consent').checked };
 }
-function problems(v){
-  return {
-    age: !v.age,
-    phone: v.phone.length < 7 || v.phone.length > 15,
-    stall: !v.stall,
-    why: v.why.length < 2,
-    consent: !v.consent
-  };
-}
-
-/* progress bar */
+const problems = v => ({ age:!v.age, phone: v.phone.length < 7 || v.phone.length > 15, stall:!v.stall, why: v.why.length < 2, consent:!v.consent });
 function updateProgress(){
-  const bad = problems(readForm());
-  const done = Object.values(bad).filter(x => !x).length;
+  const done = Object.values(problems(readForm())).filter(x => !x).length;
   $('#ld-fill').style.width = (done / 5 * 100) + '%';
-  $('#ld-count').textContent = done === 5 ? 'Ready to enter!' : `${done} / 5 done`;
+  $('#ld-count').textContent = done === 5 ? 'Ready!' : `${done} / 5`;
   $('#ld-progress').classList.toggle('done', done === 5);
   submitBtn.classList.toggle('ready', done === 5);
 }
-form.addEventListener('input', updateProgress);
-form.addEventListener('change', updateProgress);
-$('#phone').addEventListener('input', e => {   // digits, spaces, + and - only
-  const v = e.target.value.replace(/[^\d+\-\s]/g, '');
-  if (v !== e.target.value) e.target.value = v;
-});
+form.addEventListener('input', updateProgress); form.addEventListener('change', updateProgress);
+$('#phone').addEventListener('input', e => { const v = e.target.value.replace(/[^\d+\-\s]/g, ''); if (v !== e.target.value) e.target.value = v; });
 updateProgress();
 
-/* popup */
-const popup = $('#popup');
-const popupCard = $('#popup-card');
-const popupRetry = $('#popup-retry');
-const popupClose = $('#popup-close');
+const popup = $('#popup'), popupCard = $('#popup-card'), popupRetry = $('#popup-retry'), popupClose = $('#popup-close');
 let popupLastFocus = null;
-
-function showPopup(status, serverMessage){
+function showPopup(status, serverMsg){
   popupLastFocus = document.activeElement;
-  const copy = LUCKY_DRAW_COPY[status] || LUCKY_DRAW_COPY.error;
-  const ok = status === 'ok';
-  const canRetry = status === 'unreachable' || status === 'error';
+  const copy = LUCKY_DRAW_COPY[status] || LUCKY_DRAW_COPY.error, ok = status === 'ok', retry = status === 'unreachable' || status === 'error';
   popupCard.style.setProperty('--c', ok ? 'var(--green)' : status === 'duplicate' ? 'var(--yellow)' : 'var(--orange)');
   $('#popup-icon').textContent = ok ? '✓' : '!';
   $('#popup-title').textContent = copy.title;
-  $('#popup-message').textContent = copy.msg || serverMessage || LUCKY_DRAW_COPY.error.msg;
-  popupRetry.hidden = !canRetry;
-  popupClose.textContent = ok ? 'Done' : canRetry ? 'Close' : 'Got it';
-  popupClose.className = canRetry ? 'btn btn-ghost' : 'btn btn-1';
-  popup.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  (canRetry ? popupRetry : popupClose).focus();
+  $('#popup-message').textContent = copy.msg || serverMsg || LUCKY_DRAW_COPY.error.msg;
+  popupRetry.hidden = !retry;
+  popupClose.textContent = ok ? 'Done' : retry ? 'Close' : 'Got it';
+  popupClose.className = retry ? 'btn btn-ghost' : 'btn btn-1';
+  popup.classList.add('open'); document.body.style.overflow = 'hidden';
+  (retry ? popupRetry : popupClose).focus();
   updateFab();
   if (ok) confetti();
 }
 function hidePopup(){
-  popup.classList.remove('open');
-  document.body.style.overflow = '';
+  popup.classList.remove('open'); document.body.style.overflow = '';
   if (popupLastFocus && document.contains(popupLastFocus)) popupLastFocus.focus({ preventScroll:true });
   updateFab();
 }
@@ -855,64 +1023,39 @@ popupClose.addEventListener('click', hidePopup);
 popupRetry.addEventListener('click', () => { hidePopup(); submitEntry(); });
 popup.addEventListener('click', e => { if (e.target === popup) hidePopup(); });
 
-/* submit */
 let sending = false;
 async function submitEntry(){
   if (sending) return;
-  const v = readForm();
-  const bad = problems(v);
-  showErr('err-age', bad.age);
-  showErr('err-phone', bad.phone); markBad('f-phone', bad.phone);
-  showErr('err-stall', bad.stall);
-  showErr('err-why', bad.why); markBad('f-why', bad.why);
-  showErr('err-consent', bad.consent);
-  const firstBad = Object.keys(bad).find(k => bad[k]);
-  if (firstBad) { $('#err-' + firstBad).scrollIntoView({ block:'center', behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
-
-  sending = true;
-  submitBtn.disabled = true; submitLabel.textContent = 'Sending…';
+  const v = readForm(), bad = problems(v);
+  showErr('err-age', bad.age); showErr('err-phone', bad.phone); markBad('f-phone', bad.phone);
+  showErr('err-stall', bad.stall); showErr('err-why', bad.why); markBad('f-why', bad.why); showErr('err-consent', bad.consent);
+  const first = Object.keys(bad).find(k => bad[k]);
+  if (first) { $('#err-' + first).scrollIntoView({ block:'center', behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
+  sending = true; submitBtn.disabled = true; submitLabel.textContent = 'Sending…';
   let res;
-  try {
-    res = await MaacatBackend.submitLuckyDraw({ age:v.age, phone:v.phone, favouriteStall:v.stall, why:v.why, improve:v.improve });
-  } catch (err) {
-    console.error('lucky draw submit failed', err);
-    res = { success:false, status:'error' };
-  }
-  sending = false;
-  submitBtn.disabled = false; submitLabel.textContent = 'Enter the lucky draw';
-
-  const status = res.status || (res.success ? 'ok' : /already entered/i.test(res.message || '') ? 'duplicate' : 'error');
-  track('lucky_draw_submit', { result: status });
+  try { res = await MaacatBackend.submitLuckyDraw({ age:v.age, phone:v.phone, favouriteStall:v.stall, why:v.why, improve:v.improve }); }
+  catch (err) { console.error(err); res = { success:false, status:'error' }; }
+  sending = false; submitBtn.disabled = false; submitLabel.textContent = 'Enter the draw';
+  const status = res.status || (res.success ? 'ok' : 'error');
+  track('lucky_draw_submit', { result:status });
   showPopup(status, res.message);
   if (status === 'ok') { form.reset(); updateProgress(); }
 }
 form.addEventListener('submit', e => { e.preventDefault(); submitEntry(); });
 
-/* ============================================================
-   CONFETTI (brand colours) — skipped if reduced motion is on
-   ============================================================ */
+/* ---------- confetti ---------- */
 function confetti(){
   if (reduceMotion) return;
-  const cv = $('#confetti');
-  const ctx = cv.getContext('2d');
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const cv = $('#confetti'), ctx = cv.getContext('2d'), dpr = Math.min(devicePixelRatio || 1, 2);
   const W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr;
-  const colors = ['#12D900','#2CD9D4','#7A00FF','#FFC51B','#EC1680','#FF5A00'];
-  const bits = Array.from({ length: 140 }, () => ({
-    x: W / 2 + (Math.random() - .5) * W * .2, y: H * .45,
-    vx: (Math.random() - .5) * 22 * dpr, vy: (-Math.random() * 18 - 6) * dpr,
-    w: (6 + Math.random() * 7) * dpr, h: (8 + Math.random() * 10) * dpr,
-    r: Math.random() * Math.PI, vr: (Math.random() - .5) * .4,
-    c: colors[Math.floor(Math.random() * colors.length)]
-  }));
+  const cols = ['#12D900','#2CD9D4','#7A00FF','#FFC51B','#EC1680','#FF5A00'];
+  const bits = Array.from({ length:140 }, () => ({ x:W/2 + (Math.random() - .5) * W * .2, y:H * .45, vx:(Math.random() - .5) * 22 * dpr, vy:(-Math.random() * 18 - 6) * dpr,
+    w:(6 + Math.random() * 7) * dpr, h:(8 + Math.random() * 10) * dpr, r:Math.random() * 3, vr:(Math.random() - .5) * .4, c:cols[Math.floor(Math.random() * 6)] }));
   const start = performance.now();
   (function frame(t){
     ctx.clearRect(0, 0, W, H);
-    bits.forEach(b => {
-      b.vy += .55 * dpr; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.r += b.vr;
-      ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r);
-      ctx.fillStyle = b.c; ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); ctx.restore();
-    });
+    bits.forEach(b => { b.vy += .55 * dpr; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+      ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r); ctx.fillStyle = b.c; ctx.fillRect(-b.w/2, -b.h/2, b.w, b.h); ctx.restore(); });
     if (t - start < 2600) requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
   })(start);
 }
