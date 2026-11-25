@@ -1,20 +1,18 @@
 -- ============================================================
--- MAACAT — Supabase setup (lucky draw only)
+-- MAACAT — Supabase setup for a BRAND-NEW project (lucky draw only)
 -- ============================================================
--- Run this ONCE, in a new Supabase project's SQL editor
--- (left sidebar → SQL Editor → New query → paste all of this → Run).
+-- Already have the L.E.A.D. 2026 project? Don't use this file —
+-- run supabase-vara-update.sql instead.
 --
--- What this gives you:
---   - One shared table every survey submission lands in
---   - A phone number can only enter once, ever — enforced by the
---     database itself, not just by the page's JavaScript
+-- New project: left sidebar → SQL Editor → New query → paste all
+-- of this → Run. Then copy Settings → API "Project URL" and the
+-- "anon public" key into assets/js/backend.js.
 -- ============================================================
-
--- ---------- Table ----------
 
 create table if not exists lucky_draw_entries (
   id              bigserial primary key,
-  phone           text not null unique,
+  event           text not null default 'VARA EXPO 2026',
+  phone           text not null,
   age_group       text not null,
   favourite_stall text not null,
   why             text not null,
@@ -22,54 +20,55 @@ create table if not exists lucky_draw_entries (
   created_at      timestamptz not null default now()
 );
 
--- ---------- Lock it down ----------
--- Row Level Security with no policies = nobody can read or write
--- this table directly from the browser. The only way in is
--- through the function below.
+-- One entry per phone number, per event
+create unique index if not exists lucky_draw_entries_event_phone_key
+  on lucky_draw_entries (event, phone);
 
+-- Row Level Security with no policies = nobody can read or write the
+-- table directly from a browser. The only way in is the function below.
 alter table lucky_draw_entries enable row level security;
-
--- ---------- The function the website calls ----------
--- Tries to insert. If the phone number already exists, the
--- table's UNIQUE constraint rejects it and this catches that
--- and returns the "already entered" message instead.
 
 create or replace function submit_lucky_draw(
   p_phone text, p_age text, p_favourite_stall text,
-  p_why text, p_improve text default null
+  p_why text, p_improve text default null,
+  p_event text default 'VARA EXPO 2026'
 )
 returns json
 language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  v_phone text := regexp_replace(coalesce(p_phone, ''), '\D', '', 'g');
+  v_event text := coalesce(nullif(trim(p_event), ''), 'VARA EXPO 2026');
 begin
+  if length(v_phone) < 7 or length(v_phone) > 15 then
+    return json_build_object('success', false, 'status', 'invalid',
+      'message', 'Please enter a valid mobile number.');
+  end if;
+
+  if coalesce(trim(p_age), '') = ''
+     or coalesce(trim(p_favourite_stall), '') = ''
+     or coalesce(trim(p_why), '') = '' then
+    return json_build_object('success', false, 'status', 'invalid',
+      'message', 'Please answer every question.');
+  end if;
+
   begin
-    insert into lucky_draw_entries (phone, age_group, favourite_stall, why, improve)
-    values (p_phone, p_age, p_favourite_stall, p_why, p_improve);
-  exception when unique_violation then
-    return json_build_object(
-      'success', false,
-      'message', 'You have already entered the lucky draw.'
+    insert into lucky_draw_entries (event, phone, age_group, favourite_stall, why, improve)
+    values (
+      v_event, v_phone, trim(p_age), trim(p_favourite_stall),
+      left(trim(p_why), 1000),
+      nullif(left(trim(coalesce(p_improve, '')), 1000), '')
     );
+  exception when unique_violation then
+    return json_build_object('success', false, 'status', 'duplicate',
+      'message', 'You have already entered the lucky draw.');
   end;
 
-  return json_build_object(
-    'success', true,
-    'message', 'You''ve entered the lucky draw! Please vote MAACAT for the best team of the event.'
-  );
+  return json_build_object('success', true, 'status', 'ok',
+    'message', 'You''ve entered the lucky draw!');
 end;
 $$;
 
--- ---------- Who's allowed to call it ----------
--- The website connects as the "anon" role. It gets NO direct
--- table access (RLS above blocks that) — only permission to call
--- this one function.
-
-grant execute on function submit_lucky_draw(text, text, text, text, text) to anon;
-
--- ============================================================
--- Done. Next: Settings → API in the Supabase sidebar, copy the
--- "Project URL" and the "anon public" key into
--- assets/js/backend.js.
--- ============================================================
+grant execute on function submit_lucky_draw(text, text, text, text, text, text) to anon;

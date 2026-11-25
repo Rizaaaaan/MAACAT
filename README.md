@@ -1,118 +1,91 @@
-# MAACAT — L.E.A.D. 2026 site
+# MAACAT — VARA Expo 2026 site
 
-Single-page campaign site for the MAACAT marketing team. No build step, no framework —
-open `index.html` in a browser and it works.
+Single-page site for MAACAT, the student marketing club at MNU, for VARA Expo 2026
+(26–28 November · Education Zone · Hulhumalé Central Park). No build step — open
+`index.html` in a browser and it works.
 
 ```
-index.html                       the public site
-internal-test.html               private page to test the lucky draw before launch
-BACKEND.md                       exact steps to make the survey save for real
-supabase-schema.sql              paste into Supabase once — see BACKEND.md
-assets/
-  branding/                      logo + icon (already in place)
-  css/site.css                   shared styles
-  js/backend.js                  ← put your Supabase keys here (see BACKEND.md)
-  posters/stall-01.jpg           ← drop the six posters here
-  posters/stall-02.jpg
-  ...stall-06.jpg
-  map/                           unused for now
+index.html                     the whole site (content + settings at the top of the <script>)
+assets/css/site.css            styles
+assets/js/backend.js           lucky draw → Supabase (keys + event name live here)
+assets/branding/               logo + cat icon
+supabase-vara-update.sql       run ONCE on the existing Supabase project (see below)
+supabase-schema.sql            only for a brand-new Supabase project
 ```
 
 ---
 
-## Current phase: premarketing (info only)
+## Before the expo — do these in order
 
-The public site (`index.html`) is deliberately info-only right now — no lucky draw form
-visible yet. `internal-test.html` is where the team tests that feature before it goes
-live, without exposing it to premarketing visitors. It isn't linked from anywhere on the
-public site — only reachable if you know the direct URL.
+1. **Wake up Supabase.** The free plan pauses a project after a week with no activity,
+   which is why the lucky draw said "Couldn't submit". Go to supabase.com → your project →
+   **Resume project**. Wait a few minutes until the dashboard shows it running.
 
-On event day, the form and popup from `internal-test.html` get added to `index.html`
-proper, and `internal-test.html` gets deleted.
+2. **Run the update.** Supabase → **SQL Editor** → **New query** → paste all of
+   `supabase-vara-update.sql` → **Run**. This keeps every L.E.A.D. entry but tags it
+   "L.E.A.D. 2026", so people who entered last time can enter again at VARA. Without it
+   the draw still works, but anyone who entered at L.E.A.D. would be told "already
+   entered".
 
----
+3. **Upload to GitHub.** Open the repo → **Add file → Upload files** → drag in
+   `index.html` and the `assets` folder → **Commit**. (Don't delete the `CNAME` file —
+   that's what keeps maacat.com working.) The old `assets/posters/` folder isn't used
+   any more; delete it whenever you like.
 
-## Putting it online
-
-Drag the whole folder onto [netlify.com/drop](https://app.netlify.com/drop), or push it to
-a GitHub repo and turn on GitHub Pages. Either gives you a live URL for free.
-
----
-
-## Make the lucky draw actually save
-
-Right now it runs in "local" mode — it works, but only on whichever single device you're
-testing on. **`BACKEND.md` has the exact fifteen-minute setup** — no code to write, just a
-free Supabase account, one SQL paste, and two values copied into `assets/js/backend.js`.
-
-You'll know it's working when `internal-test.html` shows "Live" instead of "Local" under
-the page title.
+4. **Test on a real phone.** Open maacat.com, fill in the lucky draw with your own number
+   → green "You're in!" with confetti. Submit the same number again → yellow "Already
+   entered". Then delete your test row in Supabase → **Table Editor** →
+   `lucky_draw_entries`.
 
 ---
 
-## Testing before launch
+## During the expo
 
-1. Open `internal-test.html`.
-2. Fill in the form with a test phone number, submit. You should get a green popup:
-   *"You've entered the lucky draw! Please vote MAACAT for the best team of the event."*
-3. Submit again with the exact same number. You should get an orange popup instead:
-   *"You have already entered the lucky draw."*
-4. Try a different number — should succeed again.
-5. If you've set up Supabase, check **Table Editor → lucky_draw_entries** to confirm the
-   rows are actually there, not just showing a nice popup with nothing saved behind it.
+Supabase → **SQL Editor**:
 
----
+```sql
+-- VARA entries, newest first
+select * from lucky_draw_entries where event = 'VARA EXPO 2026' order by created_at desc;
 
-## Editing the stalls
+-- how many so far
+select count(*) from lucky_draw_entries where event = 'VARA EXPO 2026';
 
-The list of stalls that shows in the survey's "favourite stall" question lives near the
-top of `internal-test.html`'s `<script>` block (`STALLS`), and separately in `index.html`
-for the stall cards and modals. Keep the names in sync between the two if you rename one.
-
----
-
-## QR codes
-
-Point each poster's QR at:
-
-```
-https://yoursite.com/?stall=01
-https://yoursite.com/?stall=02
-...
+-- pick a random winner
+select phone, age_group, favourite_stall from lucky_draw_entries
+where event = 'VARA EXPO 2026' order by random() limit 1;
 ```
 
-Opening that link scrolls to the stalls and pops that stall's panel open straight away.
-
-Generate the codes at qr-code-generator.com or similar. Test one with an actual phone
-before you send anything to print.
+Or **Table Editor → lucky_draw_entries → Export → CSV** to open everything in Excel.
 
 ---
 
-## Before the day
+## Quick edits (all near the top of the `<script>` in index.html)
 
-- [ ] Real URL live
-- [ ] Supabase set up per `BACKEND.md`, keys pasted into `assets/js/backend.js`
-- [ ] Confirmed `internal-test.html` says "Live", not "Local"
-- [ ] Lucky draw form and popup merged into `index.html`, `internal-test.html` deleted
-- [ ] One test entry submitted end-to-end, confirmed in Supabase, then a repeat of the
-      same number confirmed as rejected
-- [ ] QR codes generated from the real URL and scan-tested on a phone
-- [ ] Six posters dropped into `assets/posters/`
-- [ ] Opened on an actual phone, not just a resized browser window
+| What | Where |
+| --- | --- |
+| Countdown opening time (set to 4 PM) | `EXPO_OPENS` |
+| Popup wording ("You're in!", errors) | `LUCKY_DRAW_COPY` |
+| Activity names, descriptions, steps | `ACTIVITIES` |
+| Mascot speech-bubble lines | `MASCOT_LINES` |
+| Event name the draw is tagged with | `LUCKY_DRAW_EVENT` in `assets/js/backend.js` |
+
+The countdown counts to the opening, shows "Live now · Day X of 3" during the expo, and
+hides itself after 28 November. The cat logo stays.
+
+**Next event:** change `LUCKY_DRAW_EVENT` in `backend.js` (e.g. `'NEXT EVENT 2027'`) and
+the draw starts fresh. Every older entry stays saved under its own event name.
 
 ---
 
-## Notes on how it's built
+## Links
 
-Mobile-first: the base CSS is the phone layout, and the media queries only add things as
-the screen gets wider. Checked with no horizontal overflow at 320, 390, 430, 768 and
-1280px.
+- `maacat.com/?activity=01` … `?activity=04` opens that activity straight away (good for QR
+  codes). Old `?stall=` links still work.
+- Google Analytics events: `activity_open`, `cat_pick`, `mascot_tap`,
+  `lucky_draw_submit` (with result), `open_maps`, `add_to_calendar`, `instagram`, `tiktok`.
 
-Accessibility: semantic landmarks, keyboard-navigable throughout, focus trapped inside the
-stall panel and the result popup, Escape closes both, visible focus rings, form errors sit
-directly under their field. `prefers-reduced-motion` switches off every animation.
+## How it's built
 
-Backend: `assets/js/backend.js` is the only file that knows whether it's talking to a real
-database or just `localStorage`. The page calls one function on it — `submitLuckyDraw` —
-without caring which mode is active, so once you've set up Supabase, nothing else needs to
-change.
+Mobile-first, checked with no sideways scrolling at 320, 375, 390, 430, 768, 1024, 1280
+and 1440px. Keyboard-navigable, focus stays inside the activity panel and popup, Escape
+closes them, and `prefers-reduced-motion` turns off the animations and confetti.

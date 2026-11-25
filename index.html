@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050505">
+<script>document.documentElement.classList.add('js');</script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-63BEZC11HF"></script>
@@ -11,21 +12,20 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-63BEZC11HF');
 </script>
 
-<title>MAACAT — Create. Reach. Grow. | L.E.A.D. 2026</title>
-<meta name="description" content="Six marketing experiences by the MAACAT team at L.E.A.D. 2026, MNU Business School. 30 September 2026.">
-<meta property="og:title" content="MAACAT — Create. Reach. Grow.">
-<meta property="og:description" content="Six marketing experiences. One MAACAT takeover. L.E.A.D. 2026 — 30 September.">
+<title>MAACAT at VARA Expo 2026 — Create. Reach. Grow.</title>
+<meta name="description" content="MAACAT, the student marketing club at MNU, is at VARA Expo 2026 — Education Zone, Hulhumalé Central Park, 26–28 November. Four games, our mascot and a lucky draw.">
+<meta property="og:title" content="MAACAT at VARA Expo 2026">
+<meta property="og:description" content="Four games, one mascot, one lucky draw. Find MAACAT in the Education Zone, Hulhumalé Central Park — 26–28 November 2026.">
 <meta property="og:image" content="assets/branding/maacat-logo.png">
 <link rel="icon" href="assets/branding/maacat-icon.png">
+<link rel="apple-touch-icon" href="assets/branding/maacat-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/backend.js"></script>
 </head>
 <body>
@@ -34,15 +34,16 @@
 <header class="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="MAACAT home">
-      <img class="brand-img" src="assets/branding/maacat-icon.png" alt="MAACAT logo" onerror="this.style.display='none'">
+      <img class="brand-img" src="assets/branding/maacat-icon.png" alt="" onerror="this.style.display='none'">
       <span class="brand-txt" aria-hidden="true"><span>M</span><span>A</span><span>A</span><span>C</span><span>A</span><span>T</span></span>
+      <span class="brand-club" aria-hidden="true">Marketing club · MNU</span>
       <span class="sr">MAACAT</span>
     </a>
 
     <nav class="nav-desk" aria-label="Main">
-      <a href="#stalls">Stalls</a>
-      <a href="#posters">Posters</a>
-      <a href="#about">About</a>
+      <a href="#activities">Activities</a>
+      <a href="#mascot">Mascot</a>
+      <a href="#find">Find us</a>
       <a href="#luckydraw" class="btn btn-3">Lucky Draw</a>
     </nav>
 
@@ -55,13 +56,13 @@
 <div class="menu" id="menu" hidden>
   <nav aria-label="Mobile">
     <ol>
-      <li><a href="#stalls">Stalls <i>01–06</i></a></li>
-      <li><a href="#posters">Posters <i>Scan</i></a></li>
-      <li><a href="#about">About <i>MAACAT</i></a></li>
-      <li><a href="#luckydraw">Lucky Draw <i>Survey</i></a></li>
+      <li><a href="#activities">Activities <i>01–04</i></a></li>
+      <li><a href="#mascot">Mascot <i>Say hi</i></a></li>
+      <li><a href="#find">Find us <i>Education Zone</i></a></li>
+      <li><a href="#luckydraw">Lucky Draw <i>Win</i></a></li>
     </ol>
   </nav>
-  <p class="menu-foot">L.E.A.D. 2026 · MNU Business School<br>30 September 2026</p>
+  <p class="menu-foot">VARA Expo 2026 · 26–28 November<br>Education Zone · Hulhumalé Central Park</p>
 </div>
 
 <main id="top">
@@ -73,154 +74,208 @@
       <div>
         <img class="hero-logo" src="assets/branding/maacat-logo.svg" alt="" aria-hidden="true" onerror="this.remove()">
 
-        <p class="blip"><b></b> L.E.A.D. 2026 · 30 SEPTEMBER</p>
+        <p class="blip"><b></b> VARA Expo 2026 <em>·</em> 26–28 Nov</p>
 
-        <h1 class="wordmark" aria-label="MAACAT">
+        <h1 class="wordmark" id="wordmark" aria-label="MAACAT">
           <span aria-hidden="true">M</span><span aria-hidden="true">A</span><span aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">A</span><span aria-hidden="true">T</span>
         </h1>
 
-        <p class="slogan">
-          <i><em>Create.</em></i>
-          <i><em>Reach.</em></i>
-          <i><em>Grow.</em></i>
+        <p class="slogan" aria-label="Create. Reach. Grow.">
+          <i aria-hidden="true">Create.</i>
+          <i aria-hidden="true">Reach.</i>
+          <i aria-hidden="true">Grow.</i>
         </p>
 
         <p class="hero-copy">
-          Six marketing experiences. One MAACAT takeover.
-          <strong>Come play every stall.</strong>
+          The student marketing club from MNU is taking over the Education Zone.
+          Four games, one mascot, one lucky draw. <strong>Come play.</strong>
         </p>
 
         <div class="cta-row">
-          <a href="#stalls" class="btn btn-1">Explore the stalls</a>
+          <a href="#activities" class="btn btn-1">See the activities</a>
+          <a href="#luckydraw" class="btn btn-2">Enter the lucky draw</a>
         </div>
       </div>
 
       <div class="hero-side">
-      <img class="hero-logo desk-only" src="assets/branding/maacat-logo.svg" alt="" aria-hidden="true" onerror="this.remove()">
-      <div class="count" id="count" role="timer" aria-live="off">
-        <p class="count-lbl">DOORS OPEN IN</p>
-        <div class="count-grid" id="count-grid">
-          <span class="cu"><b id="cd-d">--</b><i>DAYS</i></span>
-          <span class="cu"><b id="cd-h">--</b><i>HRS</i></span>
-          <span class="cu"><b id="cd-m">--</b><i>MIN</i></span>
-          <span class="cu"><b id="cd-s">--</b><i>SEC</i></span>
+        <img class="hero-logo desk-only" src="assets/branding/maacat-logo.svg" alt="MAACAT logo" onerror="this.remove()">
+        <div class="count" id="count" aria-live="off">
+          <p class="count-lbl">VARA Expo starts in</p>
+          <div class="count-grid">
+            <span class="cu"><b id="cd-d">--</b><i>DAYS</i></span>
+            <span class="cu"><b id="cd-h">--</b><i>HRS</i></span>
+            <span class="cu"><b id="cd-m">--</b><i>MIN</i></span>
+            <span class="cu"><b id="cd-s">--</b><i>SEC</i></span>
+          </div>
+          <p class="count-foot">Education Zone · Hulhumalé Central Park</p>
         </div>
-      </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ================= MARQUEE ================= -->
-<div class="marq" aria-hidden="true">
-  <div class="marq-in" id="marq">
-    <span>Marketing Ladder</span><span>Cheap or Chic?</span><span>Build-a-Brand</span><span>Maacat Snap Lab</span><span>PR Disaster</span><span>Brand Relay</span>
-    <span>Marketing Ladder</span><span>Cheap or Chic?</span><span>Build-a-Brand</span><span>Maacat Snap Lab</span><span>PR Disaster</span><span>Brand Relay</span>
+<div class="marq-wrap" aria-hidden="true">
+  <div class="marq">
+    <div class="marq-in" id="marq">
+      <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
+      <span>Marketing Ladder</span><span>Brand Relay</span><span>Build-a-Brand</span><span>Face Paint</span><span>Meet the mascot</span><span>Lucky draw</span>
+    </div>
   </div>
 </div>
 
 <!-- ================= ABOUT ================= -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="rule"></div>
+    <div class="sec-head reveal">
+      <p class="kicker" style="--k:var(--green)">Who we are</p>
       <h2>We are MAACAT</h2>
-      <p>The marketing team of MNU Business School. Our slogan isn't decoration — it's the three things every stall we built has to do.</p>
+      <p>We started as the marketing team's stall crew at L.E.A.D. 2026. Now we're a student marketing club at MNU, and we're bringing the games to VARA Expo. Our slogan isn't decoration: it's the three things every activity we build has to do.</p>
     </div>
     <div class="about-grid">
-      <article class="abt">
+      <article class="abt reveal" style="--c:var(--green)">
         <h3>Create</h3>
-        <p>Fresh ideas and bold designs, built into a visual identity striking enough to capture your imagination from the start.</p>
+        <p>Fresh ideas and bold designs, built into a visual identity loud enough to stop you mid-scroll and mid-walk.</p>
+        <span class="big" aria-hidden="true">C</span>
       </article>
-      <article class="abt">
+      <article class="abt reveal d1" style="--c:var(--pink)">
         <h3>Reach</h3>
-        <p>Six stalls, six ways in. Whether you want to guess, throw, build, film or gamble — one of them is for you.</p>
+        <p>Four activities, four ways in. Guess, race, build or get painted — one of them is for you.</p>
+        <span class="big" aria-hidden="true">R</span>
       </article>
-      <article class="abt">
+      <article class="abt reveal d2" style="--c:var(--yellow)">
         <h3>Grow</h3>
-        <p>Every game teaches a real marketing idea. You'll leave knowing something about pricing, positioning or branding.</p>
+        <p>Every game hides a real marketing idea. You'll leave knowing something new about brands and how they win people over.</p>
+        <span class="big" aria-hidden="true">G</span>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= STALLS ================= -->
-<section id="stalls">
+<!-- ================= ACTIVITIES ================= -->
+<section id="activities">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="rule"></div>
-      <h2>Pick your colour</h2>
-      <p>Six stalls. Tap any one to see how it works and what it teaches.</p>
+    <div class="act-top">
+      <div class="sec-head reveal">
+        <p class="kicker" style="--k:var(--orange)">At the stall</p>
+        <h2>Pick your game</h2>
+        <p>Four activities at the MAACAT stall. Tap any one to see how it works and what it teaches.</p>
+      </div>
+      <button type="button" class="picker reveal" id="picker">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        Can't decide? Let the cat pick
+      </button>
     </div>
-    <div class="stall-list" id="stall-list"><!-- rendered from data --></div>
+    <div class="act-list" id="act-list"><!-- rendered from data below --></div>
   </div>
 </section>
 
-<!-- ================= MODAL ================= -->
+<!-- ================= ACTIVITY MODAL ================= -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
   <div class="modal-bg" data-close></div>
   <div class="sheet" id="sheet">
     <div class="sheet-bar">
-      <span class="tag" id="sheet-tag">STALL</span>
-      <button class="x" data-close aria-label="Close stall details">&times;</button>
+      <span class="tag" id="sheet-tag">ACTIVITY</span>
+      <button class="x" data-close aria-label="Close activity details">&times;</button>
     </div>
     <div id="sheet-body"></div>
   </div>
 </div>
 
-<!-- ================= POSTERS ================= -->
-<section id="posters">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="rule"></div>
-      <h2>The poster wall</h2>
-      <p>Every poster around campus carries a QR code. Scan one and it drops you straight onto that stall.</p>
+<!-- ================= MASCOT ================= -->
+<section id="mascot">
+  <div class="wrap mascot-grid">
+    <div class="mascot-stage reveal" aria-label="MAACAT mascot">
+      <div class="ring"></div>
+      <div class="ring r2"></div>
+      <div class="orbit" aria-hidden="true"><i style="--a:0deg; background:var(--green)"></i><i style="--a:60deg; background:var(--turq)"></i><i style="--a:120deg; background:var(--purple)"></i><i style="--a:180deg; background:var(--yellow)"></i><i style="--a:240deg; background:var(--pink)"></i><i style="--a:300deg; background:var(--orange)"></i></div>
+      <button type="button" class="cat-btn" id="cat-btn" aria-label="Say hi to the MAACAT cat">
+        <img src="assets/branding/maacat-icon.png" alt="">
+      </button>
+      <p class="bubble" id="bubble" aria-live="polite">Psst… tap me.</p>
+      <p class="tap-hint" aria-hidden="true">Tap the cat</p>
     </div>
-    <div class="poster-grid" id="poster-grid"><!-- rendered from data --></div>
+
+    <div class="mascot-copy">
+      <div class="sec-head reveal">
+        <p class="kicker" style="--k:var(--pink)">Special guest</p>
+        <h2>Meet the mascot</h2>
+        <p>The MAACAT cat is coming to VARA Expo. Come find it at our stall, say hi, and take a photo with it.</p>
+      </div>
+      <ol class="mascot-steps reveal d1">
+        <li style="--c:var(--green)"><b>1</b>Find the cat at the MAACAT stall</li>
+        <li style="--c:var(--turq)"><b>2</b>Grab a photo together</li>
+        <li style="--c:var(--yellow)"><b>3</b>Tag @maacatexp when you post it</li>
+      </ol>
+      <a class="btn btn-3 reveal d2" href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" data-track="instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
+        Follow @maacatexp
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ================= EVENT INFO ================= -->
-<section id="event">
+<!-- ================= FIND US ================= -->
+<section id="find">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="rule"></div>
+    <div class="sec-head reveal">
+      <p class="kicker" style="--k:var(--yellow)">Come say hi</p>
       <h2>Where to find us</h2>
     </div>
-    <dl class="info">
-      <dt>DATE</dt>
-      <dd class="c1">30 September 2026</dd>
-      <dt>EVENT</dt>
-      <dd class="c2">L.E.A.D. 2026</dd>
-      <dt>VENUE</dt>
-      <dd class="c3">MNU Business School</dd>
-      <dt>TEAM</dt>
-      <dd>MAACAT — Marketing</dd>
-    </dl>
+
+    <div class="ticket reveal d1">
+      <div class="ticket-date" aria-hidden="true">
+        <span>NOV</span>
+        <b>26–28</b>
+        <span>2026</span>
+      </div>
+      <dl class="ticket-info">
+        <div><dt>Event</dt><dd class="c1">VARA Expo 2026</dd></div>
+        <div><dt>Venue</dt><dd class="c2">Hulhumalé Central Park</dd></div>
+        <div><dt>Stall</dt><dd class="c3">Education Zone</dd></div>
+        <div><dt>Date</dt><dd class="c4">26–28 Nov 2026</dd></div>
+      </dl>
+    </div>
+
+    <div class="find-actions reveal d2">
+      <a class="btn btn-1" href="https://www.google.com/maps/search/?api=1&amp;query=Hulhumal%C3%A9%20Central%20Park" target="_blank" rel="noopener" data-track="open_maps">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Open in Maps
+      </a>
+      <a class="btn btn-ghost" id="add-cal" href="#" download="maacat-vara-expo-2026.ics" data-track="add_to_calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+        Add to calendar
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ================= CLOSING CTA ================= -->
+<!-- ================= LUCKY DRAW ================= -->
 <section id="luckydraw">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="rule"></div>
+    <div class="sec-head reveal">
+      <p class="kicker" style="--k:var(--turq)">Win something</p>
       <h2>Enter the lucky draw</h2>
-      <p>Quick survey, one entry per number. Tell us what you thought and you're in.</p>
+      <p>Played a game? Tell us what you thought and you're in. Quick survey, one entry per number.</p>
     </div>
 
-    <form class="form-card" id="form" novalidate>
+    <form class="form-card reveal" id="form" novalidate>
+      <div class="ld-progress" id="ld-progress" aria-hidden="true">
+        <div class="ld-bar"><i id="ld-fill"></i></div>
+        <span class="ld-count" id="ld-count">0 / 5 done</span>
+      </div>
+
       <div class="field">
         <fieldset>
-          <legend>Age group</legend>
+          <legend><span class="q-num">01</span>Age group</legend>
           <div class="opts" id="age-opts"></div>
         </fieldset>
         <p class="err" id="err-age">Choose an age group.</p>
       </div>
 
       <div class="field" id="f-phone">
-        <label for="phone">Mobile number</label>
-        <span class="hint">Used for the lucky draw — one entry per number.</span>
+        <label for="phone"><span class="q-num">02</span>Mobile number</label>
+        <span class="hint">Used only for the lucky draw — one entry per number.</span>
         <input type="tel" id="phone" name="phone" inputmode="numeric" autocomplete="tel"
                placeholder="7XXXXXX" maxlength="15">
         <p class="err" id="err-phone">Enter a valid mobile number.</p>
@@ -228,21 +283,22 @@
 
       <div class="field">
         <fieldset>
-          <legend>Favourite stall</legend>
+          <legend><span class="q-num">03</span>Favourite activity</legend>
           <div class="opts one" id="stall-opts"></div>
         </fieldset>
-        <p class="err" id="err-stall">Pick a favourite stall.</p>
+        <p class="err" id="err-stall">Pick your favourite activity.</p>
       </div>
 
       <div class="field" id="f-why">
-        <label for="why">Why did you like it?</label>
-        <textarea id="why" name="why" rows="3" placeholder="It was..."></textarea>
+        <label for="why"><span class="q-num">04</span>Why did you like it?</label>
+        <textarea id="why" name="why" rows="3" maxlength="1000" placeholder="It was..."></textarea>
         <p class="err" id="err-why">Say a little about why.</p>
       </div>
 
       <div class="field">
-        <label for="improve">What could we improve?</label>
-        <textarea id="improve" name="improve" rows="3" placeholder="Optional"></textarea>
+        <label for="improve"><span class="q-num">05</span>What could we improve?</label>
+        <span class="hint">Optional — but we read every one.</span>
+        <textarea id="improve" name="improve" rows="3" maxlength="1000" placeholder="Optional"></textarea>
       </div>
 
       <div class="field">
@@ -253,27 +309,36 @@
         <p class="err" id="err-consent">Tick this to enter the draw.</p>
       </div>
 
-      <button type="submit" class="btn submit" id="submit">Submit + Enter Lucky Draw</button>
+      <button type="submit" class="btn submit" id="submit">
+        <span class="spinner" aria-hidden="true"></span>
+        <span id="submit-label">Enter the lucky draw</span>
+      </button>
+      <p class="form-foot">One entry per mobile number for VARA Expo 2026.</p>
     </form>
   </div>
 </section>
 
-<!-- ================= POPUP ================= -->
+<!-- ================= RESULT POPUP ================= -->
 <div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
   <div class="popup-card" id="popup-card">
-    <div class="popup-icon" id="popup-icon">✓</div>
+    <div class="popup-icon" id="popup-icon" aria-hidden="true">✓</div>
     <h3 id="popup-title">You're in!</h3>
     <p id="popup-message"></p>
-    <button class="btn btn-1" id="popup-close" type="button">Got it</button>
+    <div class="popup-actions">
+      <button class="btn btn-1" id="popup-retry" type="button" hidden>Try again</button>
+      <button class="btn btn-1" id="popup-close" type="button">Got it</button>
+    </div>
   </div>
 </div>
 
+<!-- ================= OUTRO ================= -->
 <section id="outro">
   <div class="wrap">
-    <div class="draw">
-      <h2>See you out there.</h2>
-      <p>L.E.A.D. 2026 · 30 September · MNU Business School</p>
-      <a href="#stalls" class="btn">Explore the stalls</a>
+    <div class="draw reveal">
+      <img src="assets/branding/maacat-icon.png" alt="">
+      <h2>See you at VARA Expo.</h2>
+      <p>26–28 November · Education Zone · Hulhumalé Central Park</p>
+      <a href="#activities" class="btn">See the activities</a>
     </div>
   </div>
 </section>
@@ -288,36 +353,55 @@
       <p class="foot-slogan"><i>Create.</i> <i>Reach.</i> <i>Grow.</i></p>
     </div>
     <div class="foot-social">
-      <a href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on Instagram">
+      <a href="https://www.instagram.com/maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on Instagram" data-track="instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.256 1.216.6 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.9 4.9 0 0 1-1.153 1.772 4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.772-1.153 4.9 4.9 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.065.217-1.79.465-2.428a4.9 4.9 0 0 1 1.153-1.772A4.9 4.9 0 0 1 5.45 2.525c.637-.248 1.363-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5zM17.25 5.55a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on TikTok">
+      <a href="https://www.tiktok.com/@maacatexp" target="_blank" rel="noopener" aria-label="MAACAT on TikTok" data-track="tiktok">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2h-3.1v13.6a2.9 2.9 0 1 1-2.9-2.9c.28 0 .55.03.8.1V9.6a5.98 5.98 0 0 0-.8-.05A6 6 0 1 0 16.6 15.6V9c1.2.86 2.66 1.37 4.2 1.4V7.3c-1.9-.06-3.5-1.17-4.2-2.67V2z"/></svg>
       </a>
     </div>
     <div class="dots" aria-hidden="true">
-      <b style="background:var(--green)"></b>
-      <b style="background:var(--turq)"></b>
-      <b style="background:var(--purple)"></b>
-      <b style="background:var(--yellow)"></b>
-      <b style="background:var(--pink)"></b>
-      <b style="background:var(--orange)"></b>
+      <b style="background:var(--green)"></b><b style="background:var(--turq)"></b><b style="background:var(--purple)"></b>
+      <b style="background:var(--yellow)"></b><b style="background:var(--pink)"></b><b style="background:var(--orange)"></b>
     </div>
     <small>
-      MAACAT — Marketing team, MNU Business School.<br>
-      Built for L.E.A.D. 2026 · 30 September 2026 · Malé, Maldives.<br>
-      This is a team page, not the official L.E.A.D. website.
+      MAACAT — student marketing club, The Maldives National University. Club registration in progress.<br>
+      At VARA Expo 2026 · 26–28 November 2026 · Education Zone, Hulhumalé Central Park.<br>
+      This is MAACAT's own page, not the official VARA Expo website.
     </small>
   </div>
 </footer>
 
+<!-- sticky lucky-draw button (phones only) -->
+<a href="#luckydraw" class="fab" id="fab" aria-label="Enter the lucky draw">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8S10.5 3 7.5 3a2.5 2.5 0 0 0 0 5M12 8s1.5-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+  Lucky draw
+</a>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
 <script>
 /* ============================================================
-   DATA — edit here, the page rebuilds itself.
+   SETTINGS — edit here, the page rebuilds itself.
    ============================================================ */
-const STALLS = [
+
+// VARA Expo opening time (used for the countdown). Last year it opened
+// at 4 PM, so that's the default — change the time here if it's different.
+const EXPO_OPENS  = new Date('2026-11-26T16:00:00+05:00');
+const EXPO_CLOSES = new Date('2026-11-29T00:00:00+05:00');   // end of 28 Nov
+
+// What the lucky draw popup says.
+const LUCKY_DRAW_COPY = {
+  ok:          { title:"You're in!",       msg:"You've entered the VARA Expo lucky draw. Good luck — and thanks for playing with MAACAT!" },
+  duplicate:   { title:'Already entered',   msg:'You have already entered the lucky draw.' },
+  invalid:     { title:'Check your answers', msg:null /* uses the database's message */ },
+  unreachable: { title:"Couldn't submit",   msg:"We couldn't reach the lucky draw just now. Please try again in a moment — or let someone at the MAACAT stall know." },
+  error:       { title:"Couldn't submit",   msg:'Something went wrong on our side. Please try again — or let someone at the MAACAT stall know.' }
+};
+
+const ACTIVITIES = [
   {
-    id:"01", slug:"marketing-ladder", name:"Marketing Ladder", color:"var(--green)",
+    id:"01", name:"Marketing Ladder", color:"var(--green)", ink:"#04210a",
     teaser:"Describe a product without naming it. Can they guess?",
     tag:"Guessing game",
     lede:"You pick a product, then give the group clues about it — without ever saying its name. If they can't work it out, you walk away with the prize.",
@@ -333,76 +417,8 @@ const STALLS = [
     ]
   },
   {
-    id:"02", slug:"cheap-or-chic", name:"Cheap or Chic?", color:"var(--turq)",
-    teaser:"Draw a brand. Toss the beanbag where you think it belongs.",
-    tag:"Toss + guess",
-    lede:"Draw a random brand card — McDonald's, Rolex, IKEA, Chanel, whatever comes up — then toss a beanbag onto the quadrant where you think that brand belongs. We reveal the real quadrant and price range right after.",
-    doList:[
-      "Draw a random brand card",
-      "Toss a beanbag onto the quadrant where you think that brand belongs",
-      "Host reveals the correct quadrant and the real price range",
-      "Score 2 points for the exact quadrant, 1 for getting only price or only feel right, 0 for both wrong"
-    ],
-    learnList:[
-      "How price and brand positioning connect",
-      "How packaging and perception shape what a brand \"feels\" like"
-    ]
-  },
-  {
-    id:"03", slug:"build-a-brand", name:"Build-a-Brand", color:"var(--purple)",
-    teaser:"Five minutes. Random brief. Build a brand from nothing.",
-    tag:"5-minute build",
-    lede:"Randomly select a product, target market, brand personality and colour, then use them to develop a brand name, logo, slogan and USP before the timer runs out. Your card joins the Marketing Wall.",
-    doList:[
-      "Randomly select a product, target market, brand personality and colour",
-      "Develop a brand name, logo, slogan and unique selling point from those elements",
-      "Finish inside 5 minutes",
-      "Place your completed brand card on the Marketing Wall"
-    ],
-    learnList:[
-      "Target markets",
-      "Brand positioning",
-      "Brand identity",
-      "Unique selling propositions",
-      "Creativity, strategic thinking and quick decision-making"
-    ]
-  },
-  {
-    id:"04", slug:"snap-lab", name:"Maacat Snap Lab", color:"var(--yellow)",
-    teaser:"Pose-itioning challenges, face paint, and a photobooth built for content.",
-    tag:"Content booth",
-    lede:"Our full social media pipeline in one stall — from pre-event teasers to live stories and recap videos. Every moment here is built to be captured.",
-    doList:[
-      "Take on the Pose-itioning Challenge — recreate animal poses to win badges",
-      "Get a custom MAACAT design at the Face Paint Corner",
-      "Complete photo challenges, group shots and individual photoshoots at the Photobooth",
-      "Everything gets captured for MAACAT's teasers, stories and recap content"
-    ],
-    learnList:[
-      "How a brand runs a content pipeline from teaser to recap",
-      "How interactive moments turn into shareable content"
-    ]
-  },
-  {
-    id:"05", slug:"pr-disaster", name:"PR Disaster: The Game", color:"var(--pink)",
-    teaser:"Your brand is on fire. Spin the wheel. Save it — or don't.",
-    tag:"Group game",
-    lede:"Join a group, pick one of three marketing scandal scenarios, and try to save the company. Your decisions matter — so does the wheel.",
-    doList:[
-      "Join a group",
-      "Choose one of three marketing scandal scenarios",
-      "Make your decisions and spin the wheel",
-      "Draw chance cards along the way"
-    ],
-    learnList:[
-      "How decisions and luck together determine whether the company is saved",
-      "How brands respond under pressure"
-    ],
-    pending:"The three scenarios are still being written. They'll be revealed at the stall."
-  },
-  {
-    id:"06", slug:"brand-relay", name:"Brand Relay", color:"var(--orange)",
-    teaser:"Two-person team relay. Sort mixed logos into the right industry — fast.",
+    id:"02", name:"Brand Relay", color:"var(--orange)", ink:"#2a0e00",
+    teaser:"Two-person relay. Sort mixed logos into the right industry — fast.",
     tag:"60-second relay",
     lede:"A fast-paced 2-member team challenge: identify mixed-up brand logos and relay them into the correct industry category boxes within 60 seconds. Most correct classifications wins.",
     doList:[
@@ -415,291 +431,491 @@ const STALLS = [
       "How quickly brand logos communicate their industry",
       "Working under time pressure as a team"
     ]
+  },
+  {
+    id:"03", name:"Build-a-Brand", color:"var(--purple)", ink:"#ffffff",
+    teaser:"Five minutes. Random brief. Build a brand from nothing.",
+    tag:"5-minute build",
+    lede:"Randomly select a product, target market, brand personality and colour, then use them to develop a brand name, logo, slogan and USP before the timer runs out. Your card joins the Marketing Wall.",
+    doList:[
+      "Randomly select a product, target market, brand personality and colour",
+      "Develop a brand name, logo, slogan and unique selling point from those elements",
+      "Finish inside 5 minutes",
+      "Place your completed brand card on the Marketing Wall"
+    ],
+    learnList:[
+      "Target markets and brand positioning",
+      "Brand identity and unique selling propositions",
+      "Creativity, strategic thinking and quick decision-making"
+    ]
+  },
+  {
+    id:"04", name:"Face Paint", color:"var(--yellow)", ink:"#2a1d00",
+    teaser:"Get a custom MAACAT design painted on. Walk out as a moving billboard.",
+    tag:"Face paint",
+    lede:"Grab a seat at the Face Paint Corner and get a custom MAACAT design painted on — then go show it off around the expo.",
+    doList:[
+      "Grab a seat at the Face Paint Corner",
+      "Get a custom MAACAT design painted on",
+      "Show it off around the expo — and tag @maacatexp if you post it"
+    ],
+    learnList:[
+      "How fans become walking ads for the brands they like",
+      "Why wearable, shareable moments spread a brand further"
+    ]
   }
 ];
 
+const AGES = ["Under 18","18–20","21–24","25–34","35+"];
+
+const MASCOT_LINES = [
+  "Meow-keting at its finest.",
+  "Psst… the lucky draw is just down the page.",
+  "Create. Reach. Grow. Purr.",
+  "I've been practising my photo pose all week.",
+  "Four games. Zero excuses.",
+  "Tap me again. I dare you.",
+  "Find me in the Education Zone!",
+  "I'm the face of the brand. Literally."
+];
+
 /* ============================================================
-   RENDER STALLS
+   HELPERS
    ============================================================ */
-const stallList = document.getElementById('stall-list');
-stallList.innerHTML = STALLS.map(s => `
-  <button class="stall${s.soon?' soon':''}" style="--c:${s.color}" data-stall="${s.id}"
-          aria-haspopup="dialog" aria-label="Stall ${s.id}, ${s.name}. Open details.">
-    <span class="stall-num" aria-hidden="true">${s.id}</span>
-    <h3>${s.name}</h3>
-    <p class="teaser">${s.teaser}</p>
-    <span class="stall-foot">
-      <span class="chip">${s.tag}</span>
-      <span class="open-lbl" aria-hidden="true">Open</span>
+const $ = (s, el=document) => el.querySelector(s);
+const $$ = (s, el=document) => [...el.querySelectorAll(s)];
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function track(name, params){ try { if (typeof gtag === 'function') gtag('event', name, params || {}); } catch(e){} }
+const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+/* ============================================================
+   ACTIVITY CARDS
+   ============================================================ */
+$('#act-list').innerHTML = ACTIVITIES.map((a, i) => `
+  <button class="act reveal d${i % 4}" style="--c:${a.color}" data-act="${a.id}"
+          aria-haspopup="dialog" aria-label="${a.id}, ${a.name}. Open details.">
+    <span class="act-num" aria-hidden="true">${a.id}</span>
+    <h3>${a.name}</h3>
+    <p class="teaser">${a.teaser}</p>
+    <span class="act-foot">
+      <span class="chip">${a.tag}</span>
+      <span class="open-lbl" aria-hidden="true">Open ${arrow}</span>
     </span>
   </button>
 `).join('');
 
 /* ============================================================
-   RENDER POSTER WALL
-   Replace assets/posters/stall-0N.jpg when artwork is ready.
+   COUNTDOWN → LIVE → (hidden after the expo; the logo stays)
    ============================================================ */
-document.getElementById('poster-grid').innerHTML = STALLS.map(s => `
-  <a class="poster" style="--c:${s.color}" href="?stall=${s.id}&source=poster#stalls"
-     data-poster="${s.id}" aria-label="Poster for stall ${s.id}, ${s.name}">
-    <span class="poster-img">
-      <img src="assets/posters/stall-${s.id}.jpg" alt="" loading="lazy"
-           onload="posterLoaded('${s.id}')" onerror="this.remove()">
-      <span class="ph">
-        <b>${s.id}</b>
-        <i>POSTER ARTWORK PENDING</i>
-      </span>
-    </span>
-    <span class="poster-meta">
-      <strong>${s.name}</strong>
-      <span class="qr" aria-hidden="true"></span>
-    </span>
-  </a>
-`).join('');
+const countBox = $('#count');
+const pad = n => String(n).padStart(2, '0');
+let countTimer = null;
+let countMode = 'countdown';
 
-const loadedPosters = new Set();
-function posterLoaded(id){ loadedPosters.add(id); }
-
-/* ============================================================
-   COUNTDOWN — stops at zero, flips to TODAY.
-   ============================================================ */
-const EVENT_START = new Date('2026-09-30T08:00:00+05:00').getTime();
-const EVENT_END   = new Date('2026-10-01T00:00:00+05:00').getTime();
-const countBox = document.getElementById('count');
-const pad = n => String(n).padStart(2,'0');
-
-let timer = null;
 function tickCountdown(){
   const now = Date.now();
-  if(now >= EVENT_START){
-    countBox.innerHTML = now < EVENT_END
-      ? '<p class="count-today">Today.</p>'
-      : '<p class="count-lbl" style="margin:0">THANKS FOR PLAYING</p><p class="count-today">See you<br>next year.</p>';
-    if(timer) clearInterval(timer);
+  if (now >= EXPO_CLOSES.getTime()) {
+    countBox.hidden = true;
+    clearInterval(countTimer);
     return;
   }
-  const diff = EVENT_START - now;
-  document.getElementById('cd-d').textContent = pad(Math.floor(diff/86400000));
-  document.getElementById('cd-h').textContent = pad(Math.floor(diff/3600000)%24);
-  document.getElementById('cd-m').textContent = pad(Math.floor(diff/60000)%60);
-  document.getElementById('cd-s').textContent = pad(Math.floor(diff/1000)%60);
+  if (now >= EXPO_OPENS.getTime()) {
+    const day = Math.min(3, Math.floor((now - new Date('2026-11-26T00:00:00+05:00').getTime()) / 86400000) + 1);
+    if (countMode !== 'live' + day) {
+      countMode = 'live' + day;
+      countBox.innerHTML = `
+        <p class="live-pill"><b></b>LIVE NOW</p>
+        <p class="count-today">Day ${day}<small> of 3</small></p>
+        <p class="count-foot">Education Zone · Hulhumalé Central Park</p>`;
+    }
+    return;
+  }
+  const diff = EXPO_OPENS.getTime() - now;
+  $('#cd-d').textContent = pad(Math.floor(diff / 86400000));
+  $('#cd-h').textContent = pad(Math.floor(diff / 3600000) % 24);
+  $('#cd-m').textContent = pad(Math.floor(diff / 60000) % 60);
+  $('#cd-s').textContent = pad(Math.floor(diff / 1000) % 60);
 }
 tickCountdown();
-timer = setInterval(tickCountdown, 1000);
+countTimer = setInterval(tickCountdown, 1000);
+
+/* ============================================================
+   WORDMARK — tap a letter, it bounces
+   ============================================================ */
+$('#wordmark').addEventListener('click', e => {
+  const letters = $$('#wordmark span');
+  const hit = e.target.closest('#wordmark span');
+  const targets = hit ? [hit] : letters;
+  targets.forEach((s, i) => {
+    s.classList.remove('boing'); void s.offsetWidth;
+    s.style.animationDelay = hit ? '0s' : (i * 0.06) + 's';
+    s.classList.add('boing');
+  });
+});
 
 /* ============================================================
    MOBILE MENU
    ============================================================ */
-const burger = document.getElementById('burger');
-const menu = document.getElementById('menu');
-
+const burger = $('#burger');
+const menu = $('#menu');
 function setMenu(open){
   burger.setAttribute('aria-expanded', String(open));
   burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   menu.hidden = false;
   requestAnimationFrame(() => menu.classList.toggle('open', open));
   document.body.style.overflow = open ? 'hidden' : '';
-  if(!open) setTimeout(() => { if(!menu.classList.contains('open')) menu.hidden = true; }, 400);
+  updateFab();
+  if (!open) setTimeout(() => { if (!menu.classList.contains('open')) menu.hidden = true; }, 400);
 }
 burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+$$('#menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
 /* ============================================================
-   STALL MODAL — focus trapped, ESC to close
+   ACTIVITY MODAL — focus trapped, ESC to close, prev/next
    ============================================================ */
-const modal = document.getElementById('modal');
-const sheet = document.getElementById('sheet');
-const sheetBody = document.getElementById('sheet-body');
-const sheetTag = document.getElementById('sheet-tag');
+const modal = $('#modal');
+const sheet = $('#sheet');
+const sheetBody = $('#sheet-body');
+const sheetTag = $('#sheet-tag');
 let lastFocus = null;
 
-function openStall(id){
-  const s = STALLS.find(x => x.id === id);
-  if(!s) return;
-  lastFocus = document.activeElement;
+function openActivity(id){
+  const idx = ACTIVITIES.findIndex(x => x.id === id);
+  if (idx < 0) return;
+  const a = ACTIVITIES[idx];
+  const prev = ACTIVITIES[(idx + ACTIVITIES.length - 1) % ACTIVITIES.length];
+  const next = ACTIVITIES[(idx + 1) % ACTIVITIES.length];
+  if (!modal.classList.contains('open')) lastFocus = document.activeElement;
 
-  sheet.style.setProperty('--c', s.color);
-  sheetTag.textContent = `STALL ${s.id}`;
-
+  sheet.style.setProperty('--c', a.color);
+  sheetTag.textContent = `ACTIVITY ${a.id} OF 0${ACTIVITIES.length}`;
   sheetBody.innerHTML = `
-    <p class="sheet-num" aria-hidden="true">${s.id}</p>
-    <h3 id="sheet-title">${s.name}</h3>
-    <p class="sheet-lede">${s.lede}</p>
-    ${s.doList ? `<div class="blk"><h4>What you'll do</h4><ul>${s.doList.map(x=>`<li>${x}</li>`).join('')}</ul></div>` : ''}
-    ${s.learnList ? `<div class="blk"><h4>What you'll learn</h4><ul>${s.learnList.map(x=>`<li>${x}</li>`).join('')}</ul></div>` : ''}
-    ${s.pending ? `<div class="note"><b>Still cooking</b>${s.pending}</div>` : ''}
-    <a href="#event" class="btn btn-1" style="width:100%" data-close>Find this stall</a>
+    <p class="sheet-num" aria-hidden="true">${a.id}</p>
+    <h3 id="sheet-title">${a.name}</h3>
+    <p class="sheet-lede">${a.lede}</p>
+    <div class="blk"><h4>How it works</h4><ol>${a.doList.map(x => `<li>${x}</li>`).join('')}</ol></div>
+    <div class="blk"><h4>What you'll learn</h4><ul>${a.learnList.map(x => `<li>${x}</li>`).join('')}</ul></div>
+    <div class="sheet-actions">
+      <a href="#find" class="btn btn-1" data-close>Find the stall</a>
+      <a href="#luckydraw" class="btn btn-ghost" data-close>Played it? Enter the draw</a>
+    </div>
+    <div class="sheet-nav">
+      <button type="button" data-goto="${prev.id}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>${prev.name}</button>
+      <button type="button" data-goto="${next.id}">${next.name}${arrow}</button>
+    </div>
   `;
 
   modal.hidden = false;
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   sheet.scrollTop = 0;
-  sheet.querySelector('.x').focus();
-  history.replaceState(null, '', `?stall=${s.id}`);
+  $('.x', sheet).focus({ preventScroll:true });
+  history.replaceState(null, '', `?activity=${a.id}`);
+  updateFab();
+  track('activity_open', { activity: a.name });
 }
 
-function openPosterImage(id){
-  const s = STALLS.find(x => x.id === id);
-  if(!s) return;
-  lastFocus = document.activeElement;
-
-  sheet.style.setProperty('--c', s.color);
-  sheetTag.textContent = `POSTER — STALL ${s.id}`;
-
-  sheetBody.innerHTML = `
-    <img class="lightbox-img" src="assets/posters/stall-${s.id}.jpg" alt="Poster for ${s.name}">
-    <h3 style="margin-top:16px">${s.name}</h3>
-    <button type="button" class="btn btn-1" style="width:100%; margin-top:14px" data-open-stall="${s.id}">See stall info</button>
-  `;
-
-  modal.hidden = false;
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  sheet.scrollTop = 0;
-  sheet.querySelector('.x').focus();
-}
-
-function closeStall(){
+function closeActivity(){
+  if (!modal.classList.contains('open')) return;
   modal.classList.remove('open');
   modal.hidden = true;
   document.body.style.overflow = '';
-  history.replaceState(null, '', location.pathname);
-  if(lastFocus) lastFocus.focus();
+  history.replaceState(null, '', location.pathname + location.hash);
+  if (lastFocus && document.contains(lastFocus)) lastFocus.focus({ preventScroll:true });
+  updateFab();
 }
 
 document.addEventListener('click', e => {
-  const posterLink = e.target.closest('[data-poster]');
-  if(posterLink){
-    e.preventDefault();
-    const id = posterLink.dataset.poster;
-    if(loadedPosters.has(id)) openPosterImage(id);
-    else openStall(id);
-    return;
-  }
-  const openStallBtn = e.target.closest('[data-open-stall]');
-  if(openStallBtn){ openStall(openStallBtn.dataset.openStall); return; }
-  const trigger = e.target.closest('[data-stall]');
-  if(trigger){ openStall(trigger.dataset.stall); return; }
-  if(e.target.closest('[data-close]')) closeStall();
+  const goto = e.target.closest('[data-goto]');
+  if (goto) { openActivity(goto.dataset.goto); return; }
+  const card = e.target.closest('[data-act]');
+  if (card) { openActivity(card.dataset.act); return; }
+  if (e.target.closest('[data-close]')) closeActivity();
+  const t = e.target.closest('[data-track]');
+  if (t) track(t.dataset.track);
 });
 
 document.addEventListener('keydown', e => {
-  if(e.key === 'Escape'){
-    if(modal.classList.contains('open')) closeStall();
-    else if(menu.classList.contains('open')) setMenu(false);
+  if (e.key === 'Escape') {
+    if (popup.classList.contains('open')) hidePopup();
+    else if (modal.classList.contains('open')) closeActivity();
+    else if (menu.classList.contains('open')) setMenu(false);
   }
-  // focus trap inside modal
-  if(e.key === 'Tab' && modal.classList.contains('open')){
-    const f = sheet.querySelectorAll('button, a[href], input, textarea, [tabindex]:not([tabindex="-1"])');
-    if(!f.length) return;
-    const first = f[0], last = f[f.length-1];
-    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  if (e.key === 'Tab') {
+    const scope = popup.classList.contains('open') ? $('#popup-card')
+               : modal.classList.contains('open') ? sheet : null;
+    if (!scope) return;
+    const f = $$('button:not([hidden]), a[href], input, textarea, [tabindex]:not([tabindex="-1"])', scope);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 });
 
-/* ---- QR deep link: ?stall=03&source=poster ---- */
+/* deep link: ?activity=03  (old QR codes used ?stall=) */
 (function(){
   const p = new URLSearchParams(location.search);
-  const id = p.get('stall');
-  if(id && STALLS.some(s => s.id === id)){
-    // ANALYTICS HOOK: p.get('source') tells you which poster drove this visit.
-    setTimeout(() => openStall(id), 350);
-  }
+  const id = p.get('activity') || p.get('stall');
+  if (id && ACTIVITIES.some(a => a.id === id)) setTimeout(() => openActivity(id), 350);
 })();
 
-/* ---- pause marquee when off-screen (perf) ---- */
-const marq = document.getElementById('marq');
-if('IntersectionObserver' in window){
-  new IntersectionObserver(es => {
-    es.forEach(en => marq.style.animationPlayState = en.isIntersecting ? 'running' : 'paused');
-  }).observe(marq);
+/* ============================================================
+   "LET THE CAT PICK" — shuffles across the cards, opens one
+   ============================================================ */
+const picker = $('#picker');
+let picking = false;
+picker.addEventListener('click', () => {
+  if (picking) return;
+  picking = true;
+  track('cat_pick');
+  const cards = $$('.act');
+  const winner = Math.floor(Math.random() * cards.length);
+  const finish = () => {
+    cards.forEach(c => c.classList.remove('picking'));
+    cards[winner].classList.add('picked');
+    setTimeout(() => {
+      cards[winner].classList.remove('picked');
+      openActivity(cards[winner].dataset.act);
+      picker.classList.remove('rolling');
+      picking = false;
+    }, reduceMotion ? 0 : 650);
+  };
+  if (reduceMotion) { finish(); return; }
+
+  $('#activities').scrollIntoView({ behavior:'smooth', block:'start' });
+  picker.classList.add('rolling');
+  const steps = 10 + winner + cards.length;   // lands on the winner
+  let i = 0;
+  (function hop(){
+    cards.forEach(c => c.classList.remove('picking'));
+    cards[i % cards.length].classList.add('picking');
+    if (i >= steps - 1 && i % cards.length === winner) { setTimeout(finish, 260); return; }
+    i++;
+    setTimeout(hop, 55 + i * i * 0.75);
+  })();
+});
+
+/* ============================================================
+   MASCOT — tap for a wiggle and a new line
+   ============================================================ */
+const catBtn = $('#cat-btn');
+const bubble = $('#bubble');
+let lastLine = -1;
+catBtn.addEventListener('click', () => {
+  let n;
+  do { n = Math.floor(Math.random() * MASCOT_LINES.length); } while (n === lastLine && MASCOT_LINES.length > 1);
+  lastLine = n;
+  bubble.textContent = MASCOT_LINES[n];
+  bubble.classList.remove('pop'); catBtn.classList.remove('wiggle');
+  void bubble.offsetWidth;
+  bubble.classList.add('pop'); catBtn.classList.add('wiggle');
+  track('mascot_tap');
+});
+
+/* ============================================================
+   ADD TO CALENDAR (.ics, all-day 26–28 Nov)
+   ============================================================ */
+(function(){
+  const ics = [
+    'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//MAACAT//VARA Expo 2026//EN', 'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    'UID:maacat-vara-expo-2026@maacat.com',
+    'DTSTAMP:20261125T000000Z',
+    'DTSTART;VALUE=DATE:20261126',
+    'DTEND;VALUE=DATE:20261129',
+    'SUMMARY:MAACAT at VARA Expo 2026',
+    'LOCATION:Education Zone\\, Hulhumalé Central Park',
+    'DESCRIPTION:Marketing Ladder\\, Brand Relay\\, Build-a-Brand\\, Face Paint\\, the MAACAT mascot and a lucky draw. https://maacat.com',
+    'URL:https://maacat.com',
+    'END:VEVENT', 'END:VCALENDAR'
+  ].join('\r\n');
+  $('#add-cal').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+})();
+
+/* ============================================================
+   SCROLL REVEAL + STICKY LUCKY-DRAW BUTTON
+   ============================================================ */
+const fab = $('#fab');
+const seen = { hero:true, draw:false, outro:false };
+function updateFab(){
+  const blocked = menu.classList.contains('open') || modal.classList.contains('open') || popup.classList.contains('open');
+  fab.classList.toggle('show', !blocked && !seen.hero && !seen.draw && !seen.outro);
+}
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) {
+      const el = en.target;
+      el.classList.add('in'); io.unobserve(el);
+      // once it's in, hand transitions back to the element's own hover styles
+      setTimeout(() => el.classList.remove('reveal', 'in', 'd1', 'd2', 'd3'), 1100);
+    }
+  }), { threshold:.12, rootMargin:'0px 0px -40px 0px' });
+  $$('.reveal').forEach(el => io.observe(el));
+
+  const watch = (el, key) => new IntersectionObserver(es => es.forEach(en => { seen[key] = en.isIntersecting; updateFab(); }), { threshold:0 }).observe(el);
+  watch($('.hero'), 'hero');
+  watch($('#luckydraw'), 'draw');
+  watch($('footer'), 'outro');
+
+  const marq = $('#marq');
+  new IntersectionObserver(es => es.forEach(en => marq.style.animationPlayState = en.isIntersecting ? 'running' : 'paused')).observe(marq);
+} else {
+  $$('.reveal').forEach(el => el.classList.add('in'));
 }
 
 /* ============================================================
    LUCKY DRAW SURVEY
-   Uses MaacatBackend (assets/js/backend.js) — writes to Supabase
-   once configured, falls back to this browser only until then.
    ============================================================ */
-const AGES = ["Under 18","18–20","21–24","25–34","35+"];
-
-document.getElementById('age-opts').innerHTML = AGES.map(a => `
+$('#age-opts').innerHTML = AGES.map(a => `
   <label class="opt"><input type="radio" name="age" value="${a}"><span>${a}</span></label>
 `).join('');
-document.getElementById('stall-opts').innerHTML = STALLS.map((s,i) => `
-  <label class="opt s${i+1}"><input type="radio" name="stall" value="${s.id} — ${s.name}"><span>${s.id} — ${s.name}</span></label>
+$('#stall-opts').innerHTML = ACTIVITIES.map(a => `
+  <label class="opt c" style="--c:${a.color}; --ink:${a.ink}"><input type="radio" name="stall" value="${a.id} — ${a.name}"><span>${a.id} — ${a.name}</span></label>
 `).join('');
 
-/* ---------------- Popup ---------------- */
-const popup = document.getElementById('popup');
-const popupCard = document.getElementById('popup-card');
-const popupIcon = document.getElementById('popup-icon');
-const popupTitle = document.getElementById('popup-title');
-const popupMessage = document.getElementById('popup-message');
-let ldLastFocus = null;
+const form = $('#form');
+const submitBtn = $('#submit');
+const submitLabel = $('#submit-label');
+const showErr = (id, on) => $('#' + id).classList.toggle('show', on);
+const markBad = (id, on) => { const el = $('#' + id); if (el) el.classList.toggle('bad', on); };
+const cleanPhone = v => v.replace(/[^\d]/g, '');
 
-function showLuckyDrawPopup(success, message){
-  ldLastFocus = document.activeElement;
-  const isDuplicate = !success && /already entered/i.test(message || '');
-  popupCard.style.setProperty('--c', success ? 'var(--green)' : 'var(--orange)');
-  popupIcon.textContent = success ? '✓' : '!';
-  popupTitle.textContent = success ? "You're in!" : (isDuplicate ? 'Already entered' : "Couldn't submit");
-  popupMessage.textContent = message;
+function readForm(){
+  const age = $('input[name=age]:checked', form);
+  const stall = $('input[name=stall]:checked', form);
+  return {
+    age: age ? age.value : '',
+    stall: stall ? stall.value : '',
+    phone: cleanPhone($('#phone').value),
+    why: $('#why').value.trim(),
+    improve: $('#improve').value.trim(),
+    consent: $('#consent').checked
+  };
+}
+function problems(v){
+  return {
+    age: !v.age,
+    phone: v.phone.length < 7 || v.phone.length > 15,
+    stall: !v.stall,
+    why: v.why.length < 2,
+    consent: !v.consent
+  };
+}
+
+/* progress bar */
+function updateProgress(){
+  const bad = problems(readForm());
+  const done = Object.values(bad).filter(x => !x).length;
+  $('#ld-fill').style.width = (done / 5 * 100) + '%';
+  $('#ld-count').textContent = done === 5 ? 'Ready to enter!' : `${done} / 5 done`;
+  $('#ld-progress').classList.toggle('done', done === 5);
+  submitBtn.classList.toggle('ready', done === 5);
+}
+form.addEventListener('input', updateProgress);
+form.addEventListener('change', updateProgress);
+$('#phone').addEventListener('input', e => {   // digits, spaces, + and - only
+  const v = e.target.value.replace(/[^\d+\-\s]/g, '');
+  if (v !== e.target.value) e.target.value = v;
+});
+updateProgress();
+
+/* popup */
+const popup = $('#popup');
+const popupCard = $('#popup-card');
+const popupRetry = $('#popup-retry');
+const popupClose = $('#popup-close');
+let popupLastFocus = null;
+
+function showPopup(status, serverMessage){
+  popupLastFocus = document.activeElement;
+  const copy = LUCKY_DRAW_COPY[status] || LUCKY_DRAW_COPY.error;
+  const ok = status === 'ok';
+  const canRetry = status === 'unreachable' || status === 'error';
+  popupCard.style.setProperty('--c', ok ? 'var(--green)' : status === 'duplicate' ? 'var(--yellow)' : 'var(--orange)');
+  $('#popup-icon').textContent = ok ? '✓' : '!';
+  $('#popup-title').textContent = copy.title;
+  $('#popup-message').textContent = copy.msg || serverMessage || LUCKY_DRAW_COPY.error.msg;
+  popupRetry.hidden = !canRetry;
+  popupClose.textContent = ok ? 'Done' : canRetry ? 'Close' : 'Got it';
+  popupClose.className = canRetry ? 'btn btn-ghost' : 'btn btn-1';
   popup.classList.add('open');
   document.body.style.overflow = 'hidden';
-  document.getElementById('popup-close').focus();
+  (canRetry ? popupRetry : popupClose).focus();
+  updateFab();
+  if (ok) confetti();
 }
-function hideLuckyDrawPopup(){
+function hidePopup(){
   popup.classList.remove('open');
   document.body.style.overflow = '';
-  if(ldLastFocus) ldLastFocus.focus();
+  if (popupLastFocus && document.contains(popupLastFocus)) popupLastFocus.focus({ preventScroll:true });
+  updateFab();
 }
-document.getElementById('popup-close').addEventListener('click', hideLuckyDrawPopup);
-popup.addEventListener('click', e => { if(e.target === popup) hideLuckyDrawPopup(); });
-document.addEventListener('keydown', e => { if(e.key === 'Escape' && popup.classList.contains('open')) hideLuckyDrawPopup(); });
+popupClose.addEventListener('click', hidePopup);
+popupRetry.addEventListener('click', () => { hidePopup(); submitEntry(); });
+popup.addEventListener('click', e => { if (e.target === popup) hidePopup(); });
 
-/* ---------------- Form ---------------- */
-const ldForm = document.getElementById('form');
-const ldSubmitBtn = document.getElementById('submit');
-const ldShowErr = (id,on) => document.getElementById(id).classList.toggle('show', on);
-const ldMarkBad = (id,on) => { const el = document.getElementById(id); if(el) el.classList.toggle('bad', on); };
-function ldCleanPhone(v){ return v.replace(/[^\d]/g,''); }
-
-ldForm.addEventListener('submit', async e => {
-  e.preventDefault();
-  const age = ldForm.querySelector('input[name=age]:checked');
-  const stall = ldForm.querySelector('input[name=stall]:checked');
-  const phone = ldCleanPhone(document.getElementById('phone').value);
-  const why = document.getElementById('why').value.trim();
-  const improve = document.getElementById('improve').value.trim();
-  const consent = document.getElementById('consent').checked;
-
-  const bad = {
-    age: !age, phone: phone.length < 7 || phone.length > 15,
-    stall: !stall, why: why.length < 2, consent: !consent
-  };
-  ldShowErr('err-age', bad.age);
-  ldShowErr('err-phone', bad.phone); ldMarkBad('f-phone', bad.phone);
-  ldShowErr('err-stall', bad.stall);
-  ldShowErr('err-why', bad.why); ldMarkBad('f-why', bad.why);
-  ldShowErr('err-consent', bad.consent);
+/* submit */
+let sending = false;
+async function submitEntry(){
+  if (sending) return;
+  const v = readForm();
+  const bad = problems(v);
+  showErr('err-age', bad.age);
+  showErr('err-phone', bad.phone); markBad('f-phone', bad.phone);
+  showErr('err-stall', bad.stall);
+  showErr('err-why', bad.why); markBad('f-why', bad.why);
+  showErr('err-consent', bad.consent);
   const firstBad = Object.keys(bad).find(k => bad[k]);
-  if(firstBad){ document.getElementById('err-'+firstBad).scrollIntoView({block:'center',behavior:'smooth'}); return; }
+  if (firstBad) { $('#err-' + firstBad).scrollIntoView({ block:'center', behavior: reduceMotion ? 'auto' : 'smooth' }); return; }
 
-  ldSubmitBtn.disabled = true; ldSubmitBtn.textContent = 'Sending…';
+  sending = true;
+  submitBtn.disabled = true; submitLabel.textContent = 'Sending…';
   let res;
   try {
-    res = await MaacatBackend.submitLuckyDraw({ age: age.value, phone, favouriteStall: stall.value, why, improve });
+    res = await MaacatBackend.submitLuckyDraw({ age:v.age, phone:v.phone, favouriteStall:v.stall, why:v.why, improve:v.improve });
   } catch (err) {
     console.error('lucky draw submit failed', err);
-    res = { success:false, message:'Something went wrong — please try again.' };
+    res = { success:false, status:'error' };
   }
-  ldSubmitBtn.disabled = false; ldSubmitBtn.textContent = 'Submit + Enter Lucky Draw';
+  sending = false;
+  submitBtn.disabled = false; submitLabel.textContent = 'Enter the lucky draw';
 
-  showLuckyDrawPopup(res.success, res.message);
-  if(res.success) ldForm.reset();
-});
+  const status = res.status || (res.success ? 'ok' : /already entered/i.test(res.message || '') ? 'duplicate' : 'error');
+  track('lucky_draw_submit', { result: status });
+  showPopup(status, res.message);
+  if (status === 'ok') { form.reset(); updateProgress(); }
+}
+form.addEventListener('submit', e => { e.preventDefault(); submitEntry(); });
+
+/* ============================================================
+   CONFETTI (brand colours) — skipped if reduced motion is on
+   ============================================================ */
+function confetti(){
+  if (reduceMotion) return;
+  const cv = $('#confetti');
+  const ctx = cv.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const W = cv.width = innerWidth * dpr, H = cv.height = innerHeight * dpr;
+  const colors = ['#12D900','#2CD9D4','#7A00FF','#FFC51B','#EC1680','#FF5A00'];
+  const bits = Array.from({ length: 140 }, () => ({
+    x: W / 2 + (Math.random() - .5) * W * .2, y: H * .45,
+    vx: (Math.random() - .5) * 22 * dpr, vy: (-Math.random() * 18 - 6) * dpr,
+    w: (6 + Math.random() * 7) * dpr, h: (8 + Math.random() * 10) * dpr,
+    r: Math.random() * Math.PI, vr: (Math.random() - .5) * .4,
+    c: colors[Math.floor(Math.random() * colors.length)]
+  }));
+  const start = performance.now();
+  (function frame(t){
+    ctx.clearRect(0, 0, W, H);
+    bits.forEach(b => {
+      b.vy += .55 * dpr; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.r += b.vr;
+      ctx.save(); ctx.translate(b.x, b.y); ctx.rotate(b.r);
+      ctx.fillStyle = b.c; ctx.fillRect(-b.w / 2, -b.h / 2, b.w, b.h); ctx.restore();
+    });
+    if (t - start < 2600) requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
+  })(start);
+}
 </script>
 </body>
 </html>
