@@ -16,9 +16,9 @@
 </script>
 
 <title>MAACAT at VARA Expo 2026</title>
-<meta name="description" content="MAACAT, the student marketing club at MNU — at VARA Expo 2026, Education Zone, Hulhumalé Central Park, 26–28 November. Four games, our mascot and a lucky draw.">
+<meta name="description" content="MAACAT, the student marketing club at MNU — at VARA Expo 2026, Skills Experience Zone, Hulhumalé Central Park, 26–28 November. Four games, our mascot and a lucky draw.">
 <meta property="og:title" content="MAACAT at VARA Expo 2026">
-<meta property="og:description" content="Four games. One mascot. One lucky draw. Education Zone, Hulhumalé Central Park — 26–28 Nov.">
+<meta property="og:description" content="Four games. One mascot. One lucky draw. Skills Experience Zone, Hulhumalé Central Park — 26–28 Nov.">
 <meta property="og:image" content="https://maacat.com/assets/branding/maacat-logo.png">
 <link rel="icon" href="assets/branding/maacat-icon.png">
 <link rel="apple-touch-icon" href="assets/branding/maacat-icon.png">
@@ -415,7 +415,7 @@ footer small{display:block; color:var(--grey-dim); font-size:.8rem; line-height:
       <li><a href="#luckydraw">Lucky Draw</a></li>
     </ol>
   </nav>
-  <p class="menu-foot">VARA Expo 2026 · 26–28 Nov<br>Education Zone · Hulhumalé Central Park</p>
+  <p class="menu-foot">VARA Expo 2026 · 26–28 Nov<br>Skills Experience Zone · Hulhumalé Central Park</p>
 </div>
 
 <main id="top">
@@ -429,7 +429,7 @@ footer small{display:block; color:var(--grey-dim); font-size:.8rem; line-height:
         <p class="blip"><b></b> VARA Expo 2026 <em>·</em> 26–28 Nov</p>
         <h1 class="wordmark" id="wordmark" aria-label="MAACAT"><span aria-hidden="true">M</span><span aria-hidden="true">A</span><span aria-hidden="true">A</span><span aria-hidden="true">C</span><span aria-hidden="true">A</span><span aria-hidden="true">T</span></h1>
         <p class="slogan"><i>Create.</i><i>Reach.</i><i>Grow.</i></p>
-        <p class="hero-copy"><strong>Four games. One mascot. One lucky draw.</strong> Find us in the Education Zone.</p>
+        <p class="hero-copy"><strong>Four games. One mascot. One lucky draw.</strong> Find us in the Skills Experience Zone.</p>
         <div class="cta-row">
           <a href="#activities" class="btn btn-1">See the games</a>
           <a href="#luckydraw" class="btn btn-2">Enter the lucky draw</a>
@@ -517,7 +517,7 @@ footer small{display:block; color:var(--grey-dim); font-size:.8rem; line-height:
       <dl class="ticket-info">
         <div><dt>Event</dt><dd class="c1">VARA Expo 2026</dd></div>
         <div><dt>Venue</dt><dd class="c2">Hulhumalé Central Park</dd></div>
-        <div><dt>Stall</dt><dd class="c3">Education Zone</dd></div>
+        <div><dt>Stall</dt><dd class="c3">Skills Experience Zone</dd></div>
       </dl>
     </div>
     <div class="find-actions reveal d2">
@@ -662,14 +662,12 @@ async function _callSubmit(body){
   const ctrl = ('AbortController' in window) ? new AbortController() : null;
   const timer = ctrl ? setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS) : null;
   try {
+    const headers = { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    // Old-style anon keys (eyJ…) also go in Authorization. New sb_publishable_ keys must not.
+    if (SUPABASE_ANON_KEY.startsWith('eyJ')) headers['Authorization'] = 'Bearer ' + SUPABASE_ANON_KEY;
     const r = await fetch(SUPABASE_URL + '/rest/v1/rpc/submit_lucky_draw', {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
+      headers,
       body: JSON.stringify(body),
       signal: ctrl ? ctrl.signal : undefined
     });
@@ -784,7 +782,7 @@ const ACTIVITIES = [
 ];
 
 const AGES = ["Under 18","18–20","21–24","25–34","35+"];
-const MASCOT_LINES = ["Meow-keting!","Create. Reach. Grow. Purr.","Photo? I'm ready.","Find me in the Education Zone!","Four games. Zero excuses.","Tap me again. I dare you.","Psst… lucky draw's below."];
+const MASCOT_LINES = ["Meow-keting!","Create. Reach. Grow. Purr.","Photo? I'm ready.","Find me in the Skills Experience Zone!","Four games. Zero excuses.","Tap me again. I dare you.","Psst… lucky draw's below."];
 
 /* ============================================================ */
 const $ = (s, el=document) => el.querySelector(s);
@@ -950,7 +948,7 @@ $('#add-cal').href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent([
   'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//MAACAT//VARA Expo 2026//EN','BEGIN:VEVENT',
   'UID:maacat-vara-expo-2026@maacat.com','DTSTAMP:20261125T000000Z',
   'DTSTART;VALUE=DATE:20261126','DTEND;VALUE=DATE:20261129',
-  'SUMMARY:MAACAT at VARA Expo 2026','LOCATION:Education Zone\\, Hulhumalé Central Park',
+  'SUMMARY:MAACAT at VARA Expo 2026','LOCATION:Skills Experience Zone\\, Hulhumalé Central Park',
   'DESCRIPTION:Four games\\, the MAACAT mascot and a lucky draw. https://maacat.com',
   'END:VEVENT','END:VCALENDAR'].join('\r\n'));
 
