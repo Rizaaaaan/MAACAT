@@ -83,8 +83,34 @@ main{display:grid; grid-template-columns:34fr 66fr; gap:calc(var(--u)*3.4); padd
 
 /* ---------- board ---------- */
 .board{display:flex; flex-direction:column; min-height:0;}
-.board-head{display:grid; grid-template-columns:calc(var(--u)*6.5) 1fr auto; padding:0 calc(var(--u)*2.2) calc(var(--u)*.8); font-family:var(--display); font-weight:700; font-size:calc(var(--u)*.95); letter-spacing:.14em; color:var(--grey-dim); text-transform:uppercase;}
+.board-head{display:grid; grid-template-columns:1fr; column-gap:calc(var(--u)*1.6); font-family:var(--display); font-weight:700; font-size:calc(var(--u)*.95); letter-spacing:.14em; color:var(--grey-dim); text-transform:uppercase;}
+.bh{display:grid; grid-template-columns:calc(var(--u)*6.5) 1fr auto; padding:0 calc(var(--u)*2.2) calc(var(--u)*.8) 0;}
+.bh span:first-child{text-align:center;}
+.bh2{display:none;}
 .rows{flex:1; min-height:0; display:flex; flex-direction:column; gap:calc(var(--u)*.9); position:relative;}
+
+/* ---- many teams: two compact columns ---- */
+.board.compact .board-head{grid-template-columns:1fr 1fr;}
+.board.compact .bh{grid-template-columns:calc(var(--u)*4.4) 1fr auto; padding-right:calc(var(--u)*1.4);}
+.board.compact .bh2{display:grid;}
+.board.compact .rows{
+  display:grid; grid-template-columns:1fr 1fr; grid-auto-flow:column; align-content:start;
+  grid-template-rows:repeat(var(--per,10), minmax(0, calc(var(--u)*7)));
+  column-gap:calc(var(--u)*1.6); row-gap:calc(var(--u)*.7);
+}
+.board.compact .row{max-height:none; min-height:0; grid-template-columns:calc(var(--u)*4.4) 1fr auto; padding-right:calc(var(--u)*1.4); border-radius:calc(var(--u)*1.2);}
+.board.compact .rank{font-size:calc(var(--u)*2.2);}
+.board.compact .who{gap:calc(var(--u)*.8);}
+.board.compact .nm{font-size:calc(var(--u)*1.85);}
+.board.compact .score b{font-size:calc(var(--u)*2.4);}
+.board.compact .score i{display:none;}
+.board.compact .crown{width:calc(var(--u)*3); height:calc(var(--u)*2.4);}
+
+.page-bar{height:calc(var(--u)*.35); background:#222; border-radius:4px; overflow:hidden; margin-top:calc(var(--u)*.8); visibility:hidden;}
+.page-bar.on{visibility:visible;}
+.page-bar i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--orange),var(--pink),var(--purple));}
+.page-bar.on i{animation:pagebar var(--page-s, 8s) linear forwards;}
+@keyframes pagebar{to{width:100%;}}
 .row{
   --c:var(--orange);
   flex:1 1 0; min-height:0; max-height:calc(var(--u)*7.4);
@@ -103,16 +129,19 @@ main{display:grid; grid-template-columns:34fr 66fr; gap:calc(var(--u)*3.4); padd
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg);}50%{transform:translateY(calc(var(--u)*-.35)) rotate(4deg);}}
 
 /* gold — 1st */
+.row.gold.big{flex-grow:1.45; max-height:calc(var(--u)*10.5);}
 .row.gold{
-  flex-grow:1.45; max-height:calc(var(--u)*10.5);
   background:linear-gradient(100deg, rgba(255,197,27,.20), rgba(255,197,27,.05) 55%, var(--card));
   border-color:var(--gold-2); box-shadow:0 0 calc(var(--u)*3) calc(var(--u)*-.6) rgba(255,197,27,.55), inset 0 0 0 1px rgba(255,241,168,.25);
 }
 .row.gold::before{background:linear-gradient(var(--gold-1),var(--gold-2),var(--gold-3)); width:calc(var(--u)*.8);}
-.row.gold .rank{color:var(--gold-2); font-size:calc(var(--u)*4.4);}
-.row.gold .nm{font-size:calc(var(--u)*3.4); color:var(--gold-1);}
-.row.gold .score b{font-size:calc(var(--u)*5); color:var(--gold-2);}
-.row.gold .crown{width:calc(var(--u)*5.6); height:calc(var(--u)*4.5);}
+.row.gold .rank{color:var(--gold-2);}
+.row.gold .nm{color:var(--gold-1);}
+.row.gold .score b{color:var(--gold-2);}
+.row.gold.big .rank{font-size:calc(var(--u)*4.4);}
+.row.gold.big .nm{font-size:calc(var(--u)*3.4);}
+.row.gold.big .score b{font-size:calc(var(--u)*5);}
+.row.gold.big .crown{width:calc(var(--u)*5.6); height:calc(var(--u)*4.5);}
 .row.gold::after{ /* shine sweep */
   content:""; position:absolute; top:0; bottom:0; width:30%; left:-40%;
   background:linear-gradient(100deg, transparent, rgba(255,241,168,.28), transparent);
@@ -120,15 +149,17 @@ main{display:grid; grid-template-columns:34fr 66fr; gap:calc(var(--u)*3.4); padd
 }
 @keyframes shine{0%,55%{left:-40%;} 100%{left:120%;}}
 /* silver — 2nd */
+.row.silver.big{flex-grow:1.2; max-height:calc(var(--u)*8.6);}
 .row.silver{
-  flex-grow:1.2; max-height:calc(var(--u)*8.6);
   background:linear-gradient(100deg, rgba(213,219,227,.16), rgba(213,219,227,.04) 55%, var(--card));
   border-color:var(--silver-2); box-shadow:0 0 calc(var(--u)*2) calc(var(--u)*-.6) rgba(213,219,227,.35);
 }
 .row.silver::before{background:linear-gradient(var(--silver-1),var(--silver-2),var(--silver-3)); width:calc(var(--u)*.7);}
-.row.silver .rank{color:var(--silver-2); font-size:calc(var(--u)*3.7);}
-.row.silver .nm{font-size:calc(var(--u)*2.9); color:var(--white);}
-.row.silver .score b{font-size:calc(var(--u)*4.2); color:var(--silver-1);}
+.row.silver .rank{color:var(--silver-2);}
+.row.silver .score b{color:var(--silver-1);}
+.row.silver.big .rank{font-size:calc(var(--u)*3.7);}
+.row.silver.big .nm{font-size:calc(var(--u)*2.9);}
+.row.silver.big .score b{font-size:calc(var(--u)*4.2);}
 .row.r3{--c:var(--pink);} .row.r4{--c:var(--purple);} .row.r5{--c:var(--turq);} .row.r6{--c:var(--green);}
 
 .row.bump{animation:bump 1.4s var(--ease);}
@@ -136,7 +167,7 @@ main{display:grid; grid-template-columns:34fr 66fr; gap:calc(var(--u)*3.4); padd
 .row.gold.bump{animation:bumpGold 1.4s var(--ease);}
 @keyframes bumpGold{15%{transform:scale(1.025); box-shadow:0 0 calc(var(--u)*5) 0 rgba(255,197,27,.9);}}
 
-.more{margin-top:calc(var(--u)*.9); text-align:center; font-family:var(--display); font-weight:700; font-size:calc(var(--u)*1.05); letter-spacing:.1em; color:var(--grey-dim); text-transform:uppercase; min-height:calc(var(--u)*1.4);}
+.more{margin-top:calc(var(--u)*.6); text-align:center; font-family:var(--display); font-weight:700; font-size:calc(var(--u)*1.05); letter-spacing:.1em; color:var(--grey-dim); text-transform:uppercase; min-height:calc(var(--u)*1.4);}
 
 .empty{
   flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:calc(var(--u)*1.4); text-align:center;
@@ -182,15 +213,15 @@ footer{overflow:hidden; padding:calc(var(--u)*.8) 0 calc(var(--u)*1.6);}
   .stats{margin-top:calc(var(--u)*2);}
   .rows{flex:none;}
   .row{flex:none; height:calc(var(--u)*7.4);}
-  .row.gold{height:calc(var(--u)*10);} .row.silver{height:calc(var(--u)*8.6);}
+  .row.gold.big{height:calc(var(--u)*10);} .row.silver.big{height:calc(var(--u)*8.6);}
   .updated{display:none;}
   .chip.event{display:none;}
   .hint{display:none;}
   .score i{display:none;}
   .nm{font-size:calc(var(--u)*2.3);}
-  .row.gold .nm{font-size:calc(var(--u)*2.7);} .row.silver .nm{font-size:calc(var(--u)*2.5);}
-  .row.gold .crown{width:calc(var(--u)*4.4); height:calc(var(--u)*3.6);} .crown{width:calc(var(--u)*3.6); height:calc(var(--u)*2.9);}
-  .row.gold .score b{font-size:calc(var(--u)*4.2);}
+  .row.gold.big .nm{font-size:calc(var(--u)*2.7);} .row.silver.big .nm{font-size:calc(var(--u)*2.5);}
+  .row.gold.big .crown{width:calc(var(--u)*4.4); height:calc(var(--u)*3.6);} .crown{width:calc(var(--u)*3.6); height:calc(var(--u)*2.9);}
+  .row.gold.big .score b{font-size:calc(var(--u)*4.2);}
   .row{grid-template-columns:calc(var(--u)*5.5) 1fr auto;}
 }
 @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none !important; transition:none !important;} }
@@ -225,8 +256,9 @@ footer{overflow:hidden; padding:calc(var(--u)*.8) 0 calc(var(--u)*1.6);}
   </section>
 
   <section class="board" aria-live="polite">
-    <div class="board-head"><span style="text-align:center">Rank</span><span>Team</span><span>Logos</span></div>
+    <div class="board-head"><div class="bh"><span>Rank</span><span>Team</span><span>Logos</span></div><div class="bh bh2"><span>Rank</span><span>Team</span><span>Logos</span></div></div>
     <div class="rows" id="rows"></div>
+    <div class="page-bar" id="page-bar"><i></i></div>
     <p class="more" id="more"></p>
   </section>
 </main>
@@ -279,7 +311,9 @@ footer{overflow:hidden; padding:calc(var(--u)*.8) 0 calc(var(--u)*1.6);}
 // "Anyone with the link → Viewer". Override with ?sheet=ID in the URL.
 const SHEET_ID = '119wd7XfRbTOIFDh7VygetV92V-2DDXfJ1wfOkXymd2E';
 const REFRESH_SECONDS = 5;      // how often the screen checks the sheet
-const SHOW_TOP = 8;             // rows on screen
+const BIG_LAYOUT_MAX = 8;       // up to this many teams: one big list
+const ROWS_PER_COLUMN = 10;     // more teams: two columns of up to this many rows (20 on screen)
+const PAGE_SECONDS = 8;         // past 20 teams, the right-hand column flips through everyone else
 
 /* ============================================================ */
 const params = new URLSearchParams(location.search);
@@ -337,8 +371,9 @@ function buildBoard(table){
     if (!prev || score > prev.score) best.set(key, { key, name, score, order });   // best attempt counts
   });
   const list = [...best.values()].sort((a, b) => b.score - a.score || a.order - b.order);
+  // Dense ranking: everyone on the top score is 1st, the next-best score is 2nd, and so on.
   let rank = 0, last = null;
-  list.forEach((t, i) => { if (t.score !== last) { rank = i + 1; last = t.score; } t.rank = rank; });
+  list.forEach(t => { if (t.score !== last) { rank++; last = t.score; } t.rank = rank; });
   return list;
 }
 
@@ -359,11 +394,33 @@ async function fetchSheet(){
 /* ---------- render with smooth re-ordering ---------- */
 let board = [], leaderKey = null, loadedOnce = false, lastOk = 0;
 
+const portraitMQ = matchMedia('(max-aspect-ratio: 1/1)');
+const boardEl = document.querySelector('.board');
+let page = 0, pageCount = 1;
+
 function render(list){
   $('#teams').textContent = list.length;
   $('#top').textContent = list.length ? fmt(list[0].score) : '–';
-  const shown = list.slice(0, SHOW_TOP);
-  $('#more').textContent = list.length > SHOW_TOP ? `+ ${list.length - SHOW_TOP} more team${list.length - SHOW_TOP > 1 ? 's' : ''} played` : '';
+
+  // Which teams are on screen right now
+  const compact = !portraitMQ.matches && list.length > BIG_LAYOUT_MAX;
+  let shown = list, info = '';
+  pageCount = 1;
+  if (compact) {
+    const per = Math.min(ROWS_PER_COLUMN, Math.ceil(list.length / 2));
+    const rest = list.slice(per);
+    pageCount = Math.max(1, Math.ceil(rest.length / per));
+    if (page >= pageCount) page = 0;
+    shown = list.slice(0, per).concat(rest.slice(page * per, page * per + per));
+    rowsEl.style.setProperty('--per', per);
+    if (pageCount > 1) {
+      const from = per + page * per + 1, to = Math.min(list.length, per + (page + 1) * per);
+      info = `Showing ${from}–${to} of ${list.length} teams · page ${page + 1} of ${pageCount}`;
+    }
+  } else page = 0;
+  boardEl.classList.toggle('compact', compact);
+  $('#more').textContent = info;
+  $('#page-bar').classList.toggle('on', pageCount > 1);
 
   if (!shown.length) {
     rowsEl.innerHTML = `<div class="empty"><img src="assets/branding/maacat-icon.png" alt=""><h2>No scores <em>yet</em></h2><p>Be the first team on the board. Play Brand Relay at the MAACAT stall!</p></div>`;
@@ -371,7 +428,7 @@ function render(list){
   }
   rowsEl.querySelector('.empty')?.remove();
 
-  const before = new Map([...rowsEl.querySelectorAll('.row')].map(el => [el.dataset.key, el.getBoundingClientRect().top]));
+  const before = new Map([...rowsEl.querySelectorAll('.row')].map(el => { const r = el.getBoundingClientRect(); return [el.dataset.key, { x: r.left, y: r.top }]; }));
   const existing = new Map([...rowsEl.querySelectorAll('.row')].map(el => [el.dataset.key, el]));
   const order = shown.map((t, i) => {
     let el = existing.get(t.key);
@@ -379,7 +436,8 @@ function render(list){
     if (isNew) { el = document.createElement('div'); el.dataset.key = t.key; }
     existing.delete(t.key);
     const tier = t.rank === 1 ? 'gold' : t.rank === 2 ? 'silver' : '';
-    el.className = `row r${Math.min(i + 1, 6)} ${tier}`.trim();
+    const alone = list.filter(x => x.rank === t.rank).length === 1;
+    el.className = `row r${(i % 6) + 1} ${tier}${tier && alone && !compact ? ' big' : ''}`.trim();
     const changed = el.dataset.score !== undefined && el.dataset.score !== String(t.score);
     el.dataset.score = String(t.score);
     el.innerHTML = `
@@ -394,9 +452,9 @@ function render(list){
 
   if (reduceMotion) return;
   order.forEach(({ el, isNew }, i) => {
-    const prev = before.get(el.dataset.key), now = el.getBoundingClientRect().top;
-    if (isNew) el.animate([{ opacity: 0, transform: 'translateX(6%)' }, { opacity: 1, transform: 'none' }], { duration: 550, delay: loadedOnce ? 0 : i * 70, easing: 'cubic-bezier(.2,.85,.3,1)', fill: 'backwards' });
-    else if (prev !== undefined && Math.abs(prev - now) > 1) el.animate([{ transform: `translateY(${prev - now}px)` }, { transform: 'none' }], { duration: 750, easing: 'cubic-bezier(.2,.85,.3,1)' });
+    const prev = before.get(el.dataset.key), r = el.getBoundingClientRect();
+    if (isNew) el.animate([{ opacity: 0, transform: 'translateX(6%)' }, { opacity: 1, transform: 'none' }], { duration: 550, delay: loadedOnce ? (i % ROWS_PER_COLUMN) * 40 : i * 50, easing: 'cubic-bezier(.2,.85,.3,1)', fill: 'backwards' });
+    else if (prev && (Math.abs(prev.y - r.top) > 1 || Math.abs(prev.x - r.left) > 1)) el.animate([{ transform: `translate(${prev.x - r.left}px, ${prev.y - r.top}px)` }, { transform: 'none' }], { duration: 750, easing: 'cubic-bezier(.2,.85,.3,1)' });
   });
 }
 const fmt = n => Number.isInteger(n) ? String(n) : n.toFixed(1);
@@ -440,6 +498,15 @@ setInterval(() => {
 }, 1000);
 refresh();
 setInterval(refresh, REFRESH_SECONDS * 1000);
+
+// Flip the right-hand column to the next group of teams
+const pageBar = $('#page-bar');
+pageBar.style.setProperty('--page-s', PAGE_SECONDS + 's');
+function restartBar(){ pageBar.classList.remove('on'); void pageBar.offsetWidth; if (pageCount > 1) pageBar.classList.add('on'); }
+setInterval(() => {
+  if (pageCount > 1 && !$('#pop').classList.contains('show')) { page = (page + 1) % pageCount; render(board); restartBar(); }
+}, PAGE_SECONDS * 1000);
+let resizeT; addEventListener('resize', () => { clearTimeout(resizeT); resizeT = setTimeout(() => render(board), 200); });
 
 /* ---------- screen helpers: full screen, hide cursor, keep awake ---------- */
 const hint = $('#hint');
